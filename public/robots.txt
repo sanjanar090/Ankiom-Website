@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://ankiom.com
+
+# Sitemaps
+Sitemap: https://ankiom.com/sitemap.xml
