@@ -102,7 +102,7 @@ export default function Services5() {
                 href={service.link}
                 className="font-medium text-[#6C63FF] hover:text-[#7E74FF] transition-colors duration-300"
               >
-                Learn More →
+                Learn More 
               </Link>
             </div>
           </div>
