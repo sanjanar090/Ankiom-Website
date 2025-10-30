@@ -2,6 +2,7 @@
 
 import { NextSeo } from "next-seo";
 import { motion } from "framer-motion";
+import NavbarIot from "../components/NavbarIot";
 import HeroSection from "@/app/components/HeroSection";
 import IotServicesText from "@/app/components/IotServicesText";
 import Industries from "@/app/components/Industries";
@@ -91,7 +92,6 @@ export default function HomePage() {
 
   return (
     <>
-      {/* ✅ Primary SEO Meta Configuration */}
       <NextSeo
         title="IoT Development Services in Bangalore | Ankiom"
         description="Empower your business with Ankiom’s IoT Development Services in Bangalore — smart automation, connected devices, and scalable cloud integrations for industries."
@@ -142,14 +142,12 @@ export default function HomePage() {
         ]}
       />
 
-      {/* ✅ Schema markup */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      {/* ✅ Page Content */}
-      <Navbar />
+      <NavbarIot />
 
       <motion.div
         initial={{ opacity: 0 }}

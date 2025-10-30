@@ -3,7 +3,7 @@
 import { NextSeo } from "next-seo";
 import Head from "next/head";
 import { motion } from "framer-motion";
-import Navbar from "@/app/components/Navbar";
+import NavbarNextjs from "@/app/components/NavbarNextjs";
 import HeroSection from "../components/HeroSection";
 import ApplicationServices from "../assets/application-services.jpg";
 import NextAdoption4 from "@/app/components/NextAdoption4";
@@ -194,7 +194,7 @@ export default function NextJsPage() {
         }}
       />
 
-      <Navbar />
+      <NavbarNextjs />
 
       <main>
         <motion.section

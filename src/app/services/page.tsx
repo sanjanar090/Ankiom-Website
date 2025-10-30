@@ -3,7 +3,7 @@
 import { NextSeo } from "next-seo";
 import Head from "next/head";
 import { motion } from "framer-motion";
-import Navbar from "@/app/components/Navbar";
+import NavbarServices from "@/app/components/NavbarServices";
 import HeroSection from "../components/HeroSection";
 import DigitalChip from "../assets/digital-chip.jpg";
 import QMLSection from "@/app/components/QMLSection";
@@ -207,7 +207,7 @@ export default function Services() {
         }}
       />
 
-      <Navbar />
+      <NavbarServices />
 
       <motion.div variants={fadeIn} initial="hidden" animate="visible">
         <HeroSection

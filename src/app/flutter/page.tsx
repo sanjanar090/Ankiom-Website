@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { NextSeo, WebPageJsonLd, LocalBusinessJsonLd, ProductJsonLd, LogoJsonLd } from "next-seo";
-import Navbar from "@/app/components/Navbar";
+import NavbarFlutter from "@/app/components/NavbarFlutter";
 import HeroSection from "@/app/components/HeroSection";
 import FlutterSection from "@/app/components/FlutterSection";
 import FlutterServiceOffering from "@/app/components/FlutterServiceOffering";
@@ -153,7 +153,7 @@ export default function FlutterPage() {
         manufacturerLogo="https://ankiom.com/images/logo.png"
       />
 
-      <Navbar />
+      <NavbarFlutter />
 
       <motion.div
         initial={{ opacity: 0 }}

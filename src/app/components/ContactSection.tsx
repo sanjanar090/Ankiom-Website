@@ -18,7 +18,6 @@ export default function ContactSection({
 }: ContactSectionProps) {
   return (
     <>
-      {/* ✅ SEO Enhancements */}
       <NextSeo
         title="Contact Ankiom | IoT Consultation & Support"
         description="Reach out to Ankiom for expert IoT solutions, automation services, and custom business consultations tailored to your goals."
@@ -70,7 +69,6 @@ export default function ContactSection({
         ]}
       />
 
-      {/* ✅ JSON-LD Schema (Structured Data for Google Rich Results) */}
       <Head>
         <script
           type="application/ld+json"
