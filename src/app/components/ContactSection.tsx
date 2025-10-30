@@ -17,7 +17,7 @@ export default function ContactSection({
 }: ContactSectionProps) {
   return (
     <motion.section
-      id="contact"
+      id="contact"c
       className={`bg-white text-center ${className}`}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -49,13 +49,11 @@ export default function ContactSection({
         {description}
       </motion.p>
 
-      <motion.button
-        className="w-[180px] md:w-[200px] h-[64px] md:h-[78px] bg-[#1294D4] text-white text-[18px] md:text-[22px] font-semibold rounded-[16px]"
-        whileHover={{ scale: 1.05, backgroundColor: "#0f7cb1" }}
-        transition={{ type: "spring", stiffness: 200, damping: 15 }}
-      >
+    
+      <motion.button className="bg-[#1273D4] text-white text-[18px] px-8 py-4 rounded-xl font-medium shadow-md hover:bg-[#004FCC] transition-all duration-300">
         {buttonText}
-      </motion.button>
+         </motion.button>
+
 
       <div className="sr-only">
         <p>

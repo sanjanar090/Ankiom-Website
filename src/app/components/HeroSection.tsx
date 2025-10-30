@@ -22,7 +22,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ imagelink, content }) => {
         canonical="https://ankiom.com/iot#hero"
       />
       <motion.section
-        className="relative w-full h-[301px] my-10 flex justify-center mt-4"
+        className="relative w-full h-[301px] bg-white my-10 flex justify-center mt-4"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
