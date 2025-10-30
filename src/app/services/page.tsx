@@ -2,6 +2,7 @@
 
 import { NextSeo } from "next-seo";
 import Head from "next/head";
+import { motion } from "framer-motion";
 import Navbar from "@/app/components/Navbar";
 import HeroSection from "../components/HeroSection";
 import DigitalChip from "../assets/digital-chip.jpg";
@@ -140,6 +141,16 @@ export default function Services() {
     ],
   };
 
+  const fadeUp = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
+
+  const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.8 } },
+  };
+
   return (
     <>
       <NextSeo
@@ -197,25 +208,47 @@ export default function Services() {
       />
 
       <Navbar />
-      <HeroSection
-        imagelink={DigitalChip}
-        content={{
-          title: "Qt QML Application Services",
-          description:
-            "Craft high-performance, cross-platform UI experiences with Qt QML.",
-        }}
-      />
-      <QMLSection />
-      <QMLServiceOffering />
-      <IndustriesWeServe />
-      <BenefitsQML />
-      <WhyChooseSection
-        content={{ title: "Why Choose Ankiom?", features: qmlFeatures }}
-      />
-      <ContactSection
-        heading="Ready to Transform Your Business with Qt / QML?"
-        className="py-16 px-5 mb-8"
-      />
+
+      <motion.div variants={fadeIn} initial="hidden" animate="visible">
+        <HeroSection
+          imagelink={DigitalChip}
+          content={{
+            title: "Qt QML Application Services",
+            description:
+              "Craft high-performance, cross-platform UI experiences with Qt QML.",
+          }}
+        />
+      </motion.div>
+
+      <motion.section variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+        <QMLSection />
+      </motion.section>
+
+      <motion.section variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+        <QMLServiceOffering />
+      </motion.section>
+
+      <motion.section variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+        <IndustriesWeServe />
+      </motion.section>
+
+      <motion.section variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+        <BenefitsQML />
+      </motion.section>
+
+      <motion.section variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+        <WhyChooseSection
+          content={{ title: "Why Choose Ankiom?", features: qmlFeatures }}
+        />
+      </motion.section>
+
+      <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+        <ContactSection
+          heading="Ready to Transform Your Business with Qt / QML?"
+          className="py-16 px-5 mb-8"
+        />
+      </motion.div>
+
       <Footer />
     </>
   );

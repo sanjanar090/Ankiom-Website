@@ -2,6 +2,7 @@
 
 import { NextSeo } from "next-seo";
 import Head from "next/head";
+import { motion } from "framer-motion";
 import Navbar from "@/app/components/Navbar";
 import HeroSection from "../components/HeroSection";
 import ApplicationServices from "../assets/application-services.jpg";
@@ -49,7 +50,6 @@ export default function NextJsPage() {
         "Get consistent post-deployment updates, bug fixes, and scaling support.",
     },
   ];
-
 
   const webSiteJSONLD = {
     "@context": "https://schema.org",
@@ -143,25 +143,6 @@ export default function NextJsPage() {
     ],
   };
 
-  const breadcrumbJSONLD = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://ankiom.com",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Next.js Development",
-        item: canonicalUrl,
-      },
-    ],
-  };
-
   return (
     <>
       <NextSeo
@@ -214,28 +195,92 @@ export default function NextJsPage() {
       />
 
       <Navbar />
+
       <main>
-        <HeroSection
-          imagelink={ApplicationServices}
-          content={{
-            title: "Next.js Application Services",
-            description:
-              "Develop high-performance, SEO-optimized web applications with Next.js.",
-          }}
-        />
-        <NextAdoption4 />
-        <OurServices4 />
-        <Industries4 />
-        <Technologies4 />
-        <Benefits4 />
-        <WhyChooseSection
-          content={{ title: "Why Choose Ankiom?", features: nextjsFeatures }}
-        />
-        <ContactSection
-          heading="Ready to Transform Your Business with Next.js?"
-          className="py-15 px-5 mb-5 relative -translate-y-10"
-        />
+        <motion.section
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <HeroSection
+            imagelink={ApplicationServices}
+            content={{
+              title: "Next.js Application Services",
+              description:
+                "Develop high-performance, SEO-optimized web applications with Next.js.",
+            }}
+          />
+        </motion.section>
+
+        <motion.section
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+        >
+          <NextAdoption4 />
+        </motion.section>
+
+        <motion.section
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+        >
+          <OurServices4 />
+        </motion.section>
+
+        <motion.section
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+        >
+          <Industries4 />
+        </motion.section>
+
+        <motion.section
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+        >
+          <Technologies4 />
+        </motion.section>
+
+        <motion.section
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+        >
+          <Benefits4 />
+        </motion.section>
+
+        <motion.section
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <WhyChooseSection
+            content={{ title: "Why Choose Ankiom?", features: nextjsFeatures }}
+          />
+        </motion.section>
+
+        <motion.section
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <ContactSection
+            heading="Ready to Transform Your Business with Next.js?"
+            className="py-15 px-5 mb-5 relative -translate-y-10"
+          />
+        </motion.section>
       </main>
+
       <Footer />
     </>
   );
