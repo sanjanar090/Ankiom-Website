@@ -2,25 +2,19 @@
 
 import { NextSeo } from "next-seo";
 import { motion } from "framer-motion";
-import Navbar from "@/app/components/Navbar";
 import HeroSection from "@/app/components/HeroSection";
-import FlutterSection from "@/app/components/FlutterSection";
-import FlutterServiceOffering from "@/app/components/FlutterServiceOffering";
-import IndustriesWeServe3 from "@/app/components/IndustriesWeServe3";
-import Technologies3 from "@/app/components/Technologies3";
-import WhyChooseSection from "@/app/components/WhyChooseSection";
+import IotServicesText from "@/app/components/IotServicesText";
+import Industries from "@/app/components/Industries";
+import Services from "@/app/components/Services";
+import Benefits from "@/app/components/Benefits";
+import WhyChoose from "@/app/components/WhyChoose";
+import CloudPartners from "@/app/components/CloudPartners";
+import ContactSection from "@/app/components/ContactSection";
+import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
-import ContactSection from "../components/ContactSection";
 
-export default function FlutterPage() {
-  const productionCanonical = "https://ankiom.com/flutter";
-  const previewCanonical = "https://ankiom.vercel.app/flutter";
-
-  const canonicalUrl =
-    process.env.NEXT_PUBLIC_VERCEL_ENV === "production" ||
-    process.env.NODE_ENV === "production"
-      ? productionCanonical
-      : previewCanonical;
+export default function HomePage() {
+  const canonicalUrl = "https://ankiom.com/";
 
   const structuredData = [
     {
@@ -28,9 +22,9 @@ export default function FlutterPage() {
       "@type": "WebPage",
       "@id": canonicalUrl,
       url: canonicalUrl,
-      name: "Flutter App Development Services in Bangalore | Ankiom",
+      name: "IoT Development Services in Bangalore | Ankiom",
       description:
-        "Ankiom offers cross-platform Flutter app development services for startups and enterprises, ensuring high performance and smooth user experiences across Android and iOS.",
+        "Empower your business with Ankiom’s IoT Development Services in Bangalore — smart automation, connected devices, and scalable cloud integrations for industries.",
       isPartOf: {
         "@type": "WebSite",
         url: "https://ankiom.com",
@@ -40,8 +34,8 @@ export default function FlutterPage() {
     {
       "@context": "https://schema.org",
       "@type": "Service",
-      name: "Flutter App Development Services",
-      alternateName: "Cross-platform Mobile App Development",
+      name: "IoT Development Services",
+      alternateName: "Internet of Things Solutions",
       provider: {
         "@type": "Organization",
         name: "Ankiom Technologies",
@@ -52,9 +46,9 @@ export default function FlutterPage() {
           "https://twitter.com/ankiomsoftindia",
         ],
       },
-      serviceType: "Flutter App Development",
+      serviceType: "IoT Development and Integration",
       description:
-        "Ankiom provides Flutter app development services to build high-performance mobile apps for Android, iOS, and web platforms.",
+        "Ankiom provides end-to-end IoT product development, embedded systems, and cloud-integrated automation solutions for smart and connected industries.",
       areaServed: { "@type": "Place", name: "Bangalore, India" },
       offers: {
         "@type": "Offer",
@@ -80,7 +74,7 @@ export default function FlutterPage() {
       "@context": "https://schema.org",
       "@type": "WebSite",
       name: "Ankiom Technologies",
-      url: "https://ankiom.com",
+      url: "https://ankiom.com/",
       potentialAction: {
         "@type": "SearchAction",
         target: "https://ankiom.com/?s={search_term_string}",
@@ -93,7 +87,7 @@ export default function FlutterPage() {
       name: "Ankiom Technologies",
       image: "https://ankiom.com/images/logo.png",
       "@id": "https://ankiom.com/#localbusiness",
-      url: "https://ankiom.com",
+      url: "https://ankiom.com/",
       telephone: "+91-70907 03720",
       address: {
         "@type": "PostalAddress",
@@ -114,25 +108,31 @@ export default function FlutterPage() {
   return (
     <>
       <NextSeo
-        title="Flutter App Development Services in Bangalore | Ankiom"
-        description="Build cross-platform apps with Flutter — Ankiom provides seamless, high-performance mobile app development services for Android, iOS, and web."
+        title="IoT Development Services in Bangalore | Ankiom"
+        description="Empower your business with Ankiom’s IoT Development Services in Bangalore — smart automation, connected devices, and scalable cloud integrations for industries."
         canonical={canonicalUrl}
         openGraph={{
           url: canonicalUrl,
-          title: "Flutter App Development Services in Bangalore | Ankiom",
+          title: "IoT Development Services in Bangalore | Ankiom",
           description:
-            "Ankiom builds cross-platform Flutter apps for startups and enterprises, delivering high-quality mobile solutions.",
+            "Empower your business with Ankiom’s IoT Development Services in Bangalore — smart automation, connected devices, and scalable cloud integrations for industries.",
+          type: "website",
+          siteName: "Ankiom Technologies",
+          locale: "en_IN",
           images: [
             {
-              url: "https://ankiom.com/images/application-interface.jpg",
+              url: "https://ankiom.com/images/iot-opengraph.jpg",
               width: 1200,
               height: 630,
-              alt: "Flutter App Development Solutions by Ankiom",
+              alt: "IoT Development Services - Ankiom Technologies",
+            },
+            {
+              url: "https://ankiom.com/images/hero.jpg",
+              width: 1200,
+              height: 630,
+              alt: "IoT Automation Solutions - Ankiom Technologies",
             },
           ],
-          siteName: "Ankiom",
-          locale: "en_IN",
-          type: "website",
         }}
         twitter={{
           handle: "@ankiom",
@@ -140,20 +140,18 @@ export default function FlutterPage() {
           cardType: "summary_large_image",
         }}
         additionalMetaTags={[
-          {
-            name: "robots",
-            content:
-              "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
-          },
+          { name: "robots", content: "index, follow" },
+          { name: "googlebot", content: "index, follow" },
+          { name: "bingbot", content: "index, follow" },
+          { property: "og:region", content: "IN" },
+          { property: "og:locality", content: "Bangalore" },
+          { name: "keywords", content: "IoT development, IoT company in Bangalore, IoT automation, connected devices, Ankiom Technologies" },
         ]}
-        additionalLinkTags={[{ rel: "canonical", href: canonicalUrl }]}
       />
 
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(structuredData),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
       <Navbar />
@@ -164,21 +162,30 @@ export default function FlutterPage() {
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         <HeroSection
-          imagelink="/images/application-interface.jpg"
+          imagelink="/images/hero.jpg"
           content={{
-            title: "Flutter App Development",
+            title: "IoT Services",
             description:
-              "Create stunning cross-platform mobile apps with Flutter. Fast, scalable, and efficient solutions for modern businesses.",
+              "Empowering industries through connected devices, automation, and smart data-driven solutions.",
           }}
         />
       </motion.div>
 
-      <FlutterSection />
-      <FlutterServiceOffering />
-      <IndustriesWeServe3 />
-      <Technologies3 />
-      <WhyChooseSection />
-      <ContactSection heading="Ready to Transform Your Business with Mobile App?"/>
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+        <IotServicesText />
+      </motion.section>
+
+      <Industries />
+      <Services />
+      <Benefits />
+      <WhyChoose />
+      <CloudPartners />
+      <ContactSection heading="Ready to Transform Your Business with IoT?" />
       <Footer />
     </>
   );

@@ -1,15 +1,45 @@
-
 import { motion } from "framer-motion";
 import { NextSeo } from "next-seo";
 import { FiArrowRightCircle, FiGrid, FiMessageCircle, FiHelpCircle } from "react-icons/fi";
+import { ReactNode } from "react";
 
-export default function WhyChooseSection({ content }: any) {
-  const features = content?.features || [
-    { icon: <FiArrowRightCircle />, title: "Expert Developers", description: "Experienced Flutter developers delivering top-tier mobile apps." },
-    { icon: <FiGrid />, title: "Agile Process", description: "Adaptive and flexible project delivery using agile methodology." },
-    { icon: <FiMessageCircle />, title: "Transparent Communication", description: "Open updates and clear progress tracking." },
-    { icon: <FiHelpCircle />, title: "Ongoing Support", description: "Continuous post-launch support and optimization." },
-  ];
+interface Feature {
+  icon: ReactNode;
+  title: string;
+  description: string;
+}
+
+interface WhyChooseSectionProps {
+  content?: {
+    title?: string;
+    features?: Feature[];
+  };
+}
+
+export default function WhyChooseSection({ content }: WhyChooseSectionProps) {
+  const features: Feature[] =
+    content?.features || [
+      {
+        icon: <FiArrowRightCircle />,
+        title: "Expert Developers",
+        description: "Experienced Flutter developers delivering top-tier mobile apps.",
+      },
+      {
+        icon: <FiGrid />,
+        title: "Agile Process",
+        description: "Adaptive and flexible project delivery using agile methodology.",
+      },
+      {
+        icon: <FiMessageCircle />,
+        title: "Transparent Communication",
+        description: "Open updates and clear progress tracking.",
+      },
+      {
+        icon: <FiHelpCircle />,
+        title: "Ongoing Support",
+        description: "Continuous post-launch support and optimization.",
+      },
+    ];
 
   return (
     <>
@@ -19,7 +49,7 @@ export default function WhyChooseSection({ content }: any) {
         canonical="https://www.ankiom.com/flutter"
       />
 
-      <section className="max-w-7xl mx-auto my-18 px-5 text-center  ">
+      <section className="max-w-7xl mx-auto my-18 px-5 text-center">
         <motion.h2
           className="text-[22px] font-bold text-gray-900 mb-10"
           initial={{ opacity: 0, y: 30 }}
@@ -38,7 +68,7 @@ export default function WhyChooseSection({ content }: any) {
             visible: { transition: { staggerChildren: 0.1 } },
           }}
         >
-          {features.map((feature: any, index: number) => (
+          {features.map((feature, index) => (
             <motion.div
               key={index}
               className="bg-[#F7FAFC] border border-[#bdd0ea] rounded-lg p-4 h-60 w-full max-w-[285px] text-left shadow-sm hover:shadow-lg transition-shadow"
