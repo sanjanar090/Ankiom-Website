@@ -2,6 +2,7 @@
 
 import { NextSeo } from "next-seo";
 import Head from "next/head";
+import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLinkedin,
@@ -11,6 +12,13 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 export default function Footer() {
+  const handleScrollToContact = () => {
+    const section = document.getElementById("contact");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       <NextSeo
@@ -41,7 +49,7 @@ export default function Footer() {
           {
             name: "keywords",
             content:
-              "Ankiom, IoT, Embedded Systems, AI Integration, Data Analytics, Automation, Ankiom Technologies",
+              "Ankiom, IoT, Embedded Systems, Flutter Application Services, Nextjs Application Services, QT-QML Application Services,  Automation, Ankiom Technologies",
           },
           {
             name: "robots",
@@ -75,13 +83,12 @@ export default function Footer() {
               sameAs: [
                 "https://in.linkedin.com/company/ankiom-soft-india",
                 "https://twitter.com/ankiomsoftindia",
-                "https://github.com/ankiom",
-                "https://www.youtube.com/@ankiom",
+      
               ],
               contactPoint: [
                 {
                   "@type": "ContactPoint",
-                  telephone: "+91-XXXXXXXXXX",
+                  telephone: "+91-7090703720",
                   contactType: "customer service",
                   areaServed: "IN",
                   availableLanguage: "English",
@@ -113,37 +120,76 @@ export default function Footer() {
             <div className="mt-6">
               <h4 className="font-semibold text-white mb-4">Services</h4>
               <ul className="space-y-2">
-                {[
-                  "AI Integration",
-                  "Embedded Systems",
-                  "IoT Development",
-                  "Data Analytics",
-                ].map((item, index) => (
-                  <li key={index}>
-                    <a
-                      href="#"
-                      className="text-gray-400 hover:text-white transition-colors duration-300"
-                    >
-                      {item}
-                    </a>
-                  </li>
-                ))}
+                <li>
+                  <Link
+                    href="/iot"
+                    className="text-gray-400 hover:text-white transition-colors duration-300"
+                  >
+                    Iot Development
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/flutter"
+                    className="text-gray-400 hover:text-white transition-colors duration-300"
+                  >
+                    Flutter Application Services
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/nextjs"
+                    className="text-gray-400 hover:text-white transition-colors duration-300"
+                  >
+                    Nextjs Application Services
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/services"
+                    className="text-gray-400 hover:text-white transition-colors duration-300"
+                  >
+                    QT-QML Application Services
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/embedded"
+                    className="text-gray-400 hover:text-white transition-colors duration-300"
+                  >
+                    Embedded Systems
+                  </Link>
+                </li>
               </ul>
             </div>
 
             <div className="mt-6">
               <h4 className="font-semibold text-white mb-4">Company</h4>
               <ul className="space-y-2">
-                {["About Us", "Careers", "Contact"].map((item, index) => (
-                  <li key={index}>
-                    <a
-                      href="#"
-                      className="text-gray-400 hover:text-white transition-colors duration-300"
-                    >
-                      {item}
-                    </a>
-                  </li>
-                ))}
+                <li>
+                  <Link
+                    href="/about"
+                    className="text-gray-400 hover:text-white transition-colors duration-300"
+                  >
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/careers"
+                    className="text-gray-400 hover:text-white transition-colors duration-300"
+                  >
+                    Careers
+                  </Link>
+                </li>
+                <li>
+                  <button
+                    onClick={handleScrollToContact}
+                    className="text-gray-400 hover:text-white transition-colors duration-300"
+                  >
+                    Contact
+                  </button>
+                </li>
               </ul>
             </div>
 
@@ -195,7 +241,7 @@ export default function Footer() {
 
           <div className="sr-only">
             <p>
-              Ankiom Technologies provides IoT, AI, and embedded services for
+              Ankiom Technologies provides IoT and embedded services for
               global industries. Follow us on social media or contact us for
               partnership opportunities.
             </p>

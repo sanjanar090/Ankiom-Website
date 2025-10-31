@@ -8,6 +8,14 @@ import { motion } from "framer-motion";
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+      setMobileOpen(false); 
+    }
+  };
+
   const navLinkClass =
     "relative text-lg font-semibold text-gray-800 hover:text-blue-500 transition-colors duration-150 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-blue-500 after:transition-all hover:after:w-full";
 
@@ -51,14 +59,15 @@ export default function Navbar() {
           </li>
 
           <li className={navLinkClass}>
-            <Link href="#services5">Services</Link>
+            <button onClick={() => scrollToSection("services5")}>Services</button>
           </li>
 
           <li className={navLinkClass}>
-            <Link href="#testimonials">Testimonials</Link>
+            <button onClick={() => scrollToSection("testimonials")}>Testimonials</button>
           </li>
+
           <li className={navLinkClass}>
-            <Link href="/contact">Contact Us</Link>
+            <button onClick={() => scrollToSection("contact")}>Contact Us</button>
           </li>
 
           <li>

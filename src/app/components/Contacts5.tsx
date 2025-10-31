@@ -46,7 +46,6 @@ export default function Contacts() {
 
       if (data.success) {
         setFormData({ name: "", email: "", message: "" });
-        // 🕐 Hide message after 3 seconds
         setTimeout(() => setStatus(""), 3000);
       }
     } catch {
@@ -75,7 +74,6 @@ export default function Contacts() {
      
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
-        {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
             Get In Touch
@@ -85,9 +83,7 @@ export default function Contacts() {
           </p>
         </div>
 
-        {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* Contact Info */}
           <div className="space-y-6">
             {[
               { icon: faEnvelope, title: "Email", text: "hello@Ankiom.ai" },
@@ -109,7 +105,6 @@ export default function Contacts() {
             ))}
           </div>
 
-          {/* Contact Form */}
           <form
             onSubmit={handleSubmit}
             className="bg-white p-8 rounded-2xl shadow-lg space-y-5 border border-gray-100"

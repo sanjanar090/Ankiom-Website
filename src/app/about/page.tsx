@@ -4,14 +4,14 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { NextSeo } from "next-seo";
-import Navbar from "@/app/components/Navbar";
-import Footer from "@/app/components/Footer";
+import NavbarReuse from "@/app/components/NavbarReuse";
+import Footer5 from "@/app/components/Footer5";
 
 export default function AboutPage() {
   const canonical = "https://ankiom.com/about";
   const title = "About Ankiom Soft India LLP";
   const description =
-    "Ankiom Soft India LLP — a Bengaluru-based technology company specializing in IoT, Embedded Systems, Flutter, Next.js, and Qt/QML development for connected digital experiences.";
+    "Ankiom Soft India LLP — a Bengaluru-based software engineering firm specializing in embedded systems, IoT, Flutter, Next.js, and Qt/QML solutions for connected and intelligent digital experiences.";
 
   return (
     <>
@@ -35,7 +35,7 @@ export default function AboutPage() {
         }}
       />
 
-      <Navbar />
+      <NavbarReuse />
 
       <motion.section
         className="relative min-h-[90vh] flex items-center justify-center bg-[#020617] text-white overflow-hidden"
@@ -66,23 +66,6 @@ export default function AboutPage() {
           />
         ))}
 
-        <div className="absolute inset-0 opacity-10">
-          <svg
-            viewBox="0 0 800 600"
-            className="w-full h-full"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g stroke="cyan" strokeWidth="1">
-              <path d="M100 200 L150 250 L200 200 L250 250 L300 200" />
-              <path d="M400 150 L450 200 L500 150 L550 200 L600 150" />
-              <path d="M250 400 L300 350 L350 400 L400 350 L450 400" />
-              <circle cx="150" cy="250" r="3" fill="cyan" />
-              <circle cx="550" cy="200" r="3" fill="cyan" />
-              <circle cx="400" cy="350" r="3" fill="cyan" />
-            </g>
-          </svg>
-        </div>
-
         <motion.div
           className="absolute w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[100px]"
           animate={{
@@ -93,14 +76,35 @@ export default function AboutPage() {
         />
 
         <div className="relative z-10 max-w-4xl px-6 text-center">
-          <motion.h1
-            className="text-4xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-cyan-300 via-blue-400 to-blue-500 bg-clip-text text-transparent leading-tight"
-            initial={{ y: -40, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8 }}
-          >
-            Crafting Intelligent, Connected & Scalable Experiences
-          </motion.h1>
+        <motion.h1
+      className="text-center text-4xl md:text-6xl font-extrabold mb-6 leading-tight"
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1 }}
+    >
+      <motion.span
+        style={{
+          backgroundImage:
+            "linear-gradient(90deg, #22d3ee, #3b82f6, #06b6d4, #3b82f6)",
+          backgroundSize: "300% 100%",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          display: "inline-block",
+        }}
+        animate={{
+          backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+        }}
+        transition={{
+          duration: 3,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+      >
+        Engineering Intelligent, Connected & Scalable Solutions
+      </motion.span>
+    </motion.h1>
+
+
 
           <motion.p
             className="text-lg md:text-xl text-blue-100 leading-relaxed"
@@ -108,9 +112,11 @@ export default function AboutPage() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
           >
-            Ankiom Soft India LLP is a multidisciplinary product engineering company
-            building next-generation IoT systems, mobile applications, embedded
-            software, and modern web platforms that connect ideas with technology.
+            Ankiom Soft India LLP is a Bengaluru-based technology company
+            delivering end-to-end software product engineering — from embedded
+            systems and IoT to modern web and mobile platforms. We help
+            businesses innovate and scale with intelligent, high-performance
+            digital solutions.
           </motion.p>
         </div>
       </motion.section>
@@ -127,15 +133,16 @@ export default function AboutPage() {
             Who We Are
           </h2>
           <p className="text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto">
-            Based in Bengaluru, Ankiom Soft India LLP focuses on end-to-end digital
-            product engineering. Our team bridges embedded hardware with modern
-            cloud and web ecosystems, delivering solutions that are reliable,
-            intelligent, and future-ready.
+            Founded in 2014 and headquartered in Bengaluru, Ankiom Soft India LLP
+            specializes in embedded and IoT systems, cloud solutions, mobile
+            applications, and web platforms. Our team combines innovation with
+            engineering expertise to deliver robust, scalable, and secure
+            digital ecosystems for global clients.
           </p>
         </motion.div>
       </section>
 
-      <section className="bg-gray-50 py-24">
+      <section className="bg-white py-24">
         <div className="max-w-7xl mx-auto px-6 md:px-10 grid md:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -143,15 +150,22 @@ export default function AboutPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h3 className="text-2xl font-semibold mb-4 text-gray-900">Our Vision</h3>
+            <h3 className="text-2xl font-semibold mb-4 text-gray-900">
+              Our Vision
+            </h3>
             <p className="text-gray-700 text-lg leading-relaxed mb-6">
-              To empower industries by building connected ecosystems — combining
-              embedded intelligence, cloud scalability, and elegant digital experiences.
+              To be a trusted global partner for engineering connected and
+              intelligent systems that power the next generation of digital
+              experiences — uniting embedded hardware, software, and cloud
+              innovation.
             </p>
-            <h3 className="text-2xl font-semibold mb-4 text-gray-900">Our Mission</h3>
+            <h3 className="text-2xl font-semibold mb-4 text-gray-900">
+              Our Mission
+            </h3>
             <p className="text-gray-700 text-lg leading-relaxed">
-              To engineer human-centered technologies that simplify connectivity
-              and accelerate innovation across IoT, embedded, and software landscapes.
+              To empower industries by delivering reliable, high-performance
+              software and systems — built on technical excellence, agile
+              practices, and a human-centered engineering approach.
             </p>
           </motion.div>
 
@@ -184,26 +198,26 @@ export default function AboutPage() {
           Our Core Expertise
         </motion.h3>
         <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
-          {[ 
+          {[
             {
               icon: "🌐",
-              title: "IoT & Embedded Systems",
-              desc: "Designing intelligent devices, firmware, and connected solutions that integrate seamlessly with cloud infrastructure.",
+              title: "Embedded & IoT Systems",
+              desc: "Engineering reliable device firmware, hardware integration, and connected IoT ecosystems for smarter industries.",
             },
             {
               icon: "📱",
               title: "Flutter App Development",
-              desc: "Building high-performance, cross-platform mobile apps with stunning UI and optimized performance.",
+              desc: "Building high-performance, cross-platform mobile apps that combine rich UI with exceptional performance.",
             },
             {
               icon: "💻",
-              title: "Next.js Web Solutions",
-              desc: "Developing modern, SEO-optimized, and scalable web platforms using React and Next.js.",
+              title: "Next.js Web Platforms",
+              desc: "Developing modern, SEO-friendly, and scalable web applications using Next.js and React frameworks.",
             },
             {
               icon: "⚙️",
               title: "Qt / QML Applications",
-              desc: "Delivering cross-platform desktop and embedded UI applications for industries and enterprises.",
+              desc: "Delivering robust cross-platform desktop and embedded GUI applications tailored for industrial and enterprise needs.",
             },
           ].map((val, i) => (
             <motion.div
@@ -223,7 +237,23 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <Footer />
+      <section className="bg-white py-16">
+        <div className="max-w-5xl mx-auto text-center px-6">
+          <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+            Company Overview
+          </h3>
+          <p className="text-gray-700 text-lg leading-relaxed mb-4">
+            Ankiom Soft India LLP (LLPIN: <strong>AAC-3011</strong>) was
+            incorporated in 2014 and operates from Bengaluru, Karnataka. The
+            company provides software development, embedded systems, IoT, and IT
+            consulting services to clients across automotive, telecom, and
+            enterprise domains.
+          </p>
+          
+        </div>
+      </section>
+
+      <Footer5 />
     </>
   );
 }
