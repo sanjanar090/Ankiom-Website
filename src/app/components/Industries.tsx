@@ -25,7 +25,7 @@ export default function Industries() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <h2 className="text-[22px] font-bold mb-8 mt-4 text-center">Industries We Serve</h2>
+        <h2 className="text-[22px] font-bold mb-8 mt-0 text-center">Industries We Serve</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 justify-items-center">
           {industries.map(({ name, icon: Icon }, i) => (
             <motion.div

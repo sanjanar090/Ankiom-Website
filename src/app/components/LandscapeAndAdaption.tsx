@@ -1,9 +1,8 @@
 "use client";
-
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-const sections = [
+const embeddedTopics = [
   {
     title: "Bootloaders & Updatability",
     desc: "Ensure reliable system startup and enable over-the-air updates for enhanced functionality and security.",
@@ -26,67 +25,48 @@ const sections = [
   },
 ];
 
-export default function LandscapeAndAdaption() {
+export default function LandscapeAndAdoption() {
   return (
-    <section className="py-16 px-6 bg-white flex justify-center">
-      <div className="max-w-[900px] w-full">
-        {/* Heading and Description */}
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-[18px] font-semibold mb-2 text-gray-900 text-left"
+    <section className="py-12 bg-white">
+  <motion.div
+    className="max-w-6xl mx-auto px-8" 
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.7 }}
+  >
+    <h2 className="text-[22px] font-bold mb-4 text-center">
+      Embedded Landscape & Adoption
+    </h2>
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 justify-items-center"> 
+      {embeddedTopics.map((topic, i) => (
+        <motion.div
+          key={i}
+          className="text-center bg-white p-4 rounded-xl duration-300 flex flex-col items-center"
+          whileHover={{ scale: 1.02 }}
         >
-          Embedded Landscape & Adoption
-        </motion.h2>
+          <div className="relative w-[250px] h-[150px] mb-4 overflow-hidden rounded-lg">
+            <Image
+              src={topic.img}
+              alt={topic.title}
+              fill
+              className="object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1, duration: 0.7 }}
-          className="text-gray-700 text-[14.5px] leading-relaxed mb-10 text-left"
-        >
-          Microcontrollers are ubiquitous in modern devices, from smartphones to
-          industrial machinery. They require specialized software components such
-          as bootloaders for system initialization, drivers for hardware
-          interaction, and middleware for communication and functionality
-          abstraction.
-        </motion.p>
+          <div className="relative z-10 flex flex-col items-center text-center">
+            <h3 className="font-semibold text-[15px] text-gray-900 mb-2">
+              {topic.title}
+            </h3>
+            <p className="text-[#4D7399] text-[13.5px] leading-relaxed max-w-[260px]">
+              {topic.desc}
+            </p>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  </motion.div>
+</section>
 
-        {/* Sections */}
-        <div className="space-y-10">
-          {sections.map((section, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
-            >
-              {/* Text */}
-              <div className="sm:w-[65%] w-full">
-                <h3 className="text-[15px] font-semibold text-gray-900 mb-1">
-                  {section.title}
-                </h3>
-                <p className="text-[13.5px] leading-relaxed text-[#4D7399]">
-                  {section.desc}
-                </p>
-              </div>
-
-              {/* Image */}
-              <div className="sm:w-[35%] w-full sm:max-w-[220px] flex justify-start sm:justify-end">
-                <Image
-                  src={section.img}
-                  alt={section.title}
-                  width={210}
-                  height={130}
-                  className="rounded-md object-cover w-[210px] h-[130px]"
-                />
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
   );
 }

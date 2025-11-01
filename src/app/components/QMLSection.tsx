@@ -3,10 +3,10 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { NextSeo } from "next-seo";
-import image1 from "../assets/image1.png";
-import image2 from "../assets/image2.png";
-import image3 from "../assets/image3.png";
-import image4 from "../assets/image4.png";
+import image1 from "../assets/picture1.png";
+import image2 from "../assets/picture2.png";
+import image3 from "../assets/picture3.png";
+import image4 from "../assets/picture4.png";
 
 export default function QMLSection() {
   const cards = [
@@ -40,7 +40,7 @@ export default function QMLSection() {
         canonical="https://www.ankiom.com/services"
       />
 
-      <section className="max-w-[1280px] mx-auto my-10 p-10 bg-white rounded-3xl">
+      <section className="max-w-[1280px] mx-auto my-1 p-10 bg-white rounded-3xl">
         <motion.div
           className="text-center mb-10"
           initial={{ opacity: 0, y: 30 }}
@@ -71,7 +71,7 @@ export default function QMLSection() {
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-13"
           initial="hidden"
           whileInView="visible"
           variants={{
@@ -89,15 +89,17 @@ export default function QMLSection() {
                 visible: { opacity: 1, y: 0 },
               }}
             >
-              <Image
-                src={card.img}
-                alt={card.title}
-                width={223}
-                height={223}
-                className="w-full h-full object-cover rounded-xl mb-4"
-              />
-              <h3 className="text-sm font-semibold mb-2">{card.title}</h3>
-              <p className="text-sm text-[#4D8C99]">{card.desc}</p>
+             <Image
+  src={card.img}
+  alt={card.title}
+  width={350}
+  height={180}
+  className=" rounded-xl mb-4"
+/>
+             <div className="w-full text-left ">
+              <h3 className="text-sm font-semibold text-left mb-2">{card.title}</h3>
+              <p className="text-sm text-left text-[#4D8C99]">{card.desc}</p>
+              </div>
             </motion.div>
           ))}
         </motion.div>

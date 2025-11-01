@@ -8,7 +8,6 @@ import image2 from "../assets/devicedriverImage.png";
 import image3 from "../assets/middlewareImage.png";
 import image4 from "../assets/embeddedCImage.png";
 import image5 from "../assets/embeddedCPlusPlusImage.png";
-import image6 from "../assets/firmwareImage.png";
 
 export default function EmbeddedServiceOffering() {
   const cards = [
@@ -37,16 +36,12 @@ export default function EmbeddedServiceOffering() {
       title: "Embedded C++ Programming",
       desc: "Leverage the power of C++ for complex embedded systems with object-oriented design.",
     },
-    {
-      img: image6,
-      title: "Microcontroller & Firmware Development",
-      desc: "Comprehensive firmware development for microcontrollers, optimizing for performance and power.",
-    },
+   
     
   ];
 
   return (
-    <section className="max-w-6xl mx-auto mt-[-100px] mb-2 p-10 bg-white rounded-3xl">
+    <section className="max-w-6xl mx-auto mt-[-100px] mb-1 p-10 bg-white rounded-3xl">
       <NextSeo
         title="Embedded Systems Development | Ankiom"
         description="Designing and building intelligent, efficient, and reliable embedded solutions for a wide range of industries."
@@ -70,7 +65,6 @@ export default function EmbeddedServiceOffering() {
         <h2 className="font-bold text-[22px] mb-1 mt-15">Service Offerings</h2>
       </motion.div>
 
-      {/* === Cards grid with staggered animation === */}
       <motion.div
         className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-1 mt-8"
         initial="hidden"
@@ -106,8 +100,8 @@ export default function EmbeddedServiceOffering() {
                 className="object-cover rounded-lg"
               />
             </motion.div>
-            <h3 className="text-[15px] font-semibold text-center mb-2">{card.title}</h3>
-            <p className="text-sm text-[#4D8C99] text-center mb-1">{card.desc}</p>
+            <h3 className="text-[15px] font-semibold text-left mb-2 mt-2">{card.title}</h3>
+            <p className="text-sm text-[#4D8C99] text-left mb-1">{card.desc}</p>
           </motion.div>
         ))}
       </motion.div>

@@ -11,11 +11,11 @@ import image5 from "../assets/migration.png";
 
 export default function OurServices4() {
   const cards = [
-    { img: image1, title: "Custom Web Applications", desc: "Tailored web solutions to meet your business needs." },
-    { img: image2, title: "Headless CMS Integration", desc: "Seamless integration for flexible content management." },
-    { img: image3, title: "E-commerce Portals", desc: "Robust, scalable online stores with a smooth UX." },
-    { img: image4, title: "Performance & SEO Optimization", desc: "Boost your website speed and search visibility." },
-    { img: image5, title: "Migration & Modernization", desc: "Upgrade legacy systems with modern Next.js solutions." },
+    { img: image1, title: "Custom Web Applications", desc: "Tailored web solutions to meet your specific business needs." },
+    { img: image2, title: "Headless CMS Integration", desc: "Seamless integration with headless CMS platforms for flexible content management." },
+    { img: image3, title: "E-commerce Portals", desc: "Robust and scalable e-commerce platforms with enhanced user experience." },
+    { img: image4, title: "Performance & SEO Optimization", desc: "Optimizing your Next.js application for speed, responsiveness, and search engine visibility." },
+    { img: image5, title: "Migration & Modernization", desc: "Migrating existing applications to Next.js for improved performance and maintainability." },
   ];
 
   return (
@@ -27,7 +27,7 @@ export default function OurServices4() {
       />
 
       <motion.section
-        className="flex flex-col items-center text-center my-30 px-4"
+        className="flex flex-col items-center text-center my-26 px-4"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}

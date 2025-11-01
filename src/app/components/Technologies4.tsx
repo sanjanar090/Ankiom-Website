@@ -29,7 +29,7 @@ export default function Technologies4() {
       />
 
       <motion.section
-        className="bg-white py-10 px-5 -mt-16 text-center"
+        className="bg-white py-10 px-5 -mt-2 text-center"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}

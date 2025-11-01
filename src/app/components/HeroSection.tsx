@@ -46,7 +46,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ imagelink, content }) => {
             className="absolute bottom-5 left-1/2 -translate-x-1/2 text-center text-white px-5"
           >
             {content?.title && (
-              <h1 className="font-extrabold text-[38px] mb-2">{content.title}</h1>
+              <h1 className="font-extrabold text-[36px] mb-2">{content.title}</h1>
             )}
             {content?.description && (
               <motion.p

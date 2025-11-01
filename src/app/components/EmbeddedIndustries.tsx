@@ -33,7 +33,7 @@ export default function EmbeddedIndustries() {
   ];
 
   return (
-    <section className="max-w-6xl mx-auto my-1 p-10 bg-white rounded-3xl text-center">
+    <section className="max-w-6xl mx-auto mt-[-40px] mb-4 p-10 bg-white rounded-3xl text-center">
       <NextSeo
         title="Industries We Serve | Embedded Systems | Ankiom"
         description="Discover how Ankiom delivers embedded solutions across industries like automotive, healthcare, consumer electronics, and IoT."
@@ -68,7 +68,7 @@ export default function EmbeddedIndustries() {
               visible: { opacity: 1, y: 0 },
             }}
           >
-            <div className="relative w-[250px] h-[220px] mb-3 rounded-lg overflow-hidden">
+            <div className="relative w-[250px] h-[220px] mb-3  rounded-lg overflow-hidden">
               <Image
                 src={industry.img}
                 alt={`${industry.title} industry`}
@@ -76,10 +76,10 @@ export default function EmbeddedIndustries() {
                 className="object-cover rounded-lg"
               />
             </div>
-            <h3 className="text-[15px] font-semibold text-[#222] mb-1">
+            <h3 className="text-[15px] font-semibold text-[#222] mb-1 text-left">
               {industry.title}
             </h3>
-            <p className="text-[13.5px] text-[#4D7399] leading-relaxed">
+            <p className="text-[13.5px] text-[#4D7399] text-left leading-relaxed">
               {industry.desc}
             </p>
           </motion.div>

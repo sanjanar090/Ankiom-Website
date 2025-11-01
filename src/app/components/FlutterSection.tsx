@@ -39,7 +39,7 @@ export default function FlutterSection() {
   ];
 
   return (
-    <section id="services" className="max-w-6xl mx-auto my-10 p-10 bg-white rounded-3xl">
+    <section id="services" className="max-w-6xl mx-auto my-3 p-10 bg-white rounded-3xl">
       <NextSeo
         title="Introduction to Flutter | Ankiom"
         description="Learn about Flutter's capabilities — a UI toolkit to build beautiful, high-performance apps for any platform from a single codebase."
@@ -60,7 +60,7 @@ export default function FlutterSection() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         viewport={{ once: true }}
       >
-        <h2 className="font-bold text-[22px] mb-4">Introduction to Flutter</h2>
+        <h2 className="font-bold text-[22px] mb-4 -mt-1">Introduction to Flutter</h2>
         <p className="text-[16px] max-w-5xl mx-auto text-base">
           Flutter is a UI toolkit for building natively compiled applications for mobile, web, and desktop from a single codebase. It offers a rich set of widgets, tools, and APIs to create visually appealing and responsive user interfaces. With Flutter, you can achieve native performance, hot-reload for rapid development, and a consistent user experience across all platforms. Its single-codebase approach significantly reduces development time and costs.
         </p>
@@ -113,8 +113,8 @@ export default function FlutterSection() {
                   className="object-cover rounded-lg"
                 />
               </motion.div>
-              <h3 className="text-[15px] font-semibold text-center mb-2">{card.title}</h3>
-              <p className="text-sm text-[#4D8C99] text-center mb-1">{card.desc}</p>
+              <h3 className="text-[15px] font-semibold text-left mb-2 mt-3">{card.title}</h3>
+              <p className="text-sm text-[#4D8C99] text-left mb-1">{card.desc}</p>
             </motion.div>
           ))}
         </motion.div>

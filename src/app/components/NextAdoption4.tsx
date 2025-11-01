@@ -32,7 +32,7 @@ export default function NextAdoption4() {
       />
 
       <motion.section
-        className="w-full flex justify-center mt-10 px-5"
+        className="w-full flex justify-center mt-5 px-5 py-1"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -45,7 +45,7 @@ export default function NextAdoption4() {
             Next.js is a React framework that enables server-side rendering and generates static websites for React-based web applications. It offers features like optimized performance, SEO-friendliness, and a streamlined development experience.
           </p>
 
-          <h2 className="font-inter font-bold text-xl mt-18 mb-2">
+          <h2 className="font-inter font-bold text-xl mt-15 mb-2">
             Next.js Adoption
           </h2>
           <p className="max-w-[800px] mx-auto mb-8 text-base">

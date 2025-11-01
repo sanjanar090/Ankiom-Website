@@ -52,7 +52,7 @@ export default function IndustriesWeServe3() {
               visible: { opacity: 1, y: 0 },
             }}
           >
-            <div className="relative w-full h-[220px] mb-3 rounded-lg overflow-hidden">
+            <div className="relative w-[259px] h-[220px] mb-3 rounded-lg overflow-hidden">
               <Image
                 src={industry.img}
                 alt={`${industry.title} industry`}
@@ -60,7 +60,7 @@ export default function IndustriesWeServe3() {
                 className="object-cover rounded-lg"
               />
             </div>
-            <h3 className="text-[15px] font-semibold text-[#222]">
+            <h3 className="text-[15px] font-semibold text-left text-[#222]">
               {industry.title}
             </h3>
           </motion.div>

@@ -5,6 +5,7 @@ import { Menu, Transition } from "@headlessui/react";
 import { Fragment, memo, useState } from "react";
 import { Menu as MenuIcon, X as XIcon } from "lucide-react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 const ServiceMenuItems = memo(
   ({ services }: { services: { href: string; label: string }[] }) => (
@@ -33,34 +34,48 @@ ServiceMenuItems.displayName = "ServiceMenuItems";
 export default function NavbarFlutter() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const router = useRouter();
+
 
   const services = [
     { href: "/iot", label: "IoT Services" },
     { href: "/nextjs", label: "Next.js Services" },
     { href: "/services", label: "Qt-QML Services" },
-    {href: "/embedded", label: "Embedded Systems"}
+    {href: "/embedded", label: "Embedded Systems"},
+    {href: "/UI-UX", label: "UI/UX Design"}
   ];
-
+   const scrollToSection = (id: string) => {
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+    setMobileOpen(false);
+  }
+};
+const handleContactClick = () => {
+  if (typeof window !== "undefined") {
+    if (window.location.pathname === "/") {
+      scrollToSection("contact");
+    } else {
+      router.push("/#contact");
+    }
+  }
+};
   const navLinkClass =
     "relative text-lg font-semibold text-gray-800 hover:text-blue-500 transition-colors duration-150 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-blue-500 after:transition-all hover:after:w-full";
 
   return (
     <nav className="w-full bg-white border-gray-100 py-4">
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6 md:px-10 py-[4px]">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <motion.span
-            className="text-[20px] font-bold bg-gradient-to-r from-blue-600 to-cyan-400 bg-clip-text text-transparent"
-            whileHover={{ scale: 1.03 }}
-          >
-            Ankiom
-          </motion.span>
-          <motion.div
-            className="w-2 h-2 rounded-full bg-blue-500"
-            animate={{ scale: [1, 1.3, 1], opacity: [1, 0.6, 1] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-          />
-        </Link>
+      <Link href="/" className="flex items-center gap-2">
+  <motion.img
+    src="/images/logo.png"
+    alt="Ankiom Logo"
+    className="h-12 w-auto" // adjust this height if needed
+    whileHover={{ scale: 1.03 }}
+    transition={{ type: "spring", stiffness: 300 }}
+  />
+</Link>
+        
 
         {/* Mobile Menu Toggle */}
         <button
@@ -122,7 +137,9 @@ export default function NavbarFlutter() {
           </li>
 
           <li>
-            <button className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-1.5 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all hover:scale-105">
+            <button 
+            onClick={handleContactClick}
+            className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-1.5 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all hover:scale-105">
               Get Quote
             </button>
           </li>

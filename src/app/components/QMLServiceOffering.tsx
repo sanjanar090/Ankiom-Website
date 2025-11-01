@@ -26,7 +26,7 @@ export default function QMLServiceOffering() {
         canonical="https://www.ankiom.com/services"
       />
 
-      <section id="services" className="max-w-[1280px] mx-auto my-14 text-center px-4">
+      <section id="services" className="max-w-[1280px] mx-auto my-8 text-center px-4">
         <motion.h2
           className="font-inter font-bold text-[22px] mb-8 text-[#111]"
           initial={{ opacity: 0, y: 30 }}
@@ -37,7 +37,7 @@ export default function QMLServiceOffering() {
         </motion.h2>
 
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 mt-4"
           initial="hidden"
           whileInView="visible"
           variants={{
@@ -63,8 +63,8 @@ export default function QMLServiceOffering() {
                   className="object-cover rounded-xl"
                 />
               </div>
-              <h3 className="text-[15px] font-medium text-[#222] mt-2">{card.title}</h3>
-              <p className="text-sm text-[#4D8C99] mt-1">{card.desc}</p>
+              <h3 className="text-[15px] text-left font-medium text-[#222] mt-2">{card.title}</h3>
+              <p className="text-sm  text-left text-[#4D8C99] mt-1">{card.desc}</p>
             </motion.div>
           ))}
         </motion.div>

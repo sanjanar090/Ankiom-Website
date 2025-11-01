@@ -10,11 +10,11 @@ import image5 from "../assets/startups.png";
 
 export default function Industries4() {
   const industries = [
-    { img: image1, title: "E-commerce & Retail", desc: "High-converting online shopping experiences." },
-    { img: image2, title: "Corporate Websites", desc: "Professional and modern business websites." },
-    { img: image3, title: "SaaS Dashboards", desc: "Interactive and data-driven admin dashboards." },
-    { img: image4, title: "Education", desc: "Engaging and accessible learning platforms." },
-    { img: image5, title: "Startups / MVPs", desc: "Quick and efficient MVP launches for startups." },
+    { img: image1, title: "E-commerce & Retail", desc: "Creating engaging and high-converting online shopping experiences." },
+    { img: image2, title: "Corporate & Marketing Websites", desc: "Building professional and effective websites for businesses of all sizes." },
+    { img: image3, title: "SaaS Dashboards", desc: "Developing intuitive and feature-rich dashboards for SaaS applications." },
+    { img: image4, title: "Education", desc: "Delivering interactive and accessible learning platforms." },
+    { img: image5, title: "Startups / MVPs", desc: "Helping startups build and launch their Minimum Viable Products quickly and efficiently." },
   ];
 
   return (
@@ -41,8 +41,8 @@ export default function Industries4() {
               <div className="relative w-full h-[240px] mb-2">
                 <Image src={card.img} alt={card.title} fill className="object-cover rounded-xl" />
               </div>
-              <h3 className="text-[15px] font-medium text-[#222] mt-2">{card.title}</h3>
-              <p className="text-sm text-[#4D8C99] mt-1">{card.desc}</p>
+              <h3 className="text-[15px] text-left font-medium text-[#222] mt-2">{card.title}</h3>
+              <p className="text-sm  text-left text-[#4D8C99] mt-1">{card.desc}</p>
             </motion.div>
           ))}
         </div>

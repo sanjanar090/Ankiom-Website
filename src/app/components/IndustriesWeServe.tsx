@@ -26,7 +26,7 @@ export default function IndustriesWeServe() {
         canonical="https://www.ankiom.com/services"
       />
 
-      <section id="about" className="max-w-[1280px] mx-auto mt-28 mb-16 text-center px-4">
+      <section id="about" className="max-w-[1280px] mx-auto mt-23 mb-16 text-center px-4">
         <motion.h2
           className="font-inter font-bold text-[22px] mb-8 text-[#111]"
           initial={{ opacity: 0, y: 30 }}
@@ -58,7 +58,7 @@ export default function IndustriesWeServe() {
               <div className="relative w-full h-[235px] mb-3 mx-auto overflow-hidden rounded-xl">
                 <Image src={industry.img} alt={industry.title} fill className="object-cover" />
               </div>
-              <h3 className="mt-2 text-sm font-medium text-[#222]">{industry.title}</h3>
+              <h3 className="mt-2 text-sm text-left font-medium text-[#222]">{industry.title}</h3>
             </motion.div>
           ))}
         </motion.div>

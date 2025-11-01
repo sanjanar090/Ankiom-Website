@@ -18,7 +18,7 @@ export default function WhyChooseEmbedded() {
 
   return (
     <motion.section
-      className="py-10 text-center"
+      className="py-8 text-center"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -34,7 +34,7 @@ export default function WhyChooseEmbedded() {
         {reasons.map((r, i) => (
           <motion.div
             key={r.name}
-            className="flex items-center gap-3 p-5 bg-white border border-gray-200 rounded-lg cursor-pointer text-gray-800 justify-center shadow-sm"
+            className="flex items-center gap-3 p-5 bg-[#F8FBFD] border border-gray-200 rounded-lg cursor-pointer text-gray-800 justify-center shadow-sm"
             whileHover={{
               scale: 1.05,
               y: -3,

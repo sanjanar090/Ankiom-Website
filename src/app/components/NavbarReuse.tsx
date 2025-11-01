@@ -133,17 +133,15 @@ export default function Navbar() {
 
       <nav className="w-full bg-white border-gray-100 py-4">
         <div className="max-w-7xl mx-auto flex justify-between items-center px-6 md:px-10 py-[4px]">
+          
+          {/* ✅ Updated Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <motion.span
-              className="text-[20px] font-bold bg-gradient-to-r from-blue-600 to-cyan-400 bg-clip-text text-transparent"
+            <motion.img
+              src="/images/logo.png"
+              alt="Ankiom Logo"
+              className="h-12 w-auto"
               whileHover={{ scale: 1.03 }}
-            >
-              Ankiom
-            </motion.span>
-            <motion.div
-              className="w-2 h-2 rounded-full bg-blue-500"
-              animate={{ scale: [1, 1.3, 1], opacity: [1, 0.6, 1] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
+              transition={{ type: "spring", stiffness: 300 }}
             />
           </Link>
 
@@ -212,7 +210,9 @@ export default function Navbar() {
             </li>
 
             <li>
-              <button className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-1.5 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all hover:scale-105">
+              <button
+               onClick={handleContactClick}
+               className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-1.5 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all hover:scale-105">
                 Get Quote
               </button>
             </li>

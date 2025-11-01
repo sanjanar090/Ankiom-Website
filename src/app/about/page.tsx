@@ -37,6 +37,7 @@ export default function AboutPage() {
 
       <NavbarReuse />
 
+      {/* Hero Section */}
       <motion.section
         className="relative min-h-[90vh] flex items-center justify-center bg-[#020617] text-white overflow-hidden"
         initial={{ opacity: 0 }}
@@ -76,35 +77,33 @@ export default function AboutPage() {
         />
 
         <div className="relative z-10 max-w-4xl px-6 text-center">
-        <motion.h1
-      className="text-center text-4xl md:text-6xl font-extrabold mb-6 leading-tight"
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1 }}
-    >
-      <motion.span
-        style={{
-          backgroundImage:
-            "linear-gradient(90deg, #22d3ee, #3b82f6, #06b6d4, #3b82f6)",
-          backgroundSize: "300% 100%",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          display: "inline-block",
-        }}
-        animate={{
-          backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-        }}
-        transition={{
-          duration: 3,
-          repeat: Infinity,
-          ease: "linear",
-        }}
-      >
-        Engineering Intelligent, Connected & Scalable Solutions
-      </motion.span>
-    </motion.h1>
-
-
+          <motion.h1
+            className="text-center text-4xl md:text-6xl font-extrabold mb-6 leading-tight"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+          >
+            <motion.span
+              style={{
+                backgroundImage:
+                  "linear-gradient(90deg, #22d3ee, #3b82f6, #06b6d4, #3b82f6)",
+                backgroundSize: "300% 100%",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                display: "inline-block",
+              }}
+              animate={{
+                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+            >
+              Engineering Intelligent, Connected & Scalable Solutions
+            </motion.span>
+          </motion.h1>
 
           <motion.p
             className="text-lg md:text-xl text-blue-100 leading-relaxed"
@@ -121,6 +120,7 @@ export default function AboutPage() {
         </div>
       </motion.section>
 
+      {/* Who We Are */}
       <section className="max-w-7xl mx-auto px-6 md:px-10 py-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -142,6 +142,7 @@ export default function AboutPage() {
         </motion.div>
       </section>
 
+      {/* Vision & Mission */}
       <section className="bg-white py-24">
         <div className="max-w-7xl mx-auto px-6 md:px-10 grid md:grid-cols-2 gap-12 items-center">
           <motion.div
@@ -188,6 +189,7 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Core Expertise */}
       <section className="max-w-7xl mx-auto px-6 md:px-10 py-24">
         <motion.h3
           className="text-3xl font-semibold text-center mb-10 text-gray-900"
@@ -236,22 +238,95 @@ export default function AboutPage() {
           ))}
         </div>
       </section>
+{/* ✅ Real Life at Ankiom Section (verified info with colors) */}
+<section className="bg-white py-24 border-t border-gray-100 relative z-10">
+  <div className="max-w-6xl mx-auto px-6">
+    <motion.h3
+      className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-gray-900"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+    >
+      Life at Ankiom
+    </motion.h3>
 
-      <section className="bg-white py-16">
-        <div className="max-w-5xl mx-auto text-center px-6">
-          <h3 className="text-2xl font-semibold text-gray-900 mb-4">
-            Company Overview
-          </h3>
-          <p className="text-gray-700 text-lg leading-relaxed mb-4">
-            Ankiom Soft India LLP (LLPIN: <strong>AAC-3011</strong>) was
-            incorporated in 2014 and operates from Bengaluru, Karnataka. The
-            company provides software development, embedded systems, IoT, and IT
-            consulting services to clients across automotive, telecom, and
-            enterprise domains.
-          </p>
-          
-        </div>
-      </section>
+    <motion.p
+      className="text-lg text-gray-700 leading-relaxed text-center max-w-4xl mx-auto mb-16"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+    >
+      At Ankiom, work is a celebration. The company fosters an open, team-driven
+      work culture that values creativity, collaboration, and continuous growth.
+      Employees experience a stimulating environment filled with freedom, trust,
+      and recognition — ensuring both personal and professional satisfaction.
+    </motion.p>
+
+    <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-8">
+      {[
+        {
+          title: "Open Work Culture",
+          desc: "Ankiom encourages open communication and collaboration, removing obstacles that hinder creativity and innovation.",
+          color: "from-cyan-50 to-blue-100",
+        },
+        {
+          title: "Team Spirit & Freedom",
+          desc: "The company nurtures an atmosphere of teamwork, empowerment, and fun — helping every individual thrive.",
+          color: "from-blue-50 to-indigo-100",
+        },
+        {
+          title: "Continuous Growth",
+          desc: "Strong people-management practices ensure that every team member’s professional and personal development is valued.",
+          color: "from-sky-50 to-cyan-100",
+        },
+        {
+          title: "Innovation at Core",
+          desc: "Employees are inspired to experiment and deliver cutting-edge solutions across IoT, Embedded, and Software domains.",
+          color: "from-indigo-50 to-blue-100",
+        },
+        {
+          title: "Recognition & Motivation",
+          desc: "Ankiom believes in motivating and recognizing every contribution, building a workplace defined by pride and purpose.",
+          color: "from-cyan-50 to-sky-100",
+        },
+        {
+          title: "Work–Life Balance",
+          desc: "A balanced, supportive work environment empowers employees to do their best work while enjoying what they do.",
+          color: "from-indigo-50 to-blue-100",
+        },
+      ].map((card, i) => (
+        <motion.div
+          key={card.title}
+          className={`rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br ${card.color}`}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: i * 0.1 }}
+        >
+          <h4 className="text-xl font-semibold text-gray-900 mb-3">
+            {card.title}
+          </h4>
+          <p className="text-gray-700 leading-relaxed">{card.desc}</p>
+        </motion.div>
+      ))}
+    </div>
+
+    <motion.div
+      className="text-center mt-20 max-w-3xl mx-auto"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+    >
+      <blockquote className="italic text-lg text-gray-600 leading-relaxed">
+        “Ankiom has an atmosphere of team spirit, freedom, and fun — creating a
+        stimulating environment where innovation thrives and every individual
+        grows with purpose.”
+      </blockquote>
+      <p className="mt-4 text-sm text-gray-500">
+        — As described by Ankiom Soft India LLP’s official website
+      </p>
+    </motion.div>
+  </div>
+</section>
 
       <Footer5 />
     </>

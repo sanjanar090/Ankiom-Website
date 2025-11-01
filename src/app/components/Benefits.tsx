@@ -10,10 +10,10 @@ const seoContent = [
 
 export default function Benefits() {
   const benefits = [
-    { name: "Efficiency", icon: <FaTachometerAlt /> },
-    { name: "Data-Driven", icon: <FaDatabase /> },
+    { name: "Enhanced Efficiency", icon: <FaTachometerAlt /> },
+    { name: "Data-Driven Decision-Making", icon: <FaDatabase /> },
     { name: "Scalability", icon: <FaArrowsAltH /> },
-    { name: "Security", icon: <FaShieldAlt /> },
+    { name: "Robust Security", icon: <FaShieldAlt /> },
     { name: "Local Expertise", icon: <FaMapMarkerAlt /> },
   ];
 

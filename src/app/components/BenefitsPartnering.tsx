@@ -43,7 +43,7 @@ export default function BenefitsPartnering() {
   ];
 
   return (
-    <section className="max-w-[1200px] mx-auto py-16 px-6 bg-white">
+    <section className="max-w-[1200px] mx-auto  mt-[-40px] mb-4 py-16 px-6 bg-white">
       <motion.h2
         className="text-[22px] font-semibold text-gray-900 mb-10 text-center"
         initial={{ opacity: 0, y: 30 }}
@@ -65,7 +65,7 @@ export default function BenefitsPartnering() {
         {features.map((feature, index) => (
           <motion.div
             key={index}
-            className="bg-white border border-[#E2E8F0] rounded-md p-6 text-left shadow-sm hover:shadow-md transition-all"
+            className="bg-[#F7FAFC] border border-[#bdd0ea] rounded-lg p-4 h-55 w-full max-w-[285px] text-left shadow-sm hover:shadow-lg transition-shadow"
             variants={{
               hidden: { opacity: 0, y: 30 },
               visible: { opacity: 1, y: 0 },
@@ -73,10 +73,10 @@ export default function BenefitsPartnering() {
             transition={{ duration: 0.5 }}
           >
             <div className="text-gray-900 mb-3">{feature.icon}</div>
-            <h3 className="text-base font-semibold text-gray-900 mb-2">
+            <h3 className="text-[17px] font-semibold text-gray-900 mb-2">
               {feature.title}
             </h3>
-            <p className="text-sm text-[#4A5568] leading-relaxed">
+            <p className="text-[15px] text-[#4D7399] leading-relaxed">
               {feature.description}
             </p>
           </motion.div>

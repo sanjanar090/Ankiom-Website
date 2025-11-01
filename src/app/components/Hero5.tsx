@@ -9,9 +9,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { NextSeo } from "next-seo";
 import Head from "next/head";
+import React from "react";
 
 export default function Hero() {
-  const canonicalUrl = "https://ankiom.com"; // Update if this Hero is on a specific route (e.g., /embedded)
+  const canonicalUrl = "https://ankiom.com";
 
   const organizationJSONLD = {
     "@context": "https://schema.org",
@@ -25,222 +26,367 @@ export default function Hero() {
     ],
   };
 
-  const webPageJSONLD = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    url: canonicalUrl,
-    name: "AI-Powered Embedded Systems & IoT Solutions | Ankiom",
-    description:
-      "Explore AI-powered embedded systems and IoT solutions by Ankiom Technologies — delivering intelligent, efficient, and reliable innovations for connected industries.",
-    inLanguage: "en-IN",
-    isPartOf: {
-      "@type": "WebSite",
-      url: "https://ankiom.com",
-      name: "Ankiom Technologies",
-    },
-  };
-
-  const serviceJSONLD = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: "AI-Powered Embedded Systems & IoT Solutions",
-    provider: {
-      "@type": "Organization",
-      name: "Ankiom Technologies",
-      url: "https://ankiom.com",
-      logo: "https://ankiom.com/images/logo.png",
-    },
-    serviceType: "Embedded Systems & IoT",
-    description:
-      "Design and development of AI-powered embedded systems and IoT solutions for smart connectivity and automation.",
-    areaServed: {
-      "@type": "Place",
-      name: "India",
-    },
-    offers: {
-      "@type": "Offer",
-      url: canonicalUrl,
-      price: "Custom Quote",
-      priceCurrency: "INR",
-      availability: "https://schema.org/InStock",
-    },
-  };
-
   return (
     <>
-      {/* ✅ SEO Setup */}
       <NextSeo
         title="AI-Powered Embedded Systems & IoT Solutions | Ankiom"
         description="Explore AI-powered embedded systems and IoT services by Ankiom Technologies — empowering industries with intelligent, efficient, and connected innovations."
         canonical={canonicalUrl}
-        openGraph={{
-          type: "website",
-          url: canonicalUrl,
-          title: "AI-Powered Embedded Systems & IoT Solutions | Ankiom",
-          description:
-            "Designing and building intelligent, efficient, and reliable embedded solutions for the future of connectivity.",
-          images: [
-            {
-              url: "https://ankiom.com/images/embedded-hero.png",
-              width: 1200,
-              height: 630,
-              alt: "AI-powered embedded systems and IoT solutions by Ankiom",
-            },
-          ],
-          siteName: "Ankiom Technologies",
-          locale: "en_IN",
-        }}
-        twitter={{
-          handle: "@AnkiomOfficial",
-          site: "@AnkiomOfficial",
-          cardType: "summary_large_image",
-        }}
       />
-
       <Head>
         <meta name="robots" content="index, follow" />
-        <meta
-          name="googlebot"
-          content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJSONLD),
+          }}
         />
-        <meta
-          name="bingbot"
-          content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
-        />
-        <link rel="canonical" href={canonicalUrl} />
-        <meta name="author" content="Ankiom Technologies" />
-        <meta name="geo.region" content="IN-KA" />
-        <meta name="geo.placename" content="Bangalore" />
-        <meta name="theme-color" content="#0f172a" />
       </Head>
 
-      {/* ✅ JSON-LD Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify([
-            organizationJSONLD,
-            webPageJSONLD,
-            serviceJSONLD,
-          ]),
-        }}
-      />
-
-      {/* ✅ Hero Section */}
+      {/* 🌌 HERO SECTION */}
       <section
         id="home"
         className="relative flex items-center justify-center w-screen min-h-screen overflow-hidden text-white -mt-24"
         style={{
-          marginLeft: "calc(50% - 50vw)",
-          marginRight: "calc(50% - 50vw)",
           background:
             "linear-gradient(to bottom right, #0f172a 0%, #111827 30%, #1e293b 85%)",
+          marginLeft: "calc(50% - 50vw)",
+          marginRight: "calc(50% - 50vw)",
         }}
       >
-        {/* Stars background */}
-        <div className="absolute inset-0 opacity-60 z-0 animate-[moveStarsUp_40s_linear_infinite] bg-[radial-gradient(1.2px_1.2px_at_10%_20%,white_50%,transparent_52%),radial-gradient(1px_1px_at_40%_30%,white_50%,transparent_52%),radial-gradient(1.3px_1.3px_at_75%_25%,white_50%,transparent_52%),radial-gradient(1.1px_1.1px_at_65%_70%,white_50%,transparent_52%),radial-gradient(1.2px_1.2px_at_20%_85%,white_50%,transparent_52%)] bg-[length:250px_250px]" />
+        {/* ✨ Moving Stars */}
+        <div className="absolute inset-0 opacity-70 z-0 animate-[moveStarsUp_40s_linear_infinite] bg-[radial-gradient(1.4px_1.4px_at_12%_18%,white_50%,transparent_52%),radial-gradient(1px_1px_at_40%_32%,white_50%,transparent_52%),radial-gradient(1.6px_1.6px_at_78%_22%,white_50%,transparent_52%),radial-gradient(1.1px_1.1px_at_65%_70%,white_50%,transparent_52%),radial-gradient(1.3px_1.3px_at_22%_85%,white_50%,transparent_52%)] bg-[length:260px_260px]" />
 
-        {/* Main content */}
-        <div className="relative z-10 grid items-center max-w-6xl gap-16 px-8 mx-auto md:grid-cols-2 transform -translate-y-14 md:-translate-y-20">
-          <div className="flex flex-col justify-center">
-            <h1 className="mb-6 text-5xl font-bold leading-tight md:text-6xl opacity-0 animate-[fadeIn_1s_ease_forwards]">
-              AI-Powered Embedded Systems & IoT Solutions
+        {/* MAIN GRID */}
+        <div className="relative z-10 grid items-center max-w-6xl gap-16 px-8 mx-auto md:grid-cols-2">
+          {/* LEFT TEXT */}
+          <div>
+            <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6">
+              <span className="block opacity-0 translate-y-8 animate-[slideInUp_0.8s_ease_0.2s_forwards]">
+                AI-Powered
+              </span>
+              <span className="block opacity-0 translate-y-8 animate-[slideInUp_0.8s_ease_0.4s_forwards]">
+                Embedded Systems &
+              </span>
+              <span className="block opacity-0 translate-y-8 animate-[slideInUp_0.8s_ease_0.6s_forwards]">
+                IoT Solutions
+              </span>
             </h1>
-            <p className="mb-8 text-lg text-white/80 opacity-0 animate-[fadeIn_1.5s_ease_forwards]">
+
+            <p className="text-lg text-white/80 mb-8 opacity-0 animate-[fadeIn_1s_ease_0.8s_forwards]">
               Transforming industries through intelligent connectivity and
               cutting-edge technology.
             </p>
 
-            <div className="flex gap-4 opacity-0 animate-[fadeIn_2s_ease_forwards]">
+            <div className="flex gap-4 opacity-0 animate-[fadeIn_1s_ease_1s_forwards]">
               <button className="relative inline-block px-8 py-3 font-semibold text-white rounded-lg shadow-lg bg-gradient-to-r from-indigo-500 to-cyan-400 hover:-translate-y-0.5 hover:shadow-xl transition-all duration-300 overflow-hidden">
-                <span className="relative z-10">Get Started</span>
+                <span className="relative z-10">Get Quote</span>
                 <span className="absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-all duration-500 hover:left-[100%]" />
-              </button>
-
-              <button className="px-8 py-3 font-semibold text-white border-2 border-white/30 rounded-lg hover:bg-white/10 hover:border-white/50 transition-all duration-300">
-                Learn More
               </button>
             </div>
           </div>
 
-          {/* Floating visuals */}
+          {/* RIGHT VISUALS */}
           <div className="relative h-[500px] flex items-center justify-center">
-            <div className="absolute w-full h-full">
-              <div className="absolute top-[25%] left-[25%] w-[35%] h-[2px] bg-gradient-to-r from-cyan-400/60 to-blue-400/60 rounded-full relative">
-                <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-cyan-400 rounded-full shadow-[0_0_10px_4px_rgba(6,182,212,0.5)] animate-pulse"></div>
-              </div>
-              <div className="absolute top-[40%] left-[28%] w-[32%] h-[2px] bg-gradient-to-r from-cyan-400/50 to-blue-400/50 rounded-full relative">
-                <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-cyan-400 rounded-full shadow-[0_0_10px_4px_rgba(6,182,212,0.5)] animate-pulse [animation-delay:0.25s]"></div>
-              </div>
-              <div className="absolute top-[55%] left-[25%] w-[35%] h-[2px] bg-gradient-to-r from-cyan-400/60 to-blue-400/60 rounded-full relative">
-                <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-cyan-400 rounded-full shadow-[0_0_10px_4px_rgba(6,182,212,0.5)] animate-pulse [animation-delay:0.5s]"></div>
+            {/* SVG Circuit (base) */}
+            <svg
+              className="absolute w-[450px] h-[450px]"
+              viewBox="0 0 500 500"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M100 150 H360" stroke="#3b82f6" strokeWidth="1.5" />
+              <path d="M100 230 H300" stroke="#3b82f6" strokeWidth="1.5" />
+              <path d="M100 310 H400" stroke="#3b82f6" strokeWidth="1.5" />
+
+              {[{ x: 360, y: 150 }, { x: 300, y: 230 }, { x: 400, y: 310 }].map(
+                (node, i) => (
+                  <circle
+                    key={i}
+                    cx={node.x}
+                    cy={node.y}
+                    r="6"
+                    fill="#06b6d4"
+                    className="animate-[glowPulse_2s_ease-in-out_infinite]"
+                    style={{ animationDelay: `${i * 0.5}s` }}
+                  />
+                )
+              )}
+
+              {[{ y: 150, x2: 360 }, { y: 230, x2: 300 }, { y: 310, x2: 400 }].map(
+                (node, i) => (
+                  <line
+                    key={`pulse-${i}`}
+                    x1="100"
+                    y1={node.y}
+                    x2={node.x2}
+                    y2={node.y}
+                    stroke="url(#pulseGradient)"
+                    strokeWidth="2"
+                    strokeDasharray="80 400"
+                    className="animate-[movePulse_2s_linear_infinite]"
+                    style={{ animationDelay: `${i * 0.6}s` }}
+                  />
+                )
+              )}
+
+              {/* Short–Long Beam Lines */}
+              {[
+                { x: 360, y: 150, length: 25 },
+                { x: 300, y: 230, length: 15 },
+                { x: 400, y: 310, length: 40 },
+              ].map((beam, i) => (
+                <line
+                  key={`beam-${i}`}
+                  x1={beam.x}
+                  y1={beam.y}
+                  x2={beam.x + beam.length}
+                  y2={beam.y}
+                  stroke="#06b6d4"
+                  strokeWidth="1.5"
+                  strokeOpacity="0.9"
+                  className="glow-line"
+                />
+              ))}
+
+              <defs>
+                <linearGradient id="pulseGradient" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stopColor="#06b6d4" stopOpacity="0" />
+                  <stop offset="30%" stopColor="#06b6d4" stopOpacity="0.8" />
+                  <stop offset="100%" stopColor="#06b6d4" stopOpacity="0" />
+                </linearGradient>
+              </defs>
+            </svg>
+
+            {/* 🌐 CSS Circuit Overlay */}
+            <div className="hero-graphic">
+              <div className="circuit-board">
+                <div className="circuit-line line-1"></div>
+                <div className="circuit-line line-2"></div>
+                <div className="circuit-line line-3"></div>
+                <div className="circuit-node node-1"></div>
+                <div className="circuit-node node-2"></div>
+                <div className="circuit-node node-3"></div>
               </div>
             </div>
 
+            {/* Floating Cards */}
             {[
-              { icon: faMicrochip, label: "AI Chips", pos: "top-[18%] left-[10%]" },
-              { icon: faNetworkWired, label: "IoT Network", pos: "top-[18%] right-[15%]" },
-              { icon: faBrain, label: "Machine Learning", pos: "top-[48%] left-[10%]" },
-              { icon: faSatellite, label: "Smart Sensors", pos: "top-[58%] right-[15%]" },
+              { icon: faMicrochip, label: "AI Chips", pos: "top-[10%] left-[10%]", delay: "0s" },
+              { icon: faNetworkWired, label: "IoT Network", pos: "top-[20%] right-[15%]", delay: "1.5s" },
+              { icon: faBrain, label: "Machine Learning", pos: "bottom-[30%] left-[5%]", delay: "3s" },
+              { icon: faSatellite, label: "Smart Sensors", pos: "bottom-[20%] right-[10%]", delay: "4.5s" },
             ].map((card, i) => (
               <div
                 key={i}
-                className={`absolute flex flex-col items-center gap-2 p-4 text-sm bg-white/10 backdrop-blur-md border border-white/20 rounded-xl animate-[float_6s_ease-in-out_infinite] ${card.pos}`}
-                style={{ animationDelay: `${i * 1.2}s` }}
+                className={`absolute flex flex-col items-center justify-center w-[140px] h-[80px] gap-2 rounded-xl backdrop-blur-md border border-white/20 text-white text-sm font-medium bg-white/10 text-center ${card.pos}`}
+                style={{
+                  animation: `floatBox 6s ease-in-out infinite`,
+                  animationDelay: card.delay,
+                }}
               >
-                <FontAwesomeIcon icon={card.icon} className="text-2xl text-cyan-400" />
+                <FontAwesomeIcon icon={card.icon} className="text-[16px]" />
                 <span>{card.label}</span>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Scroll Down Indicator */}
-        <div className="absolute left-1/2 bottom-8 -translate-x-1/2 animate-[bounce_2s_infinite]">
-          <div className="relative w-[2px] h-[30px] bg-white/50">
-            <div className="absolute bottom-0 left-[-3px] w-2 h-2 border-r-2 border-b-2 border-white/50 rotate-45"></div>
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-[bounce_2s_infinite]">
+          <div className="w-[2px] h-[30px] bg-white/50 relative">
+            <div className="absolute bottom-0 left-[-3px] w-[8px] h-[8px] border-r-2 border-b-2 border-white/50 rotate-45"></div>
           </div>
         </div>
 
-        {/* Animations */}
-        <style jsx>{`
-          @keyframes fadeIn {
-            to {
-              opacity: 1;
-              transform: none;
-            }
-          }
-          @keyframes float {
-            0%, 100% {
-              transform: translateY(0px) rotate(0deg);
-            }
-            33% {
-              transform: translateY(-20px) rotate(2deg);
-            }
-            66% {
-              transform: translateY(-10px) rotate(-2deg);
-            }
-          }
-          @keyframes moveStarsUp {
-            from {
-              background-position: 0 0;
-            }
-            to {
-              background-position: 0 -1000px;
-            }
-          }
-          @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-              transform: translateX(-50%) translateY(0);
-            }
-            40% {
-              transform: translateX(-50%) translateY(-10px);
-            }
-            60% {
-              transform: translateX(-50%) translateY(-5px);
-            }
-          }
-        `}</style>
+        {/* 🌈 Extra Animations */}
+       <style jsx>{`
+  :root {
+    --gradient-primary: linear-gradient(90deg, #3b82f6, #06b6d4);
+    --secondary-color: #06b6d4;
+  }
+
+  /* ⚡ Circuit Animation */
+  .hero-graphic {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+  }
+
+  .circuit-board {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .circuit-line {
+    position: absolute;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+    animation: pulse 2s infinite;
+  }
+
+  .line-1 {
+    top: 20%;
+    left: 10%;
+    width: 60%;
+    height: 2px;
+    animation-delay: 0s;
+  }
+
+  /* Shorter angled line */
+  .line-2 {
+    top: 50%;
+    left: 20%;
+    width: 40%;
+    height: 2px;
+    transform: rotate(45deg);
+    transform-origin: left;
+    animation-delay: 0.5s;
+  }
+
+  /* Longer line */
+  .line-3 {
+    bottom: 30%;
+    left: 15%;
+    width: 40%;
+    height: 2px;
+    animation-delay: 1s;
+  }
+
+  .circuit-board {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.circuit-line {
+  position: absolute;
+  background: var(--gradient-primary);
+  border-radius: 2px;
+  animation: pulse 2s infinite;
+}
+
+  .node-1 {
+    top: 18%;
+    left: 68%;
+    animation-delay: 0s;
+  }
+
+  .node-2 {
+    top: 48%;
+    left: 68%;
+    animation-delay: 1s;
+  }
+
+  .node-3 {
+    bottom: 28%;
+    left: 82%;
+    animation-delay: 2s;
+  }
+
+  @keyframes glow {
+    0%, 100% {
+      box-shadow: 0 0 5px var(--secondary-color);
+    }
+    50% {
+      box-shadow: 0 0 20px var(--secondary-color),
+        0 0 30px var(--secondary-color);
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  /* 🌟 Other existing animations kept same */
+  .glow-line {
+    filter: drop-shadow(0 0 6px #06b6d4);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes steadyGlow {
+    0%, 100% {
+      filter: drop-shadow(0 0 6px #06b6d4);
+    }
+    50% {
+      filter: drop-shadow(0 0 15px #06b6d4);
+    }
+  }
+
+  @keyframes slideInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes moveStarsUp {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 0 -1000px;
+    }
+  }
+
+  @keyframes floatBox {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    33% {
+      transform: translateY(-20px) rotate(2deg);
+    }
+    66% {
+      transform: translateY(-10px) rotate(-2deg);
+    }
+  }
+
+  @keyframes movePulse {
+    0% {
+      stroke-dashoffset: 480;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes glowPulse {
+    0%, 100% {
+      filter: drop-shadow(0 0 6px #06b6d4);
+    }
+    50% {
+      filter: drop-shadow(0 0 18px #06b6d4);
+    }
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateX(-50%) translateY(0);
+    }
+    40% {
+      transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+      transform: translateX(-50%) translateY(-5px);
+    }
+  }
+`}</style>
+
       </section>
     </>
   );

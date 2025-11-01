@@ -25,7 +25,7 @@ export default function Services() {
         
       />
 
-      <h2 className="text-[22px] font-bold mb-8 mt-4 text-center">Our Service Offerings</h2>
+      <h2 className="text-[22px] font-bold mb-8 mt-2 text-center">Our Service Offerings</h2>
       <hr className="border-gray-300 max-w-[1200px] mx-auto mb-4" />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 justify-center max-w-[1200px] mx-auto relative">

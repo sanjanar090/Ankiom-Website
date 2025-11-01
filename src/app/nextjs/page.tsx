@@ -29,25 +29,25 @@ export default function NextJsPage() {
       icon: <FiArrowRightCircle />,
       title: "Expert Next.js Developers",
       description:
-        "We deliver SEO-optimized, high-performance Next.js applications for global businesses.",
+        "Our team consists of experienced Next.js developers with a proven track record.",
     },
     {
       icon: <FiGrid />,
       title: "Agile Development Process",
       description:
-        "Our agile workflow ensures speed, flexibility, and transparency.",
+        "We follow an agile methodology to ensure flexibility and adaptability throughout the development process.",
     },
     {
       icon: <FiMessageCircle />,
       title: "Transparent Communication",
       description:
-        "We value open, honest, and proactive communication throughout the project.",
+        "We maintain open and transparent communication with our clients throughout the project lifecycle.",
     },
     {
       icon: <FiHelpCircle />,
       title: "Ongoing Support & Maintenance",
       description:
-        "Get consistent post-deployment updates, bug fixes, and scaling support.",
+        "We provide ongoing support and maintenance to ensure your application remains up-to-date and performs optimally.",
     },
   ];
 

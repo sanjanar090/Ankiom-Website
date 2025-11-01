@@ -20,7 +20,7 @@ export default function BenefitsQML() {
         canonical="https://www.ankiom.com/services"
       />
 
-      <section className="w-full max-w-[1200px] mx-auto mt-[85px] mb-[55px] font-[inter]">
+      <section className="w-full max-w-[1200px] mx-auto mt-[75px] mb-[55px] font-[inter]">
         <motion.h2
           className="font-extrabold text-[24px] text-[#111] text-center mb-7"
           initial={{ opacity: 0, y: 30 }}

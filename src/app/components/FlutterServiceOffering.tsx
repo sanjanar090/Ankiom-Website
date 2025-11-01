@@ -71,7 +71,6 @@ export default function FlutterServiceOffering() {
         ]}
       />
 
-      {/* === Heading with animation === */}
       <motion.div
         className="text-center mb-1"
         initial={{ opacity: 0, y: 50 }}
@@ -82,7 +81,6 @@ export default function FlutterServiceOffering() {
         <h2 className="font-bold text-[22px] mb-2">Our Flutter Service Offerings</h2>
       </motion.div>
 
-      {/* === Cards grid with staggered animation === */}
       <motion.div
         className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-1 mt-8"
         initial="hidden"
@@ -118,8 +116,8 @@ export default function FlutterServiceOffering() {
                 className="object-cover rounded-lg"
               />
             </motion.div>
-            <h3 className="text-[15px] font-semibold text-center mb-2">{card.title}</h3>
-            <p className="text-sm text-[#4D8C99] text-center mb-1">{card.desc}</p>
+            <h3 className="text-[15px] font-semibold text-left mb-2">{card.title}</h3>
+            <p className="text-sm text-[#4D8C99] text-left mb-1">{card.desc}</p>
           </motion.div>
         ))}
       </motion.div>

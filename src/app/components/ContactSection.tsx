@@ -100,7 +100,6 @@ export default function ContactSection({
         />
       </Head>
 
-      {/* ✅ Contact Section Content */}
       <motion.section
         id="contact"
         className={`bg-white text-center ${className}`}
@@ -130,7 +129,7 @@ export default function ContactSection({
         </motion.p>
 
         <motion.button
-          className="bg-[#1273D4] text-white text-[18px] px-8 py-4 rounded-xl font-medium shadow-md hover:bg-[#004FCC] transition-all duration-300"
+          className="bg-[#1294D4] text-white text-[18px] px-8 py-4 rounded-xl font-medium shadow-md hover:bg-[#004FCC] transition-all duration-300"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.97 }}
         >

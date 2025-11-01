@@ -21,23 +21,23 @@ export default function WhyChooseSection({ content }: WhyChooseSectionProps) {
     content?.features || [
       {
         icon: <FiArrowRightCircle />,
-        title: "Expert Developers",
-        description: "Experienced Flutter developers delivering top-tier mobile apps.",
+        title: "Expert Flutter Developers",
+        description: "Our team consists of experienced Flutter developers with a proven track record.",
       },
       {
         icon: <FiGrid />,
-        title: "Agile Process",
-        description: "Adaptive and flexible project delivery using agile methodology.",
+        title: "Agile Development Process",
+        description: "We follow an agile methodology to ensure flexibility and adaptability throughout the development process.",
       },
       {
         icon: <FiMessageCircle />,
         title: "Transparent Communication",
-        description: "Open updates and clear progress tracking.",
+        description: "We maintain open and transparent communication with our clients throughout the project lifecycle.",
       },
       {
         icon: <FiHelpCircle />,
-        title: "Ongoing Support",
-        description: "Continuous post-launch support and optimization.",
+        title: "Ongoing Support & Maintenance",
+        description: "We provide ongoing support and maintenance to ensure your application remains up-to-date and performs optimally.",
       },
     ];
 
@@ -49,7 +49,7 @@ export default function WhyChooseSection({ content }: WhyChooseSectionProps) {
         canonical="https://www.ankiom.com/flutter"
       />
 
-      <section className="max-w-7xl mx-auto my-18 px-5 text-center">
+      <section className="max-w-7xl mx-auto my-15 px-5 text-center">
         <motion.h2
           className="text-[22px] font-bold text-gray-900 mb-10"
           initial={{ opacity: 0, y: 30 }}

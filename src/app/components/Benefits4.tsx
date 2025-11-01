@@ -8,10 +8,10 @@ import { HiOutlineScale } from "react-icons/hi";
 
 export default function Benefits4() {
   const benefits = [
-    { title: "Improved Performance", description: "Faster load times and smooth rendering.", icon: <MdSpeed /> },
-    { title: "Enhanced SEO", description: "Boost search visibility with server-side rendering.", icon: <RiSearchLine /> },
-    { title: "Scalability", description: "Build applications that grow with your business.", icon: <HiOutlineScale /> },
-    { title: "Better User Experience", description: "Responsive designs that keep users engaged.", icon: <MdOutlineGroups /> },
+    { title: "Improved Performance", description: "Faster loading times and optimized rendering for a seamless user experience.", icon: <MdSpeed /> },
+    { title: "Enhanced SEO", description: "Higher search engine rankings and increased organic traffic.", icon: <RiSearchLine /> },
+    { title: "Scalability", description: "Applications that can handle growing user loads and traffic.", icon: <HiOutlineScale /> },
+    { title: "Better User Experience", description: "Intuitive and responsive interfaces that keep users engaged.", icon: <MdOutlineGroups /> },
   ];
 
   return (
@@ -23,7 +23,7 @@ export default function Benefits4() {
       />
 
       <motion.section
-        className="bg-white -mt-10 py-20 px-5"
+        className="bg-white -mt-5 py-20 px-5"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}

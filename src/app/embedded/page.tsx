@@ -202,7 +202,7 @@ export default function EmbeddedPage() {
           content={{
             title: "Embedded Systems Development",
             description:
-              "Designing and building intelligent, efficient, and reliable embedded solutions for a wide range of industries.",
+              "Empowering innovation with robust and efficient embedded solutions tailored to your specific needs..",
           }}
         />
       </motion.section>
@@ -269,8 +269,8 @@ export default function EmbeddedPage() {
       >
         <ContactSection
           heading="Ready to discuss your project?"
-          description="Contact us today to explore how our embedded systems development services can help you achieve your goals."
-          buttonText="Discuss Your Project"
+          description="Get in touch with our experts to discuss your specific needs and explore how Ankiom can help you achieve your business goals."
+          
         />
       </motion.section>
 

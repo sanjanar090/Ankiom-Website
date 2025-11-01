@@ -17,12 +17,11 @@ export default function IotServicesText() {
         canonical="https://ankiom.com/iot#what-is-iot"
       />
       <motion.section
-        className="max-w-[783px] mx-auto mt-16 pt-2 text-[#121717] text-[16px]"
+        className="max-w-[783px] mx-auto mt-8 pt-2 text-[#121717] text-[16px]"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
       >
-        <h1 className="text-[22px] font-bold mb-10 text-center">What is IoT?</h1>
         <p className="text-center leading-relaxed">
         
         The Internet of Things (IoT) is revolutionizing industries by connecting
