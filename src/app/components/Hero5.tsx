@@ -95,9 +95,34 @@ export default function Hero() {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path d="M100 150 H360" stroke="#3b82f6" strokeWidth="1.5" />
-              <path d="M100 230 H300" stroke="#3b82f6" strokeWidth="1.5" />
-              <path d="M100 310 H400" stroke="#3b82f6" strokeWidth="1.5" />
+             <path
+  d="M100 150 H360"
+  stroke="#3b82f6"
+  strokeWidth="1.5"
+  style={{
+    animation: "lineFlowBackAndForth 6s ease-in-out infinite",
+  }}
+/>
+<path
+  d="M100 230 H300"
+  stroke="#3b82f6"
+  strokeWidth="1.5"
+  style={{
+    animation: "lineFlowBackAndForth 7s ease-in-out infinite",
+    animationDelay: "0.5s",
+  }}
+/>
+<path
+  d="M100 310 H400"
+  stroke="#3b82f6"
+  strokeWidth="1.5"
+  style={{
+    animation: "lineFlowBackAndForth 8s ease-in-out infinite",
+    animationDelay: "1s",
+  }}
+/>
+
+
 
               {[{ x: 360, y: 150 }, { x: 300, y: 230 }, { x: 400, y: 310 }].map(
                 (node, i) => (
@@ -115,6 +140,7 @@ export default function Hero() {
 
               {[{ y: 150, x2: 360 }, { y: 230, x2: 300 }, { y: 310, x2: 400 }].map(
                 (node, i) => (
+                  <React.Fragment key={`pulse-group-${i}`}>
                   <line
                     key={`pulse-${i}`}
                     x1="100"
@@ -127,6 +153,8 @@ export default function Hero() {
                     className="animate-[movePulse_2s_linear_infinite]"
                     style={{ animationDelay: `${i * 0.6}s` }}
                   />
+                </React.Fragment>
+        
                 )
               )}
 
@@ -150,25 +178,16 @@ export default function Hero() {
               ))}
 
               <defs>
-                <linearGradient id="pulseGradient" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0%" stopColor="#06b6d4" stopOpacity="0" />
-                  <stop offset="30%" stopColor="#06b6d4" stopOpacity="0.8" />
-                  <stop offset="100%" stopColor="#06b6d4" stopOpacity="0" />
-                </linearGradient>
+                 <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stopColor="#6366f1" />
+      <stop offset="50%" stopColor="#06b6d4" />
+      <stop offset="100%" stopColor="#6366f1" />
+    </linearGradient>
+                
               </defs>
             </svg>
 
-            {/* 🌐 CSS Circuit Overlay */}
-            <div className="hero-graphic">
-              <div className="circuit-board">
-                <div className="circuit-line line-1"></div>
-                <div className="circuit-line line-2"></div>
-                <div className="circuit-line line-3"></div>
-                <div className="circuit-node node-1"></div>
-                <div className="circuit-node node-2"></div>
-                <div className="circuit-node node-3"></div>
-              </div>
-            </div>
+           
 
             {/* Floating Cards */}
             {[
@@ -198,24 +217,23 @@ export default function Hero() {
             <div className="absolute bottom-0 left-[-3px] w-[8px] h-[8px] border-r-2 border-b-2 border-white/50 rotate-45"></div>
           </div>
         </div>
-
-        {/* 🌈 Extra Animations */}
-       <style jsx>{`
+<style jsx>{`
   :root {
     --gradient-primary: linear-gradient(90deg, #3b82f6, #06b6d4);
     --secondary-color: #06b6d4;
   }
 
-  /* ⚡ Circuit Animation */
+  /* === Hero Graphic Container === */
   .hero-graphic {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 300px;
-    height: 300px;
+    width: 320px;
+    height: 320px;
   }
 
+  /* === Circuit Board Lines === */
   .circuit-board {
     position: relative;
     width: 100%;
@@ -226,100 +244,96 @@ export default function Hero() {
     position: absolute;
     background: var(--gradient-primary);
     border-radius: 2px;
-    animation: pulse 2s infinite;
+    height: 2px;
+    opacity: 0.8;
+    animation: pulseGlow 3s infinite ease-in-out;
+    filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.7));
   }
 
   .line-1 {
     top: 20%;
     left: 10%;
-    width: 60%;
-    height: 2px;
+    width: 70%;
     animation-delay: 0s;
   }
 
-  /* Shorter angled line */
   .line-2 {
     top: 50%;
-    left: 20%;
-    width: 40%;
-    height: 2px;
+    left: 15%;
+    width: 50%;
     transform: rotate(45deg);
     transform-origin: left;
     animation-delay: 0.5s;
   }
 
-  /* Longer line */
   .line-3 {
-    bottom: 30%;
-    left: 15%;
-    width: 40%;
-    height: 2px;
+    bottom: 25%;
+    left: 20%;
+    width: 60%;
     animation-delay: 1s;
   }
 
-  .circuit-board {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.circuit-line {
-  position: absolute;
-  background: var(--gradient-primary);
-  border-radius: 2px;
-  animation: pulse 2s infinite;
-}
-
+  /* === Glowing Nodes === */
+  .circuit-node {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #06b6d4;
+    border-radius: 50%;
+    animation: glowNode 3s infinite ease-in-out;
+    box-shadow: 0 0 12px #06b6d4, 0 0 24px rgba(6, 182, 212, 0.8);
+  }
+  
   .node-1 {
     top: 18%;
-    left: 68%;
+    left: 80%;
     animation-delay: 0s;
   }
 
   .node-2 {
     top: 48%;
-    left: 68%;
-    animation-delay: 1s;
+    left: 60%;
+    animation-delay: 0.6s;
   }
 
   .node-3 {
-    bottom: 28%;
-    left: 82%;
-    animation-delay: 2s;
+    bottom: 26%;
+    left: 78%;
+    animation-delay: 1.2s;
   }
 
-  @keyframes glow {
+  /* === Keyframes === */
+  @keyframes pulseGlow {
     0%, 100% {
-      box-shadow: 0 0 5px var(--secondary-color);
-    }
-    50% {
-      box-shadow: 0 0 20px var(--secondary-color),
-        0 0 30px var(--secondary-color);
-    }
-  }
-
-  @keyframes pulse {
-    0%, 100% {
-      opacity: 0.5;
+      opacity: 0.6;
+      transform: scaleX(0.98);
+      filter: drop-shadow(0 0 4px rgba(6, 182, 212, 0.4));
     }
     50% {
       opacity: 1;
+      transform: scaleX(1);
+      filter: drop-shadow(0 0 16px rgba(6, 182, 212, 0.9));
     }
   }
+    
 
-  /* 🌟 Other existing animations kept same */
-  .glow-line {
-    filter: drop-shadow(0 0 6px #06b6d4);
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes steadyGlow {
+  @keyframes glowNode {
     0%, 100% {
-      filter: drop-shadow(0 0 6px #06b6d4);
+      transform: scale(1);
+      opacity: 0.7;
+      box-shadow: 0 0 10px #06b6d4, 0 0 20px rgba(6, 182, 212, 0.6);
     }
     50% {
-      filter: drop-shadow(0 0 15px #06b6d4);
+      transform: scale(1.2);
+      opacity: 1;
+      box-shadow: 0 0 18px #06b6d4, 0 0 32px rgba(6, 182, 212, 0.9);
     }
+  }
+
+  /* === Keep All Your Existing Animations === */
+  .glow-line {
+    filter: drop-shadow(0 0 6px #06b6d4);
+    animation: pulseGlow 2.5s infinite ease-in-out;
   }
 
   @keyframes slideInUp {
@@ -365,15 +379,6 @@ export default function Hero() {
     }
   }
 
-  @keyframes glowPulse {
-    0%, 100% {
-      filter: drop-shadow(0 0 6px #06b6d4);
-    }
-    50% {
-      filter: drop-shadow(0 0 18px #06b6d4);
-    }
-  }
-
   @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
       transform: translateX(-50%) translateY(0);
@@ -386,6 +391,7 @@ export default function Hero() {
     }
   }
 `}</style>
+
 
       </section>
     </>

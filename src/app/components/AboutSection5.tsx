@@ -52,22 +52,21 @@ export default function AboutSection() {
 
   return (
     <>
-      {/* ✅ Next SEO Configuration */}
       <NextSeo
-        title="About Ankiom | Innovating with AI, IoT & Embedded Systems"
+        title="About Ankiom | Innovating with  IoT & Embedded Systems"
         description="Ankiom is a technology company delivering Next.js, IoT, and embedded system solutions that connect intelligence and innovation across industries."
         canonical="https://ankiom.com/about"
         openGraph={{
           url: "https://ankiom.com/about",
-          title: "About Ankiom | Innovating with AI, IoT & Embedded Systems",
+          title: "About Ankiom | Innovating with  IoT & Embedded Systems",
           description:
-            "Learn how Ankiom bridges AI, IoT, and embedded solutions to power intelligent digital transformation.",
+            "Learn how Ankiom bridges  IoT, and embedded solutions to power intelligent digital transformation.",
           images: [
             {
               url: "https://ankiom.com/images/about-banner.png",
               width: 1200,
               height: 630,
-              alt: "Ankiom team innovating IoT and AI solutions",
+              alt: "Ankiom team innovating IoT and Embedded Systems"
             },
           ],
           site_name: "Ankiom",
@@ -82,7 +81,7 @@ export default function AboutSection() {
           {
             name: "keywords",
             content:
-              "Ankiom, AI, IoT, Embedded Systems, Next.js, Flutter, QT-QML, Software Development, Tech Solutions, Hyderabad",
+              "Ankiom, AI, IoT, Embedded Systems, Next.js, Flutter, QT-QML, Software Development, Tech Solutions, Bangalore",
           },
           {
             name: "author",
@@ -101,7 +100,6 @@ export default function AboutSection() {
         ]}
       />
 
-      {/* ✅ Structured Data for Better Google Rich Results */}
       <ArticleJsonLd
         type="Organization"
         url="https://ankiom.com/about"
@@ -115,11 +113,9 @@ export default function AboutSection() {
         publisherLogo="https://ankiom.com/images/logo.png"
       />
 
-      {/* ✅ Page Content */}
       <section id="about" className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-6 md:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            {/* Left Text Side */}
             <div>
               <h2 className="text-[2.5rem] font-bold mb-6 bg-gradient-to-r from-indigo-500 to-cyan-500 bg-clip-text text-transparent">
                 Innovating the Future
@@ -160,7 +156,6 @@ export default function AboutSection() {
               </div>
             </div>
 
-            {/* Right Tech Stack Boxes */}
             <div className="flex flex-col items-center space-y-8">
               <div className="grid grid-cols-2 gap-8 w-full">
                 {services.slice(0, 4).map((item, idx) => (
@@ -182,7 +177,6 @@ export default function AboutSection() {
                 ))}
               </div>
 
-              {/* Centered Box */}
               <div className="grid grid-cols-2 gap-8 w-full">
                 <div className="col-span-2 flex justify-center">
                   <div

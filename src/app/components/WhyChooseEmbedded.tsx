@@ -1,10 +1,10 @@
 "use client";
 import { NextSeo } from "next-seo";
 import { 
-  FaCogs,          // for Low-Level Design
-  FaLightbulb,     // for Innovation
-  FaHandshake,     // for Partnership
-  FaShieldAlt       // for Security
+  FaCogs,          
+  FaLightbulb,    
+  FaHandshake,     
+  FaShieldAlt       
 } from "react-icons/fa";
 import { motion } from "framer-motion";
 
