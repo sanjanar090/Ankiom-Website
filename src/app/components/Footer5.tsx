@@ -10,6 +10,7 @@ import {
   faGithub,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
+import { motion } from "framer-motion";
 
 export default function Footer() {
   const handleScrollToContact = () => {
@@ -49,7 +50,7 @@ export default function Footer() {
           {
             name: "keywords",
             content:
-              "Ankiom, IoT, Embedded Systems, Flutter Application Services, Nextjs Application Services, QT-QML Application Services,  Automation, Ankiom Technologies",
+              "Ankiom, IoT, Embedded Systems, Flutter Application Services, Nextjs Application Services, QT-QML Application Services, Automation, Ankiom Technologies",
           },
           {
             name: "robots",
@@ -83,7 +84,6 @@ export default function Footer() {
               sameAs: [
                 "https://in.linkedin.com/company/ankiom-soft-india",
                 "https://twitter.com/ankiomsoftindia",
-      
               ],
               contactPoint: [
                 {
@@ -106,17 +106,21 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 mb-12 items-start pt-6">
             <div className="mt-4">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-indigo-500 bg-clip-text text-transparent">
-                  Ankiom
-                </span>
-                <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500"></span>
-              </div>
+              <Link href="/" className="flex items-center gap-1 mb-3">
+                <motion.img
+                  src="/images/logo.png"
+                  alt="Ankiom Logo"
+                  className="h-12 w-auto -ml-2"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                />
+              </Link>
               <p className="text-gray-400 text-sm leading-relaxed">
-                Pioneering the future of connected intelligence
+                Pioneering the future of connected intelligence.
               </p>
             </div>
 
+            {/* Services Section */}
             <div className="mt-6">
               <h4 className="font-semibold text-white mb-4">Services</h4>
               <ul className="space-y-2">
@@ -125,7 +129,7 @@ export default function Footer() {
                     href="/iot"
                     className="text-gray-400 hover:text-white transition-colors duration-300"
                   >
-                    Iot Development
+                    IoT Development
                   </Link>
                 </li>
                 <li>
@@ -141,7 +145,7 @@ export default function Footer() {
                     href="/nextjs"
                     className="text-gray-400 hover:text-white transition-colors duration-300"
                   >
-                    Nextjs Application Services
+                    Next.js Application Services
                   </Link>
                 </li>
                 <li>
@@ -149,7 +153,7 @@ export default function Footer() {
                     href="/services"
                     className="text-gray-400 hover:text-white transition-colors duration-300"
                   >
-                    QT-QML Application Services
+                    Qt-QML Application Services
                   </Link>
                 </li>
                 <li>
@@ -163,6 +167,7 @@ export default function Footer() {
               </ul>
             </div>
 
+            {/* Company Section */}
             <div className="mt-6">
               <h4 className="font-semibold text-white mb-4">Company</h4>
               <ul className="space-y-2">
@@ -193,6 +198,7 @@ export default function Footer() {
               </ul>
             </div>
 
+            {/* Connect Section */}
             <div className="mt-6">
               <h4 className="font-semibold text-white mb-4">Connect</h4>
               <div className="flex gap-3">
@@ -241,9 +247,9 @@ export default function Footer() {
 
           <div className="sr-only">
             <p>
-              Ankiom Technologies provides IoT and embedded services for
-              global industries. Follow us on social media or contact us for
-              partnership opportunities.
+              Ankiom Technologies provides IoT and embedded services for global
+              industries. Follow us on social media or contact us for partnership
+              opportunities.
             </p>
           </div>
         </div>

@@ -123,7 +123,6 @@ export default function Hero() {
 />
 
 
-
               {[{ x: 360, y: 150 }, { x: 300, y: 230 }, { x: 400, y: 310 }].map(
                 (node, i) => (
                   <circle

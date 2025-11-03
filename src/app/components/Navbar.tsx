@@ -50,7 +50,6 @@ export default function Navbar() {
   return (
     <nav className="w-full bg-white border-gray-100 py-4">
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6 md:px-10 py-[4px]">
-{/* Logo */}
 <Link href="/" className="flex items-center gap-2">
   <motion.img
     src="/images/logo.png"
