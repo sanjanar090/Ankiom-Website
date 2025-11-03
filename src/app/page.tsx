@@ -19,7 +19,8 @@ export default function Home() {
   const imageUrl = `${canonicalUrl}images/og-image.jpg`;
   const twitterHandle = "@ankiomsoftindia";
 
-  const structuredData = {
+  // ✅ Structured Data Objects
+  const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: siteName,
@@ -38,6 +39,18 @@ export default function Home() {
     },
   };
 
+  const webSiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: siteName,
+    url: canonicalUrl,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${canonicalUrl}search?q={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
+  };
+
   const webPageSchema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -51,6 +64,105 @@ export default function Home() {
         "@type": "ImageObject",
         url: `${canonicalUrl}images/logo.png`,
       },
+    },
+  };
+
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: siteName,
+    image: `${canonicalUrl}images/logo.png`,
+    url: canonicalUrl,
+    telephone: "+91-70907 03720",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: " 3rd FLOOR, Tower-2, ARDENTE OFFICE ONE 2322, Bengaluru, Karnataka ",
+      addressLocality: "Bangolore",
+      addressRegion: "Karnataka",
+      postalCode: "560048",
+      addressCountry: "IN",
+    },
+    priceRange: "$$",
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: canonicalUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Services",
+        item: `${canonicalUrl}#services`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "About",
+        item: `${canonicalUrl}#about`,
+      },
+      {
+        "@type": "ListItem",
+        position: 4,
+        name: "Contact",
+        item: `${canonicalUrl}#contact`,
+      },
+    ],
+  };
+
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: "IoT, Next.js, and Flutter Development",
+    provider: {
+      "@type": "Organization",
+      name: siteName,
+      url: canonicalUrl,
+    },
+    description:
+      "We offer IoT, Next.js, and Flutter-based solutions for startups and enterprises, focusing on scalable web and mobile development.",
+    areaServed: {
+      "@type": "Country",
+      name: "India",
+    },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Ankiom Services",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "IoT Solutions",
+            description:
+              "End-to-end Internet of Things development services including hardware integration and data analytics.",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Next.js Web Development",
+            description:
+              "High-performance, SEO-optimized web applications using Next.js and Tailwind CSS.",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Flutter App Development",
+            description:
+              "Cross-platform mobile apps built with Flutter for seamless performance on Android and iOS.",
+          },
+        },
+      ],
     },
   };
 
@@ -86,6 +198,7 @@ export default function Home() {
       />
 
       <Head>
+        {/* Standard Meta */}
         <link rel="canonical" href={canonicalUrl} />
         <meta name="robots" content="index, follow" />
         <meta name="language" content="English" />
@@ -96,6 +209,7 @@ export default function Home() {
           content="width=device-width, initial-scale=1, maximum-scale=5"
         />
 
+        {/* Open Graph & Twitter Meta */}
         <meta property="og:site_name" content={siteName} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={canonicalUrl} />
@@ -116,14 +230,23 @@ export default function Home() {
         <meta name="twitter:image" content={imageUrl} />
         <meta name="twitter:image:alt" content="Ankiom Website Preview" />
 
+        {/* ✅ Structured Data JSON-LD */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify([structuredData, webPageSchema]),
+            __html: JSON.stringify([
+              organizationSchema,
+              webSiteSchema,
+              webPageSchema,
+              localBusinessSchema,
+              breadcrumbSchema,
+              serviceSchema,
+            ]),
           }}
         />
       </Head>
 
+      {/* Page Content */}
       <Navbar />
       <section id="home" className="pt-24">
         <Hero5 />

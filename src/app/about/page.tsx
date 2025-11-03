@@ -13,6 +13,68 @@ export default function AboutPage() {
   const description =
     "Ankiom Soft India LLP — a Bengaluru-based software engineering firm specializing in embedded systems, IoT, Flutter, Next.js, and Qt/QML solutions for connected and intelligent digital experiences.";
 
+  const jsonLdData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://ankiom.com/#organization",
+        name: "Ankiom Soft India LLP",
+        url: "https://ankiom.com",
+        logo: "https://ankiom.com/images/newankiom2.jpg",
+        sameAs: [
+          "https://www.linkedin.com/company/ankiomsoft/",
+          "https://twitter.com/ankiomsoft",
+        ],
+        description:
+          "Ankiom Soft India LLP is a technology firm delivering intelligent, connected, and scalable software and IoT solutions.",
+        foundingDate: "2014",
+        founder: {
+          "@type": "Person",
+          name: "Ankiom Founders Team",
+        },
+        contactPoint: {
+          "@type": "ContactPoint",
+          telephone: "+91-XXXXXXXXXX",
+          contactType: "customer support",
+          areaServed: "IN",
+          availableLanguage: ["English"],
+        },
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "Bengaluru, Karnataka",
+          addressLocality: "Bengaluru",
+          addressRegion: "KA",
+          postalCode: "560001",
+          addressCountry: "IN",
+        },
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://ankiom.com/#website",
+        url: "https://ankiom.com",
+        name: "Ankiom Soft India LLP",
+        publisher: {
+          "@id": "https://ankiom.com/#organization",
+        },
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://ankiom.com/about#webpage",
+        url: "https://ankiom.com/about",
+        name: "About Ankiom Soft India LLP",
+        description:
+          "Learn about Ankiom Soft India LLP — our vision, mission, expertise, and company culture built around innovation and collaboration.",
+        isPartOf: {
+          "@id": "https://ankiom.com/#website",
+        },
+        about: {
+          "@id": "https://ankiom.com/#organization",
+        },
+      },
+    ],
+  };
+
   return (
     <>
       <NextSeo
@@ -26,18 +88,38 @@ export default function AboutPage() {
           siteName: "Ankiom Soft India LLP",
           images: [
             {
-              url: "/images/newankiom2.jpg",
+              url: "https://ankiom.com/images/newankiom2.jpg",
               width: 1200,
               height: 630,
               alt: "Ankiom Soft India LLP - About Us",
             },
           ],
         }}
+        twitter={{
+          handle: "@ankiomsoft",
+          site: "@ankiomsoft",
+          cardType: "summary_large_image",
+        }}
+        additionalMetaTags={[
+          {
+            name: "keywords",
+            content:
+              "Ankiom Soft India LLP, About Ankiom, IoT solutions, Embedded systems, Flutter apps, Next.js web development, Qt QML applications, software engineering, Bengaluru tech company",
+          },
+          { name: "author", content: "Ankiom Soft India LLP" },
+          { name: "robots", content: "index, follow" },
+        ]}
+      />
+
+      {/* ✅ Structured Data (JSON-LD) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdData) }}
       />
 
       <NavbarReuse />
 
-      {/* Hero Section */}
+      {/* HERO SECTION */}
       <motion.section
         className="relative min-h-[90vh] flex items-center justify-center bg-[#020617] text-white overflow-hidden"
         initial={{ opacity: 0 }}
@@ -120,7 +202,7 @@ export default function AboutPage() {
         </div>
       </motion.section>
 
-      {/* Who We Are */}
+      {/* WHO WE ARE */}
       <section className="max-w-7xl mx-auto px-6 md:px-10 py-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -142,7 +224,7 @@ export default function AboutPage() {
         </motion.div>
       </section>
 
-      {/* Vision & Mission */}
+      {/* VISION & MISSION */}
       <section className="bg-white py-24">
         <div className="max-w-7xl mx-auto px-6 md:px-10 grid md:grid-cols-2 gap-12 items-center">
           <motion.div
@@ -189,7 +271,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Core Expertise */}
+      {/* CORE EXPERTISE */}
       <section className="max-w-7xl mx-auto px-6 md:px-10 py-24">
         <motion.h3
           className="text-3xl font-semibold text-center mb-10 text-gray-900"
@@ -238,95 +320,97 @@ export default function AboutPage() {
           ))}
         </div>
       </section>
-{/* ✅ Real Life at Ankiom Section (verified info with colors) */}
-<section className="bg-white py-24 border-t border-gray-100 relative z-10">
-  <div className="max-w-6xl mx-auto px-6">
-    <motion.h3
-      className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-gray-900"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-    >
-      Life at Ankiom
-    </motion.h3>
 
-    <motion.p
-      className="text-lg text-gray-700 leading-relaxed text-center max-w-4xl mx-auto mb-16"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-    >
-      At Ankiom, work is a celebration. The company fosters an open, team-driven
-      work culture that values creativity, collaboration, and continuous growth.
-      Employees experience a stimulating environment filled with freedom, trust,
-      and recognition — ensuring both personal and professional satisfaction.
-    </motion.p>
+      {/* LIFE AT ANKIOM */}
+      <section className="bg-white py-24 border-t border-gray-100 relative z-10">
+        <div className="max-w-6xl mx-auto px-6">
+          <motion.h3
+            className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-gray-900"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            Life at Ankiom
+          </motion.h3>
 
-    <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-8">
-      {[
-        {
-          title: "Open Work Culture",
-          desc: "Ankiom encourages open communication and collaboration, removing obstacles that hinder creativity and innovation.",
-          color: "from-cyan-50 to-blue-100",
-        },
-        {
-          title: "Team Spirit & Freedom",
-          desc: "The company nurtures an atmosphere of teamwork, empowerment, and fun — helping every individual thrive.",
-          color: "from-blue-50 to-indigo-100",
-        },
-        {
-          title: "Continuous Growth",
-          desc: "Strong people-management practices ensure that every team member’s professional and personal development is valued.",
-          color: "from-sky-50 to-cyan-100",
-        },
-        {
-          title: "Innovation at Core",
-          desc: "Employees are inspired to experiment and deliver cutting-edge solutions across IoT, Embedded, and Software domains.",
-          color: "from-indigo-50 to-blue-100",
-        },
-        {
-          title: "Recognition & Motivation",
-          desc: "Ankiom believes in motivating and recognizing every contribution, building a workplace defined by pride and purpose.",
-          color: "from-cyan-50 to-sky-100",
-        },
-        {
-          title: "Work–Life Balance",
-          desc: "A balanced, supportive work environment empowers employees to do their best work while enjoying what they do.",
-          color: "from-indigo-50 to-blue-100",
-        },
-      ].map((card, i) => (
-        <motion.div
-          key={card.title}
-          className={`rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br ${card.color}`}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: i * 0.1 }}
-        >
-          <h4 className="text-xl font-semibold text-gray-900 mb-3">
-            {card.title}
-          </h4>
-          <p className="text-gray-700 leading-relaxed">{card.desc}</p>
-        </motion.div>
-      ))}
-    </div>
+          <motion.p
+            className="text-lg text-gray-700 leading-relaxed text-center max-w-4xl mx-auto mb-16"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+          >
+            At Ankiom, work is a celebration. The company fosters an open,
+            team-driven work culture that values creativity, collaboration, and
+            continuous growth. Employees experience a stimulating environment
+            filled with freedom, trust, and recognition — ensuring both personal
+            and professional satisfaction.
+          </motion.p>
 
-    <motion.div
-      className="text-center mt-20 max-w-3xl mx-auto"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-    >
-      <blockquote className="italic text-lg text-gray-600 leading-relaxed">
-        “Ankiom has an atmosphere of team spirit, freedom, and fun — creating a
-        stimulating environment where innovation thrives and every individual
-        grows with purpose.”
-      </blockquote>
-      <p className="mt-4 text-sm text-gray-500">
-        — As described by Ankiom Soft India LLP’s official website
-      </p>
-    </motion.div>
-  </div>
-</section>
+          <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-8">
+            {[
+              {
+                title: "Open Work Culture",
+                desc: "Ankiom encourages open communication and collaboration, removing obstacles that hinder creativity and innovation.",
+                color: "from-cyan-50 to-blue-100",
+              },
+              {
+                title: "Team Spirit & Freedom",
+                desc: "The company nurtures an atmosphere of teamwork, empowerment, and fun — helping every individual thrive.",
+                color: "from-blue-50 to-indigo-100",
+              },
+              {
+                title: "Continuous Growth",
+                desc: "Strong people-management practices ensure that every team member’s professional and personal development is valued.",
+                color: "from-sky-50 to-cyan-100",
+              },
+              {
+                title: "Innovation at Core",
+                desc: "Employees are inspired to experiment and deliver cutting-edge solutions across IoT, Embedded, and Software domains.",
+                color: "from-indigo-50 to-blue-100",
+              },
+              {
+                title: "Recognition & Motivation",
+                desc: "Ankiom believes in motivating and recognizing every contribution, building a workplace defined by pride and purpose.",
+                color: "from-cyan-50 to-sky-100",
+              },
+              {
+                title: "Work–Life Balance",
+                desc: "A balanced, supportive work environment empowers employees to do their best work while enjoying what they do.",
+                color: "from-indigo-50 to-blue-100",
+              },
+            ].map((card, i) => (
+              <motion.div
+                key={card.title}
+                className={`rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br ${card.color}`}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <h4 className="text-xl font-semibold text-gray-900 mb-3">
+                  {card.title}
+                </h4>
+                <p className="text-gray-700 leading-relaxed">{card.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            className="text-center mt-20 max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <blockquote className="italic text-lg text-gray-600 leading-relaxed">
+              “Ankiom has an atmosphere of team spirit, freedom, and fun —
+              creating a stimulating environment where innovation thrives and
+              every individual grows with purpose.”
+            </blockquote>
+            <p className="mt-4 text-sm text-gray-500">
+              — As described by Ankiom Soft India LLP’s official website
+            </p>
+          </motion.div>
+        </div>
+      </section>
 
       <Footer5 />
     </>

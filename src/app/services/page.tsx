@@ -49,97 +49,143 @@ export default function Services() {
     },
   ];
 
-  const webSiteJSONLD = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: "Ankiom Technologies",
-    url: "https://ankiom.com",
-    potentialAction: {
-      "@type": "SearchAction",
-      target: "https://ankiom.com/search?q={search_term_string}",
-      "query-input": "required name=search_term_string",
-    },
-  };
-
-  const webPageJSONLD = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "@id": canonicalUrl,
-    url: canonicalUrl,
-    name: "Qt QML Application Development Services | Ankiom Bangalore",
-    description:
-      "Ankiom delivers Qt QML application development — creating cross-platform, responsive, and performance-driven user interfaces for enterprises.",
-    isPartOf: {
+  // ✅ Structured Data Schemas
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
       "@type": "WebSite",
-      url: "https://ankiom.com",
       name: "Ankiom Technologies",
+      url: "https://ankiom.com",
+      potentialAction: {
+        "@type": "SearchAction",
+        target: "https://ankiom.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string",
+      },
     },
-  };
-
-  const serviceJSONLD = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: "Qt QML Application Development Services",
-    serviceType: "Software Development",
-    provider: {
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": canonicalUrl,
+      url: canonicalUrl,
+      name: "Qt QML Application Development Services | Ankiom Bangalore",
+      description:
+        "Ankiom delivers Qt QML application development — creating cross-platform, responsive, and performance-driven user interfaces for enterprises.",
+      isPartOf: {
+        "@type": "WebSite",
+        url: "https://ankiom.com",
+        name: "Ankiom Technologies",
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://ankiom.com/",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Services",
+          item: canonicalUrl,
+        },
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: "Qt QML Application Development Services",
+      serviceType: "Software Development",
+      provider: {
+        "@type": "Organization",
+        name: "Ankiom Technologies",
+        url: "https://ankiom.com",
+        logo: "https://ankiom.com/images/logo.png",
+      },
+      areaServed: { "@type": "Place", name: "Bangalore, India" },
+      description:
+        "Ankiom provides Qt QML application development services to help enterprises build high-performance, responsive, and cross-platform UI experiences.",
+      offers: {
+        "@type": "Offer",
+        url: canonicalUrl,
+        priceCurrency: "INR",
+        price: "Custom Quote",
+        availability: "https://schema.org/InStock",
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "What are Qt/QML development services?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Qt/QML development services involve creating responsive, high-performance, cross-platform user interfaces for embedded and desktop applications.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Does Ankiom provide enterprise-level QML solutions?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes, Ankiom Technologies builds scalable, enterprise-grade QML applications optimized for UI performance and seamless integration.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Where is Ankiom located?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Ankiom Technologies is located in Bangalore, India, and serves clients globally with end-to-end software development services.",
+          },
+        },
+      ],
+    },
+    {
+      "@context": "https://schema.org",
       "@type": "Organization",
       name: "Ankiom Technologies",
       url: "https://ankiom.com",
       logo: "https://ankiom.com/images/logo.png",
+      sameAs: [
+        "https://in.linkedin.com/company/ankiom-soft-india",
+        "https://twitter.com/ankiomsoftindia",
+      ],
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+91-7090703720",
+        contactType: "customer support",
+        areaServed: "IN",
+        availableLanguage: ["English", "Hindi"],
+      },
     },
-    areaServed: { "@type": "Place", name: "Bangalore, India" },
-    description:
-      "Ankiom provides Qt QML application development services to help enterprises build high-performance, responsive, and cross-platform UI experiences.",
-    offers: {
-      "@type": "Offer",
-      url: canonicalUrl,
-      priceCurrency: "INR",
-      price: "Custom Quote",
-      availability: "https://schema.org/InStock",
-    },
-    mainEntityOfPage: { "@type": "WebPage", "@id": canonicalUrl },
-  };
-
-  const organizationJSONLD = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "Ankiom Technologies",
-    url: "https://ankiom.com",
-    logo: "https://ankiom.com/images/logo.png",
-    sameAs: [
-      "https://in.linkedin.com/company/ankiom-soft-india",
-      "https://twitter.com/ankiomsoftindia",
-    ],
-    contactPoint: {
-      "@type": "ContactPoint",
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      name: "Ankiom Technologies",
+      image: "https://ankiom.com/images/logo.png",
+      "@id": "https://ankiom.com/#localbusiness",
+      url: "https://ankiom.com",
       telephone: "+91-7090703720",
-      contactType: "customer support",
-      areaServed: "IN",
-      availableLanguage: ["English", "Hindi"],
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "3rd FLOOR, Tower-2, ARDENTE OFFICE ONE 2322, Bengaluru",
+        addressLocality: "Bangalore",
+        addressRegion: "Karnataka",
+        postalCode: "560048",
+        addressCountry: "IN",
+      },
+      sameAs: [
+        "https://in.linkedin.com/company/ankiom-soft-india",
+        "https://twitter.com/ankiomsoftindia",
+      ],
     },
-  };
-
-  const localBusinessJSONLD = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    name: "Ankiom Technologies",
-    image: "https://ankiom.com/images/logo.png",
-    "@id": "https://ankiom.com/#localbusiness",
-    url: "https://ankiom.com",
-    telephone: "+91-7090703720",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "3rd FLOOR, Tower-2, ARDENTE OFFICE ONE 2322, Bengaluru",
-      addressLocality: "Bangalore",
-      addressRegion: "Karnataka",
-      postalCode: "560048",
-      addressCountry: "IN",
-    },
-    sameAs: [
-      "https://in.linkedin.com/company/ankiom-soft-india",
-      "https://twitter.com/ankiomsoftindia",
-    ],
-  };
+  ];
 
   const fadeUp = {
     hidden: { opacity: 0, y: 50 },
@@ -153,6 +199,7 @@ export default function Services() {
 
   return (
     <>
+      {/* ✅ SEO Meta Configuration */}
       <NextSeo
         title="Qt QML Application Development Services | Ankiom Bangalore"
         description="Ankiom delivers Qt QML application development — creating cross-platform, responsive, and performance-driven user interfaces for enterprises."
@@ -179,32 +226,39 @@ export default function Services() {
           site: "@AnkiomOfficial",
           cardType: "summary_large_image",
         }}
+        additionalMetaTags={[
+          { name: "robots", content: "index, follow, max-image-preview:large" },
+          { name: "author", content: "Ankiom Technologies" },
+          {
+            name: "keywords",
+            content:
+              "Qt QML development, QML UI design, Qt software development, cross-platform applications, Ankiom Technologies, embedded UI, Bangalore software company",
+          },
+        ]}
+        additionalLinkTags={[
+          { rel: "canonical", href: canonicalUrl },
+          { rel: "alternate", hrefLang: "en-IN", href: canonicalUrl },
+          { rel: "alternate", hrefLang: "x-default", href: canonicalUrl },
+          { rel: "icon", href: "/favicon.ico" },
+        ]}
       />
 
+      {/* ✅ Extra Meta Tags for Crawlers */}
       <Head>
-        <link rel="canonical" href={canonicalUrl} />
-        <meta name="robots" content="index, follow" />
         <meta
-          name="googlebot"
-          content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+          name="google-site-verification"
+          content="your-google-site-verification-code"
         />
-        <meta
-          name="bingbot"
-          content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
-        />
+        <meta name="geo.region" content="IN-KA" />
+        <meta name="geo.placename" content="Bangalore" />
+        <meta name="geo.position" content="12.9716;77.5946" />
+        <meta name="ICBM" content="12.9716,77.5946" />
       </Head>
 
+      {/* ✅ Structured Data Script */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify([
-            webSiteJSONLD,
-            webPageJSONLD,
-            serviceJSONLD,
-            organizationJSONLD,
-            localBusinessJSONLD,
-          ]),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
       <NavbarServices />

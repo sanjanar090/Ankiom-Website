@@ -1,7 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { NextSeo, WebPageJsonLd, LocalBusinessJsonLd, ProductJsonLd, LogoJsonLd } from "next-seo";
+import {
+  NextSeo,
+  WebPageJsonLd,
+  LocalBusinessJsonLd,
+  ProductJsonLd,
+  LogoJsonLd,
+} from "next-seo";
 import NavbarFlutter from "@/app/components/NavbarFlutter";
 import HeroSection from "@/app/components/HeroSection";
 import FlutterSection from "@/app/components/FlutterSection";
@@ -11,6 +17,7 @@ import Technologies3 from "@/app/components/Technologies3";
 import WhyChooseSection from "@/app/components/WhyChooseSection";
 import ContactSection from "../components/ContactSection";
 import Footer from "@/app/components/Footer";
+import Head from "next/head";
 
 export default function FlutterPage() {
   const productionCanonical = "https://ankiom.com/flutter";
@@ -20,6 +27,77 @@ export default function FlutterPage() {
     process.env.NODE_ENV === "production"
       ? productionCanonical
       : previewCanonical;
+
+  // ✅ Structured Data JSON-LD definitions
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Ankiom Technologies",
+    url: "https://ankiom.com",
+    logo: "https://ankiom.com/images/logo.png",
+    sameAs: [
+      "https://twitter.com/ankiom_official",
+      "https://www.linkedin.com/company/ankiom",
+      "https://github.com/ankiom",
+      "https://www.youtube.com/@ankiom",
+    ],
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+91-7090703720",
+      contactType: "Customer Support",
+      areaServed: "IN",
+      availableLanguage: ["English", "Hindi"],
+    },
+  };
+
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Flutter App Development",
+    description:
+      "Ankiom provides expert Flutter app development for Android, iOS, and web platforms — offering scalable, cross-platform mobile solutions.",
+    provider: {
+      "@type": "Organization",
+      name: "Ankiom Technologies",
+      url: "https://ankiom.com",
+      logo: "https://ankiom.com/images/logo.png",
+    },
+    serviceType: "Flutter App Development Services",
+    areaServed: { "@type": "Place", name: "India" },
+    offers: {
+      "@type": "Offer",
+      url: canonicalUrl,
+      priceCurrency: "INR",
+      price: "Contact for Quote",
+      availability: "https://schema.org/InStock",
+      validFrom: "2025-01-01",
+    },
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://ankiom.com/",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Services",
+        item: "https://ankiom.com/services",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "Flutter App Development",
+        item: canonicalUrl,
+      },
+    ],
+  };
 
   return (
     <>
@@ -60,41 +138,36 @@ export default function FlutterPage() {
             content:
               "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
           },
-          {
-            name: "author",
-            content: "Ankiom Technologies",
-          },
-          {
-            name: "language",
-            content: "English",
-          },
-          {
-            name: "viewport",
-            content: "width=device-width, initial-scale=1, maximum-scale=5",
-          },
-          {
-            httpEquiv: "X-UA-Compatible",
-            content: "IE=edge",
-          },
+          { name: "author", content: "Ankiom Technologies" },
+          { name: "language", content: "English" },
         ]}
         additionalLinkTags={[
           { rel: "canonical", href: canonicalUrl },
           { rel: "icon", href: "/favicon.ico" },
-          { rel: "apple-touch-icon", href: "/apple-touch-icon.png", sizes: "180x180" },
+          {
+            rel: "apple-touch-icon",
+            href: "/apple-touch-icon.png",
+            sizes: "180x180",
+          },
           { rel: "manifest", href: "/manifest.json" },
-          {
-            rel: "alternate",
-            hrefLang: "en",
-            href: "https://ankiom.com/flutter",
-          },
-          {
-            rel: "alternate",
-            hrefLang: "hi",
-            href: "https://ankiom.com/hi/flutter",
-          },
         ]}
       />
 
+      {/* ✅ Structured Data JSON-LD Script Block */}
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              organizationSchema,
+              serviceSchema,
+              breadcrumbSchema,
+            ]),
+          }}
+        />
+      </Head>
+
+      {/* ✅ Built-in Structured Data Components */}
       <WebPageJsonLd
         id={canonicalUrl}
         description="Ankiom provides expert Flutter app development services for Android, iOS, and Web."
@@ -153,6 +226,7 @@ export default function FlutterPage() {
         manufacturerLogo="https://ankiom.com/images/logo.png"
       />
 
+      {/* ✅ Page Layout */}
       <NavbarFlutter />
 
       <motion.div

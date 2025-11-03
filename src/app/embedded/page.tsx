@@ -13,7 +13,6 @@ import BenefitsPartnering from "../components/BenefitsPartnering";
 import WhyChooseEmbedded from "../components/WhyChooseEmbedded";
 import ContactSection from "@/app/components/ContactSection";
 import Footer from "@/app/components/Footer";
-import Navbar from "@/app/components/Navbar";
 
 export default function EmbeddedPage() {
   const canonicalUrl = "https://www.ankiom.com/embedded";
@@ -24,6 +23,7 @@ export default function EmbeddedPage() {
   const imageUrl = "https://www.ankiom.com/images/embedded-og.jpg";
   const twitterHandle = "@ankiom_official";
 
+  // 1️⃣ Organization Schema
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -33,8 +33,7 @@ export default function EmbeddedPage() {
     sameAs: [
       "https://twitter.com/ankiom_official",
       "https://www.linkedin.com/company/ankiom",
-      "https://github.com/ankiom",
-      "https://www.youtube.com/@ankiom",
+
     ],
     contactPoint: {
       "@type": "ContactPoint",
@@ -45,6 +44,7 @@ export default function EmbeddedPage() {
     },
   };
 
+  // 2️⃣ WebPage Schema
   const webPageSchema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -61,6 +61,7 @@ export default function EmbeddedPage() {
     },
   };
 
+  // 3️⃣ Service Schema
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -85,6 +86,7 @@ export default function EmbeddedPage() {
     },
   };
 
+  // 4️⃣ Breadcrumb Schema
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -110,8 +112,70 @@ export default function EmbeddedPage() {
     ],
   };
 
+  // 5️⃣ Product Schema
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: "Embedded Systems Solutions",
+    image: imageUrl,
+    description:
+      "High-performance embedded systems and firmware development solutions by Ankiom Technologies for IoT, automotive, and industrial applications.",
+    brand: {
+      "@type": "Brand",
+      name: "Ankiom Technologies",
+    },
+    offers: {
+      "@type": "Offer",
+      url: canonicalUrl,
+      priceCurrency: "INR",
+      price: "Contact for quote",
+      availability: "https://schema.org/InStock",
+    },
+  };
+
+  // 6️⃣ FAQ Schema
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What is embedded systems development?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Embedded systems development involves designing and programming specialized hardware and software that perform dedicated functions within larger systems, such as IoT devices, vehicles, or industrial machines.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What industries does Ankiom serve for embedded development?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Ankiom provides embedded system solutions for automotive, IoT, healthcare, manufacturing, and industrial automation sectors.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Does Ankiom offer hardware and firmware integration?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, Ankiom offers complete hardware and firmware integration services, including real-time systems development, PCB design, and microcontroller programming.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How can I get a quote for embedded development services?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "You can get in touch with Ankiom’s experts through the contact section to discuss your project requirements and receive a tailored quote.",
+        },
+      },
+    ],
+  };
+
   return (
     <main className="bg-white">
+      {/* ✅ SEO Config */}
       <NextSeo
         title={pageTitle}
         description={pageDescription}
@@ -153,6 +217,7 @@ export default function EmbeddedPage() {
         ]}
       />
 
+      {/* ✅ Meta + Structured Data */}
       <Head>
         <link rel="canonical" href={canonicalUrl} />
         <meta name="robots" content="index, follow" />
@@ -177,6 +242,7 @@ export default function EmbeddedPage() {
         <meta name="twitter:image" content={imageUrl} />
         <meta name="twitter:image:alt" content="Ankiom Embedded Systems" />
 
+        {/* ✅ Combined JSON-LD Structured Data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -185,11 +251,14 @@ export default function EmbeddedPage() {
               webPageSchema,
               serviceSchema,
               breadcrumbSchema,
+              productSchema,
+              faqSchema,
             ]),
           }}
         />
       </Head>
 
+      {/* ✅ Page Layout */}
       <NavbarEmbedded />
 
       <motion.section
@@ -270,7 +339,6 @@ export default function EmbeddedPage() {
         <ContactSection
           heading="Ready to discuss your project?"
           description="Get in touch with our experts to discuss your specific needs and explore how Ankiom can help you achieve your business goals."
-          
         />
       </motion.section>
 

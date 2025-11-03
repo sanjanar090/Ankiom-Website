@@ -11,14 +11,14 @@ import Benefits from "@/app/components/Benefits";
 import WhyChoose from "@/app/components/WhyChoose";
 import CloudPartners from "@/app/components/CloudPartners";
 import ContactSection from "@/app/components/ContactSection";
-import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
 
 export default function HomePage() {
   const canonicalUrl = "https://ankiom.com/";
 
-  // 🧠 Structured data (Organization + WebPage + Breadcrumb + FAQ)
+  // 🧩 Comprehensive JSON-LD Structured Data
   const structuredData = [
+    // 1️⃣ Organization Schema
     {
       "@context": "https://schema.org",
       "@type": "Organization",
@@ -27,9 +27,40 @@ export default function HomePage() {
       logo: "https://ankiom.com/images/logo.png",
       sameAs: [
         "https://in.linkedin.com/company/ankiom-soft-india",
-        "https://twitter.com/ankiomsoftindia",
+        "https://twitter.com/ankiom_official",
+      ],
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+91-7090703720",
+        contactType: "Customer Service",
+        areaServed: "IN",
+        availableLanguage: ["English", "Hindi"],
+      },
+    },
+
+    // 2️⃣ LocalBusiness Schema
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      name: "Ankiom Technologies",
+      image: "https://ankiom.com/images/iot-opengraph.jpg",
+      url: "https://ankiom.com",
+      telephone: "+91-7090703720",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "3rd FLOOR, Tower-2, ARDENTE OFFICE ONE 2322",
+        addressLocality: "Bangalore",
+        addressRegion: "Karnataka",
+        postalCode: "560048",
+        addressCountry: "IN",
+      },
+      sameAs: [
+        "https://in.linkedin.com/company/ankiom-soft-india",
+        "https://twitter.com/ankiom_official",
       ],
     },
+
+    // 3️⃣ WebPage Schema
     {
       "@context": "https://schema.org",
       "@type": "WebPage",
@@ -38,26 +69,69 @@ export default function HomePage() {
       name: "IoT Development Services in Bangalore | Ankiom",
       description:
         "Empower your business with Ankiom’s IoT Development Services in Bangalore — smart automation, connected devices, and scalable cloud integrations for industries.",
-      isPartOf: { "@type": "WebSite", url: "https://ankiom.com", name: "Ankiom Technologies" },
+      inLanguage: "en-IN",
+      isPartOf: {
+        "@type": "WebSite",
+        url: "https://ankiom.com",
+        name: "Ankiom Technologies",
+      },
     },
+
+    // 4️⃣ Service Schema
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      serviceType: "IoT Development Services",
+      provider: {
+        "@type": "Organization",
+        name: "Ankiom Technologies",
+        url: "https://ankiom.com",
+      },
+      areaServed: {
+        "@type": "Place",
+        name: "Bangalore, India",
+      },
+      description:
+        "Ankiom provides IoT development services including connected devices, embedded software, and data automation solutions.",
+      offers: {
+        "@type": "Offer",
+        price: "Custom Quote",
+        priceCurrency: "INR",
+        availability: "https://schema.org/InStock",
+        url: "https://ankiom.com/contact",
+      },
+    },
+
+    // 5️⃣ Product Schema
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      name: "IoT Development Services",
+      image: "https://ankiom.com/images/iot-opengraph.jpg",
+      description:
+        "Custom IoT development solutions by Ankiom Technologies — integrating sensors, cloud, and automation to power modern industries.",
+      brand: { "@type": "Brand", name: "Ankiom Technologies" },
+      url: canonicalUrl,
+      offers: {
+        "@type": "Offer",
+        priceCurrency: "INR",
+        price: "Custom Quote",
+        availability: "https://schema.org/InStock",
+        url: "https://ankiom.com/contact",
+      },
+    },
+
+    // 6️⃣ Breadcrumb Schema
     {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
-          name: "Home",
-          item: "https://ankiom.com/",
-        },
-        {
-          "@type": "ListItem",
-          position: 2,
-          name: "IoT Development Services",
-          item: "https://ankiom.com/",
-        },
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://ankiom.com/" },
+        { "@type": "ListItem", position: 2, name: "IoT Services", item: "https://ankiom.com/" },
       ],
     },
+
+    // 7️⃣ FAQ Schema
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
@@ -67,7 +141,7 @@ export default function HomePage() {
           name: "What IoT services does Ankiom offer?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Ankiom offers IoT product development, device connectivity, embedded systems, cloud integration, and data-driven automation services.",
+            text: "Ankiom offers IoT product development, device connectivity, embedded systems, and smart automation solutions.",
           },
         },
         {
@@ -75,15 +149,15 @@ export default function HomePage() {
           name: "Where is Ankiom located?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Ankiom Technologies is located in Bangalore, India, providing IoT and embedded software development services globally.",
+            text: "Ankiom Technologies is based in Bangalore, India, providing IoT and embedded software solutions globally.",
           },
         },
         {
           "@type": "Question",
-          name: "Does Ankiom provide custom IoT solutions?",
+          name: "Does Ankiom build custom IoT systems?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Yes, Ankiom designs and builds custom IoT solutions tailored to each client’s business goals and technology stack.",
+            text: "Yes, Ankiom provides fully custom IoT system design and implementation based on your business needs.",
           },
         },
       ],
@@ -100,7 +174,7 @@ export default function HomePage() {
           url: canonicalUrl,
           title: "IoT Development Services in Bangalore | Ankiom",
           description:
-            "Empower your business with smart automation, connected devices, and scalable cloud-integrated IoT solutions with Ankiom Technologies.",
+            "Empower your business with smart automation, connected devices, and cloud-integrated IoT solutions with Ankiom Technologies.",
           type: "website",
           siteName: "Ankiom Technologies",
           locale: "en_IN",
@@ -114,34 +188,32 @@ export default function HomePage() {
           ],
         }}
         twitter={{
-          handle: "@ankiom",
-          site: "@ankiom",
+          handle: "@ankiom_official",
+          site: "@ankiom_official",
           cardType: "summary_large_image",
         }}
         additionalMetaTags={[
-          { name: "robots", content: "index, follow, max-snippet:-1, max-image-preview:large" },
-          { name: "googlebot", content: "index, follow" },
-          { name: "bingbot", content: "index, follow" },
-          { property: "og:region", content: "IN" },
-          { property: "og:locality", content: "Bangalore" },
+          { name: "robots", content: "index, follow" },
+          { name: "author", content: "Ankiom Technologies" },
+          { name: "language", content: "English" },
           { name: "geo.region", content: "IN-KA" },
           { name: "geo.placename", content: "Bangalore" },
           { name: "geo.position", content: "12.9716;77.5946" },
-          { name: "ICBM", content: "12.9716, 77.5946" },
           {
             name: "keywords",
             content:
-              "IoT development, IoT company in Bangalore, IoT automation, connected devices, Ankiom Technologies, cloud IoT, embedded systems",
+              "IoT development, IoT company in Bangalore, IoT automation, connected devices, Ankiom Technologies, embedded systems, cloud IoT solutions",
           },
         ]}
         additionalLinkTags={[
           { rel: "canonical", href: canonicalUrl },
           { rel: "alternate", hrefLang: "en-IN", href: canonicalUrl },
-          { rel: "alternate", hrefLang: "x-default", href: canonicalUrl },
-          { rel: "preload", href: "/images/hero.jpg", as: "image" },
+          { rel: "icon", href: "/favicon.ico" },
+          { rel: "apple-touch-icon", href: "/apple-touch-icon.png", sizes: "180x180" },
         ]}
       />
 
+      {/* ✅ Structured Data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

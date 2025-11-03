@@ -9,20 +9,33 @@ import DesignProcess from "../components/DesignProcess";
 import UIUXServices from "../components/UIUXServices";
 import UIUXBenefits from "../components/UIUXBenefits";
 import UIUXTechnologies from "../components/UIUXTechnologies";
-import UIUXWhy from "../components/UIUXWhy"
+import UIUXWhy from "../components/UIUXWhy";
 import ContactSection from "../components/ContactSection";
 import HeroSection from "@/app/components/HeroSection";
-
 import Footer from "@/app/components/Footer";
 
-export default function EmbeddedPage() {
-  const canonicalUrl = "https://www.ankiom.com/embedded";
+export default function UIUXPage() {
+  const canonicalUrl = "https://www.ankiom.com/ui-ux";
   const siteName = "Ankiom Technologies";
-  const pageTitle = "Embedded Systems Development | Ankiom";
+  const pageTitle = "UI/UX Design Services | Ankiom Technologies";
   const pageDescription =
-    "Explore Ankiom’s embedded services including firmware design, hardware integration, and real-time systems development across multiple industries.";
-  const imageUrl = "https://www.ankiom.com/images/embedded-og.jpg";
+    "Enhance your digital experience with Ankiom’s professional UI/UX design services. We create intuitive, engaging, and conversion-driven designs tailored for your business.";
+  const imageUrl = "https://www.ankiom.com/images/uiux-og.jpg";
   const twitterHandle = "@ankiom_official";
+
+  // 🔹 Structured Data (JSON-LD)
+
+  const webSiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: siteName,
+    url: "https://www.ankiom.com",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: "https://www.ankiom.com/search?q={search_term_string}",
+      "query-input": "required name=search_term_string",
+    },
+  };
 
   const organizationSchema = {
     "@context": "https://schema.org",
@@ -51,22 +64,19 @@ export default function EmbeddedPage() {
     name: pageTitle,
     url: canonicalUrl,
     description: pageDescription,
+    isPartOf: { "@type": "WebSite", url: "https://www.ankiom.com" },
     publisher: {
       "@type": "Organization",
       name: siteName,
-      logo: {
-        "@type": "ImageObject",
-        url: "https://www.ankiom.com/images/logo.png",
-      },
+      logo: { "@type": "ImageObject", url: "https://www.ankiom.com/images/logo.png" },
     },
   };
 
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "Embedded Systems Development",
-    description:
-      "Ankiom specializes in embedded systems design, firmware development, and hardware integration for automotive, IoT, and industrial applications.",
+    name: "UI/UX Design Services",
+    serviceType: "Digital Design & Experience",
     provider: {
       "@type": "Organization",
       name: siteName,
@@ -74,14 +84,32 @@ export default function EmbeddedPage() {
       logo: "https://www.ankiom.com/images/logo.png",
     },
     areaServed: { "@type": "Place", name: "India" },
-    serviceType: "Embedded Systems Design & Development",
+    description:
+      "Ankiom’s UI/UX design services help businesses create user-friendly, modern, and visually stunning digital experiences that drive results.",
     offers: {
       "@type": "Offer",
       url: canonicalUrl,
       priceCurrency: "INR",
-      price: "Contact for quote",
+      price: "Custom Quote",
       availability: "https://schema.org/InStock",
-      validFrom: "2024-01-01",
+    },
+  };
+
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: "Ankiom Technologies",
+    image: "https://www.ankiom.com/images/logo.png",
+    "@id": "https://www.ankiom.com/#localbusiness",
+    url: "https://www.ankiom.com",
+    telephone: "+91-7090703720",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "3rd FLOOR, Tower-2, ARDENTE OFFICE ONE 2322",
+      addressLocality: "Bangalore",
+      addressRegion: "Karnataka",
+      postalCode: "560048",
+      addressCountry: "IN",
     },
   };
 
@@ -89,29 +117,38 @@ export default function EmbeddedPage() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://www.ankiom.com/" },
+      { "@type": "ListItem", position: 2, name: "Services", item: "https://www.ankiom.com/services" },
+      { "@type": "ListItem", position: 3, name: "UI/UX Design Services", item: canonicalUrl },
+    ],
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
       {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://www.ankiom.com/",
+        "@type": "Question",
+        name: "What does Ankiom’s UI/UX service include?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "We provide end-to-end UI/UX services — from user research and wireframing to interactive prototypes, usability testing, and final design delivery.",
+        },
       },
       {
-        "@type": "ListItem",
-        position: 2,
-        name: "Services",
-        item: "https://www.ankiom.com/services",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "Embedded Systems Development",
-        item: canonicalUrl,
+        "@type": "Question",
+        name: "Why is UI/UX design important for my business?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "A good UI/UX design improves user satisfaction, boosts engagement, and helps increase conversions and brand loyalty.",
+        },
       },
     ],
   };
 
   return (
     <main className="bg-white">
+      {/* ✅ NextSEO Setup */}
       <NextSeo
         title={pageTitle}
         description={pageDescription}
@@ -128,7 +165,7 @@ export default function EmbeddedPage() {
               url: imageUrl,
               width: 1200,
               height: 630,
-              alt: "Embedded Systems Development - Ankiom",
+              alt: "UI/UX Design Services - Ankiom",
             },
           ],
         }}
@@ -141,9 +178,9 @@ export default function EmbeddedPage() {
           {
             name: "keywords",
             content:
-              "embedded systems, firmware design, hardware integration, IoT, real-time systems, Ankiom Technologies",
+              "UI design, UX design, product design, web design, user interface, mobile app UX, design systems, Ankiom Technologies, Bangalore UI/UX",
           },
-          { name: "author", content: "Ankiom Technologies" },
+          { name: "author", content: siteName },
           {
             name: "robots",
             content:
@@ -153,127 +190,52 @@ export default function EmbeddedPage() {
         ]}
       />
 
+      {/* ✅ Meta + Structured Data */}
       <Head>
         <link rel="canonical" href={canonicalUrl} />
-        <meta name="robots" content="index, follow" />
-
-        <meta property="og:site_name" content={siteName} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDescription} />
-        <meta property="og:image" content={imageUrl} />
-        <meta property="og:image:secure_url" content={imageUrl} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Ankiom Embedded Systems" />
-        <meta property="og:locale" content="en_IN" />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content={twitterHandle} />
-        <meta name="twitter:creator" content={twitterHandle} />
-        <meta name="twitter:title" content={pageTitle} />
-        <meta name="twitter:description" content={pageDescription} />
-        <meta name="twitter:image" content={imageUrl} />
-        <meta name="twitter:image:alt" content="Ankiom Embedded Systems" />
+        <meta name="theme-color" content="#0b1223" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        <meta name="author" content={siteName} />
 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify([
+              webSiteSchema,
               organizationSchema,
               webPageSchema,
               serviceSchema,
+              localBusinessSchema,
               breadcrumbSchema,
+              faqSchema,
             ]),
           }}
         />
       </Head>
 
+      {/* ✅ Page Content */}
       <NavbarUIUX />
-   
- 
-      <motion.section
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-      >
+
+      <motion.section initial={{ opacity: 0, y: -30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
         <HeroSection
           imagelink="/images/uiux-hero.png"
           content={{
-            title: " UI/UX Design Services",
-            description:
-              "Crafting intuitive and engaging digital experiences that drive business success.",
+            title: "UI/UX Design Services",
+            description: "Crafting intuitive and engaging digital experiences that drive business success.",
           }}
         />
-        <UIUXText/>
-        <DesignProcess/>
-        <UIUXServices/>
-        <UIUXBenefits/>
-        <UIUXTechnologies/>
-        <UIUXWhy/>
-
+        <UIUXText />
+        <DesignProcess />
+        <UIUXServices />
+        <UIUXBenefits />
+        <UIUXTechnologies />
+        <UIUXWhy />
       </motion.section>
 
-      <motion.section
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
-        
-      </motion.section>
-
-      <motion.section
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
-      </motion.section>
-
-      <motion.section
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
-      </motion.section>
-
-      <motion.section
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
-      </motion.section>
-
-      <motion.section
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
-      </motion.section>
-
-      <motion.section
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
-      </motion.section>
-
-      <motion.section
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
+      <motion.section initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
         <ContactSection
-          heading="Ready to Transform Your Business with UI UX Design?"
-          description="Get in touch with our experts to discuss your specific needs and explore how Ankiom can help you achieve your business goals."
-          
+          heading="Ready to Transform Your Business with UI/UX Design?"
+          description="Get in touch with our experts to discuss how Ankiom can help you build meaningful user experiences that deliver results."
         />
       </motion.section>
 
