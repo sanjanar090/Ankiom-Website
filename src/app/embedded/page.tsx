@@ -23,7 +23,8 @@ export default function EmbeddedPage() {
   const imageUrl = "https://www.ankiom.com/images/embedded-og.jpg";
   const twitterHandle = "@ankiom_official";
 
-  // 1️⃣ Organization Schema
+  /* ✅ STRUCTURED DATA JSON-LD SCHEMAS */
+
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -33,7 +34,6 @@ export default function EmbeddedPage() {
     sameAs: [
       "https://twitter.com/ankiom_official",
       "https://www.linkedin.com/company/ankiom",
-
     ],
     contactPoint: {
       "@type": "ContactPoint",
@@ -44,7 +44,6 @@ export default function EmbeddedPage() {
     },
   };
 
-  // 2️⃣ WebPage Schema
   const webPageSchema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -61,7 +60,6 @@ export default function EmbeddedPage() {
     },
   };
 
-  // 3️⃣ Service Schema
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -86,7 +84,6 @@ export default function EmbeddedPage() {
     },
   };
 
-  // 4️⃣ Breadcrumb Schema
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -112,7 +109,6 @@ export default function EmbeddedPage() {
     ],
   };
 
-  // 5️⃣ Product Schema
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -120,10 +116,7 @@ export default function EmbeddedPage() {
     image: imageUrl,
     description:
       "High-performance embedded systems and firmware development solutions by Ankiom Technologies for IoT, automotive, and industrial applications.",
-    brand: {
-      "@type": "Brand",
-      name: "Ankiom Technologies",
-    },
+    brand: { "@type": "Brand", name: "Ankiom Technologies" },
     offers: {
       "@type": "Offer",
       url: canonicalUrl,
@@ -133,7 +126,6 @@ export default function EmbeddedPage() {
     },
   };
 
-  // 6️⃣ FAQ Schema
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -217,32 +209,12 @@ export default function EmbeddedPage() {
         ]}
       />
 
-      {/* ✅ Meta + Structured Data */}
+      {/* ✅ Structured Data Injection */}
       <Head>
         <link rel="canonical" href={canonicalUrl} />
         <meta name="robots" content="index, follow" />
+        <meta name="theme-color" content="#0b1223" />
 
-        <meta property="og:site_name" content={siteName} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDescription} />
-        <meta property="og:image" content={imageUrl} />
-        <meta property="og:image:secure_url" content={imageUrl} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Ankiom Embedded Systems" />
-        <meta property="og:locale" content="en_IN" />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content={twitterHandle} />
-        <meta name="twitter:creator" content={twitterHandle} />
-        <meta name="twitter:title" content={pageTitle} />
-        <meta name="twitter:description" content={pageDescription} />
-        <meta name="twitter:image" content={imageUrl} />
-        <meta name="twitter:image:alt" content="Ankiom Embedded Systems" />
-
-        {/* ✅ Combined JSON-LD Structured Data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -264,7 +236,7 @@ export default function EmbeddedPage() {
       <motion.section
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        transition={{ duration: 0.8 }}
       >
         <HeroSection
           imagelink="/images/embedded-hero.png"
@@ -337,7 +309,7 @@ export default function EmbeddedPage() {
         transition={{ duration: 0.8 }}
       >
         <ContactSection
-          heading="Ready to discuss your project?"
+          heading="Ready to Transform Your Business with Embedded Systems?"
           description="Get in touch with our experts to discuss your specific needs and explore how Ankiom can help you achieve your business goals."
         />
       </motion.section>

@@ -13,10 +13,10 @@ import CloudPartners from "@/app/components/CloudPartners";
 import ContactSection from "@/app/components/ContactSection";
 import Footer from "@/app/components/Footer";
 
-export default function HomePage() {
+export default function IoTPage() {
   const canonicalUrl = "https://ankiom.com/";
 
-  // 🧩 Comprehensive JSON-LD Structured Data
+  // ✅ Comprehensive & SEO-optimized JSON-LD Structured Data
   const structuredData = [
     // 1️⃣ Organization Schema
     {
@@ -92,7 +92,7 @@ export default function HomePage() {
         name: "Bangalore, India",
       },
       description:
-        "Ankiom provides IoT development services including connected devices, embedded software, and data automation solutions.",
+        "Ankiom provides IoT development services including connected devices, embedded software, and smart automation solutions for industries.",
       offers: {
         "@type": "Offer",
         price: "Custom Quote",
@@ -126,8 +126,18 @@ export default function HomePage() {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: "https://ankiom.com/" },
-        { "@type": "ListItem", position: 2, name: "IoT Services", item: "https://ankiom.com/" },
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://ankiom.com/",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "IoT Development Services",
+          item: "https://ankiom.com/",
+        },
       ],
     },
 
@@ -141,7 +151,7 @@ export default function HomePage() {
           name: "What IoT services does Ankiom offer?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Ankiom offers IoT product development, device connectivity, embedded systems, and smart automation solutions.",
+            text: "Ankiom offers IoT product development, device connectivity, embedded systems, and smart automation solutions for businesses.",
           },
         },
         {
@@ -149,7 +159,7 @@ export default function HomePage() {
           name: "Where is Ankiom located?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Ankiom Technologies is based in Bangalore, India, providing IoT and embedded software solutions globally.",
+            text: "Ankiom Technologies is headquartered in Bangalore, India, offering IoT and cloud-integrated solutions worldwide.",
           },
         },
         {
@@ -157,7 +167,7 @@ export default function HomePage() {
           name: "Does Ankiom build custom IoT systems?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Yes, Ankiom provides fully custom IoT system design and implementation based on your business needs.",
+            text: "Yes, Ankiom provides fully customized IoT system design, development, and integration based on unique business needs.",
           },
         },
       ],
@@ -166,6 +176,7 @@ export default function HomePage() {
 
   return (
     <>
+      {/* ✅ SEO + Open Graph + Twitter Metadata */}
       <NextSeo
         title="IoT Development Services in Bangalore | Ankiom"
         description="Empower your business with Ankiom’s IoT Development Services in Bangalore — smart automation, connected devices, and scalable cloud integrations for industries."
@@ -174,7 +185,7 @@ export default function HomePage() {
           url: canonicalUrl,
           title: "IoT Development Services in Bangalore | Ankiom",
           description:
-            "Empower your business with smart automation, connected devices, and cloud-integrated IoT solutions with Ankiom Technologies.",
+            "Empower your business with smart automation, connected devices, and cloud-integrated IoT solutions from Ankiom Technologies.",
           type: "website",
           siteName: "Ankiom Technologies",
           locale: "en_IN",
@@ -209,16 +220,23 @@ export default function HomePage() {
           { rel: "canonical", href: canonicalUrl },
           { rel: "alternate", hrefLang: "en-IN", href: canonicalUrl },
           { rel: "icon", href: "/favicon.ico" },
-          { rel: "apple-touch-icon", href: "/apple-touch-icon.png", sizes: "180x180" },
+          {
+            rel: "apple-touch-icon",
+            href: "/apple-touch-icon.png",
+            sizes: "180x180",
+          },
         ]}
       />
 
       {/* ✅ Structured Data */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData),
+        }}
       />
 
+      {/* ✅ Page Sections */}
       <NavbarIot />
 
       <motion.div
@@ -229,9 +247,9 @@ export default function HomePage() {
         <HeroSection
           imagelink="/images/hero.jpg"
           content={{
-            title: "IoT Services",
+            title: "IoT Development Services",
             description:
-              "Empowering industries through connected devices, automation, and smart data-driven solutions.",
+              "Empowering businesses with cutting-edge IoT solutions for enhanced efficiency and growth.",
           }}
         />
       </motion.div>

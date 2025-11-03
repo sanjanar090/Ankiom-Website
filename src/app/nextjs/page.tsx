@@ -24,36 +24,37 @@ import {
 export default function NextJsPage() {
   const canonicalUrl = "https://ankiom.com/nextjs";
 
+  // ✅ Why Choose Features
   const nextjsFeatures = [
     {
       icon: <FiArrowRightCircle />,
       title: "Expert Next.js Developers",
       description:
-        "Our team consists of experienced Next.js developers with a proven track record.",
+        "Our team includes skilled Next.js professionals with proven expertise in building scalable, SEO-optimized applications.",
     },
     {
       icon: <FiGrid />,
       title: "Agile Development Process",
       description:
-        "We follow an agile methodology to ensure flexibility and adaptability throughout the development process.",
+        "We follow agile methodology to ensure transparency, flexibility, and faster delivery of your Next.js projects.",
     },
     {
       icon: <FiMessageCircle />,
       title: "Transparent Communication",
       description:
-        "We maintain open and transparent communication with our clients throughout the project lifecycle.",
+        "We prioritize open communication and regular project updates to ensure alignment with your goals.",
     },
     {
       icon: <FiHelpCircle />,
       title: "Ongoing Support & Maintenance",
       description:
-        "We provide ongoing support and maintenance to ensure your application remains up-to-date and performs optimally.",
+        "We offer continuous maintenance and performance optimization post-launch to ensure long-term success.",
     },
   ];
 
-  // ✅ Combined Structured Data (for rich results)
+  // ✅ Structured Data for rich snippets
   const structuredData = [
-    // 1️⃣ Organization
+    // 1️⃣ Organization Schema
     {
       "@context": "https://schema.org",
       "@type": "Organization",
@@ -62,7 +63,7 @@ export default function NextJsPage() {
       logo: "https://ankiom.com/images/logo.png",
       sameAs: [
         "https://in.linkedin.com/company/ankiom-soft-india",
-        "https://twitter.com/ankiomsoftindia",
+        "https://twitter.com/ankiom_official",
       ],
       contactPoint: {
         "@type": "ContactPoint",
@@ -73,7 +74,7 @@ export default function NextJsPage() {
       },
     },
 
-    // 2️⃣ LocalBusiness
+    // 2️⃣ LocalBusiness Schema
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
@@ -92,7 +93,7 @@ export default function NextJsPage() {
       },
     },
 
-    // 3️⃣ WebSite
+    // 3️⃣ WebSite Schema
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
@@ -105,7 +106,7 @@ export default function NextJsPage() {
       },
     },
 
-    // 4️⃣ WebPage
+    // 4️⃣ WebPage Schema
     {
       "@context": "https://schema.org",
       "@type": "WebPage",
@@ -113,16 +114,16 @@ export default function NextJsPage() {
       url: canonicalUrl,
       name: "Next.js Web Application Development Services in Bangalore | Ankiom",
       description:
-        "Ankiom provides professional Next.js web application development services in Bangalore — delivering fast, SEO-friendly, and scalable web apps for startups and enterprises.",
+        "Ankiom offers expert Next.js web development services in Bangalore — building fast, SEO-friendly, and scalable web apps for businesses.",
+      inLanguage: "en-IN",
       isPartOf: {
         "@type": "WebSite",
         url: "https://ankiom.com",
         name: "Ankiom Technologies",
       },
-      inLanguage: "en-IN",
     },
 
-    // 5️⃣ Service
+    // 5️⃣ Service Schema
     {
       "@context": "https://schema.org",
       "@type": "Service",
@@ -137,7 +138,7 @@ export default function NextJsPage() {
         name: "Bangalore, India",
       },
       description:
-        "Ankiom provides custom Next.js web app development, offering SEO-optimized, scalable, and high-performing solutions.",
+        "Ankiom provides professional Next.js development services — from custom apps to performance optimization and SEO enhancements.",
       offers: {
         "@type": "Offer",
         priceCurrency: "INR",
@@ -154,7 +155,7 @@ export default function NextJsPage() {
       name: "Next.js Web Development Services",
       image: "https://ankiom.com/images/application-services.jpg",
       description:
-        "Ankiom’s Next.js web development services create lightning-fast, SEO-friendly, and scalable websites tailored to your business.",
+        "High-performance, SEO-optimized, and scalable web applications built using Next.js — powered by Ankiom Technologies.",
       brand: { "@type": "Brand", name: "Ankiom Technologies" },
       offers: {
         "@type": "Offer",
@@ -165,7 +166,7 @@ export default function NextJsPage() {
       },
     },
 
-    // 7️⃣ BreadcrumbList
+    // 7️⃣ Breadcrumb Schema
     {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
@@ -195,7 +196,7 @@ export default function NextJsPage() {
           name: "What Next.js services does Ankiom offer?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Ankiom offers full-stack Next.js web app development, API integration, performance optimization, and SEO enhancement services.",
+            text: "Ankiom provides full-stack Next.js development, performance optimization, API integration, and enterprise-grade web applications.",
           },
         },
         {
@@ -203,7 +204,7 @@ export default function NextJsPage() {
           name: "Where is Ankiom located?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Ankiom Technologies is headquartered in Bangalore, India, serving clients globally with custom software development solutions.",
+            text: "Ankiom Technologies is located in Bangalore, India, delivering high-quality web and software solutions globally.",
           },
         },
         {
@@ -211,7 +212,7 @@ export default function NextJsPage() {
           name: "Why use Next.js for your web app?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Next.js provides server-side rendering, faster page load, and better SEO performance — ideal for modern web apps.",
+            text: "Next.js enables faster load times, better SEO performance, and seamless scalability — ideal for building modern web applications.",
           },
         },
       ],
@@ -220,6 +221,7 @@ export default function NextJsPage() {
 
   return (
     <>
+      {/* ✅ SEO + Open Graph + Twitter Metadata */}
       <NextSeo
         title="Next.js Web Application Development Services in Bangalore | Ankiom"
         description="Ankiom provides professional Next.js web application development services in Bangalore — delivering fast, SEO-friendly, and scalable web apps for startups and enterprises."
@@ -230,21 +232,21 @@ export default function NextJsPage() {
           title:
             "Next.js Web Application Development Services in Bangalore | Ankiom",
           description:
-            "Build modern, SEO-optimized, and high-performing web applications using Next.js with Ankiom — trusted web development experts in Bangalore.",
+            "Build high-performance, SEO-optimized, and scalable web apps using Next.js with Ankiom Technologies — your trusted development partner in Bangalore.",
           images: [
             {
               url: "https://ankiom.com/images/application-services.jpg",
               width: 1200,
               height: 630,
-              alt: "Next.js Application Development by Ankiom",
+              alt: "Next.js Development Services - Ankiom Technologies",
             },
           ],
           siteName: "Ankiom Technologies",
           locale: "en_IN",
         }}
         twitter={{
-          handle: "@ankiomsoftindia",
-          site: "@ankiomsoftindia",
+          handle: "@ankiom_official",
+          site: "@ankiom_official",
           cardType: "summary_large_image",
         }}
         additionalMetaTags={[
@@ -258,23 +260,30 @@ export default function NextJsPage() {
           {
             name: "keywords",
             content:
-              "Next.js development, Next.js company in Bangalore, web application development, Ankiom Technologies, React development, SEO optimized web apps, full-stack development",
+              "Next.js development, Next.js web apps, web development Bangalore, Ankiom Technologies, React development, SEO-friendly apps, full-stack development",
           },
         ]}
         additionalLinkTags={[
           { rel: "canonical", href: canonicalUrl },
           { rel: "alternate", hrefLang: "en-IN", href: canonicalUrl },
           { rel: "icon", href: "/favicon.ico" },
-          { rel: "apple-touch-icon", href: "/apple-touch-icon.png", sizes: "180x180" },
+          {
+            rel: "apple-touch-icon",
+            href: "/apple-touch-icon.png",
+            sizes: "180x180",
+          },
         ]}
       />
 
       <Head>
         <meta name="theme-color" content="#0b1223" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=5"
+        />
       </Head>
 
-      {/* ✅ Combined JSON-LD */}
+      {/* ✅ Structured Data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
@@ -283,6 +292,7 @@ export default function NextJsPage() {
       <NavbarNextjs />
 
       <main>
+        {/* Hero Section */}
         <motion.section
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -291,13 +301,14 @@ export default function NextJsPage() {
           <HeroSection
             imagelink={ApplicationServices}
             content={{
-              title: "Next.js Application Services",
+              title: "Next.js Application Development Services",
               description:
                 "Build high-performance, scalable, and SEO-friendly web applications with our expert Next.js development team.",
             }}
           />
         </motion.section>
 
+        {/* Page Sections */}
         <motion.section
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -338,7 +349,7 @@ export default function NextJsPage() {
           viewport={{ once: true }}
         >
           <ContactSection
-            heading="Ready to Transform Your Business with Next.js?"
+            heading="Ready to Transform Your Business with NextJS?"
             className="py-15 px-5 mb-5 relative -translate-y-10"
           />
         </motion.section>

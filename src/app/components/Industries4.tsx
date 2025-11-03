@@ -5,8 +5,8 @@ import { NextSeo } from "next-seo";
 import image1 from "../assets/ecommerce-retail.png";
 import image2 from "../assets/corporate.png";
 import image3 from "../assets/saas-dashboards.png";
-import image4 from "../assets/education.png";
-import image5 from "../assets/startups.png";
+import image4 from "../assets/education1.png";
+import image5 from "../assets/startups1.png";
 
 export default function Industries4() {
   const industries = [

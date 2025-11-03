@@ -20,6 +20,7 @@ import Footer from "@/app/components/Footer";
 import Head from "next/head";
 
 export default function FlutterPage() {
+  // ✅ Canonical setup for both environments
   const productionCanonical = "https://ankiom.com/flutter";
   const previewCanonical = "https://ankiom.vercel.app/flutter";
   const canonicalUrl =
@@ -28,7 +29,7 @@ export default function FlutterPage() {
       ? productionCanonical
       : previewCanonical;
 
-  // ✅ Structured Data JSON-LD definitions
+  // ✅ Structured Data Schemas
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -53,25 +54,45 @@ export default function FlutterPage() {
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "Flutter App Development",
+    name: "Flutter App Development Services",
     description:
-      "Ankiom provides expert Flutter app development for Android, iOS, and web platforms — offering scalable, cross-platform mobile solutions.",
+      "Ankiom provides expert Flutter app development for Android, iOS, and Web — delivering scalable and high-performance mobile solutions.",
     provider: {
       "@type": "Organization",
       name: "Ankiom Technologies",
       url: "https://ankiom.com",
       logo: "https://ankiom.com/images/logo.png",
     },
-    serviceType: "Flutter App Development Services",
+    serviceType: "Cross-Platform Mobile App Development",
     areaServed: { "@type": "Place", name: "India" },
     offers: {
       "@type": "Offer",
       url: canonicalUrl,
       priceCurrency: "INR",
-      price: "Contact for Quote",
+      price: "Custom Quote",
       availability: "https://schema.org/InStock",
       validFrom: "2025-01-01",
     },
+    hasPart: [
+      {
+        "@type": "Service",
+        name: "Flutter Android App Development",
+        description:
+          "Build smooth, native-quality Android apps using Flutter's robust framework.",
+      },
+      {
+        "@type": "Service",
+        name: "Flutter iOS App Development",
+        description:
+          "Develop high-performing iOS applications with a single Flutter codebase.",
+      },
+      {
+        "@type": "Service",
+        name: "Flutter Web App Development",
+        description:
+          "Extend your Flutter apps to the web seamlessly for broader reach.",
+      },
+    ],
   };
 
   const breadcrumbSchema = {
@@ -99,17 +120,49 @@ export default function FlutterPage() {
     ],
   };
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Why choose Flutter for app development?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Flutter enables building high-performance, cross-platform apps for Android, iOS, and Web with a single codebase, reducing time and cost.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What industries does Ankiom serve with Flutter development?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Ankiom provides Flutter app solutions across industries like healthcare, fintech, logistics, e-commerce, and education.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Does Ankiom provide maintenance for Flutter apps?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, we offer continuous maintenance, updates, and performance optimization for all Flutter-based projects.",
+        },
+      },
+    ],
+  };
+
   return (
     <>
+      {/* ✅ Meta and OpenGraph SEO */}
       <NextSeo
-        title="Flutter App Development Services in Bangalore | Ankiom"
-        description="Build high-quality cross-platform apps with Ankiom — expert Flutter app development services for Android, iOS, and Web."
+        title="Flutter App Development Services in Bangalore | Ankiom Technologies"
+        description="Ankiom builds fast, scalable, and visually stunning Flutter apps for Android, iOS, and Web. Delivering cross-platform excellence with Flutter."
         canonical={canonicalUrl}
         openGraph={{
           url: canonicalUrl,
-          title: "Flutter App Development Services in Bangalore | Ankiom",
+          title: "Flutter App Development Services | Ankiom",
           description:
-            "Ankiom offers Flutter-based cross-platform app development for startups and enterprises with seamless performance.",
+            "Expert Flutter development company in Bangalore delivering high-quality cross-platform mobile apps for startups and enterprises.",
           type: "website",
           locale: "en_IN",
           siteName: "Ankiom Technologies",
@@ -131,7 +184,7 @@ export default function FlutterPage() {
           {
             name: "keywords",
             content:
-              "Flutter development company, cross-platform apps, mobile app development Bangalore, iOS Android Flutter apps, Ankiom Technologies",
+              "Flutter development company, Flutter app developers Bangalore, cross-platform apps, mobile app development, Flutter for iOS Android, Ankiom Technologies",
           },
           {
             name: "robots",
@@ -153,7 +206,7 @@ export default function FlutterPage() {
         ]}
       />
 
-      {/* ✅ Structured Data JSON-LD Script Block */}
+      {/* ✅ Structured Data: Rendered in HTML Source for SEO Tools */}
       <Head>
         <script
           type="application/ld+json"
@@ -162,15 +215,16 @@ export default function FlutterPage() {
               organizationSchema,
               serviceSchema,
               breadcrumbSchema,
+              faqSchema,
             ]),
           }}
         />
       </Head>
 
-      {/* ✅ Built-in Structured Data Components */}
+      {/* ✅ next-seo Built-in Structured Data Components */}
       <WebPageJsonLd
         id={canonicalUrl}
-        description="Ankiom provides expert Flutter app development services for Android, iOS, and Web."
+        description="Ankiom provides expert Flutter app development services for Android, iOS, and Web — empowering businesses with cross-platform performance."
         lastReviewed="2025-01-15"
         reviewedBy={{
           type: "Organization",
@@ -187,7 +241,7 @@ export default function FlutterPage() {
         type="LocalBusiness"
         id="https://ankiom.com/#localbusiness"
         name="Ankiom Technologies"
-        description="A software development company specializing in IoT, web, and Flutter app development solutions in Bangalore, India."
+        description="A software development company specializing in Flutter app development, IoT, and web solutions in Bangalore, India."
         url="https://ankiom.com"
         telephone="+91-7090703720"
         address={{
@@ -212,7 +266,7 @@ export default function FlutterPage() {
 
       <ProductJsonLd
         productName="Flutter App Development Services"
-        description="Cross-platform Flutter app development by Ankiom — powerful, scalable, and cost-effective mobile solutions for modern businesses."
+        description="Professional Flutter app development services for Android, iOS, and Web — offered by Ankiom Technologies, Bangalore."
         brand="Ankiom Technologies"
         url={canonicalUrl}
         images={["https://ankiom.com/images/application-interface.jpg"]}
@@ -239,7 +293,7 @@ export default function FlutterPage() {
           content={{
             title: "Flutter App Development",
             description:
-              "Create stunning cross-platform mobile apps with Flutter. Fast, scalable, and efficient solutions for modern businesses.",
+              "Build beautiful, high-performance apps for any platform with a single codebase.",
           }}
         />
       </motion.div>

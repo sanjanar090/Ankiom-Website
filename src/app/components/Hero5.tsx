@@ -43,7 +43,6 @@ export default function Hero() {
         />
       </Head>
 
-      {/* 🌌 HERO SECTION */}
       <section
         id="home"
         className="relative flex items-center justify-center w-screen min-h-screen overflow-hidden text-white -mt-24"
@@ -54,12 +53,9 @@ export default function Hero() {
           marginRight: "calc(50% - 50vw)",
         }}
       >
-        {/* ✨ Moving Stars */}
         <div className="absolute inset-0 opacity-70 z-0 animate-[moveStarsUp_40s_linear_infinite] bg-[radial-gradient(1.4px_1.4px_at_12%_18%,white_50%,transparent_52%),radial-gradient(1px_1px_at_40%_32%,white_50%,transparent_52%),radial-gradient(1.6px_1.6px_at_78%_22%,white_50%,transparent_52%),radial-gradient(1.1px_1.1px_at_65%_70%,white_50%,transparent_52%),radial-gradient(1.3px_1.3px_at_22%_85%,white_50%,transparent_52%)] bg-[length:260px_260px]" />
 
-        {/* MAIN GRID */}
         <div className="relative z-10 grid items-center max-w-6xl gap-16 px-8 mx-auto md:grid-cols-2">
-          {/* LEFT TEXT */}
           <div>
             <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6">
               <span className="block opacity-0 translate-y-8 animate-[slideInUp_0.8s_ease_0.2s_forwards]">
@@ -86,7 +82,6 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* RIGHT VISUALS */}
           <div className="relative h-[500px] flex items-center justify-center">
             {/* SVG Circuit (base) */}
             <svg
