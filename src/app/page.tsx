@@ -32,13 +32,15 @@ export default function Home() {
       "https://www.youtube.com/@ankiom",
       "https://github.com/ankiom",
     ],
-    contactPoint: {
-      "@type": "ContactPoint",
-      telephone: "+91-7090703720",
-      contactType: "Customer Support",
-      areaServed: "IN",
-      availableLanguage: ["English", "Hindi"],
-    },
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        telephone: "+91-7090703720",
+        contactType: "Customer Support",
+        areaServed: "IN",
+        availableLanguage: ["English", "Hindi"],
+      },
+    ],
   };
 
   const websiteSchema = {
@@ -59,6 +61,12 @@ export default function Home() {
     name: title,
     url: canonicalUrl,
     description,
+    inLanguage: "en-IN",
+    isPartOf: { "@type": "WebSite", name: siteName, url: canonicalUrl },
+    about: {
+      "@type": "Thing",
+      name: "IoT, Next.js, and Flutter Development",
+    },
     publisher: {
       "@type": "Organization",
       name: siteName,
@@ -85,7 +93,13 @@ export default function Home() {
       postalCode: "560048",
       addressCountry: "IN",
     },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: "12.9716",
+      longitude: "77.5946",
+    },
     priceRange: "$$",
+    openingHours: "Mo-Fr 09:00-18:00",
   };
 
   const breadcrumbSchema = {
@@ -103,11 +117,7 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "Service",
     serviceType: "IoT, Next.js, and Flutter Development",
-    provider: {
-      "@type": "Organization",
-      name: siteName,
-      url: canonicalUrl,
-    },
+    provider: { "@type": "Organization", name: siteName, url: canonicalUrl },
     description:
       "We offer IoT, Next.js, and Flutter-based solutions for startups and enterprises, focusing on scalable web and mobile development.",
     areaServed: { "@type": "Country", name: "India" },
@@ -153,10 +163,7 @@ export default function Home() {
     image: `${canonicalUrl}images/logo.png`,
     description:
       "Custom IoT, Next.js, and Flutter software solutions by Ankiom Technologies.",
-    brand: {
-      "@type": "Organization",
-      name: siteName,
-    },
+    brand: { "@type": "Organization", name: siteName },
     offers: {
       "@type": "Offer",
       url: canonicalUrl,
@@ -166,9 +173,40 @@ export default function Home() {
     },
   };
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What services does Ankiom provide?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Ankiom offers IoT solutions, Next.js web development, and Flutter app development for startups and enterprises.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Where is Ankiom located?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Ankiom Technologies is located in Bengaluru, Karnataka, India.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Does Ankiom offer custom IoT solutions?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, Ankiom builds end-to-end custom IoT solutions including hardware integration, firmware, and cloud connectivity.",
+        },
+      },
+    ],
+  };
+
   return (
     <>
-      {/* ✅ SEO CONFIGURATION */}
+      {/* ✅ SEO BASE */}
       <NextSeo
         title={title}
         description={description}
@@ -196,25 +234,29 @@ export default function Home() {
         }}
       />
 
-      {/* ✅ Additional Head Metadata */}
       <Head>
+        {/* ✅ Essential Meta */}
         <link rel="canonical" href={canonicalUrl} />
-        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <meta
+          name="robots"
+          content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+        />
         <meta name="language" content="English" />
         <meta name="author" content={siteName} />
         <meta name="theme-color" content="#0b1223" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-        <meta name="keywords" content="Ankiom, IoT Solutions, Next.js Web Development, Flutter App Development, Software Company India, Web Development Bengaluru, Ankiom Technologies" />
+        <meta
+          name="keywords"
+          content="Ankiom, IoT Solutions, Next.js Web Development, Flutter App Development, Software Company India, Web Development Bengaluru, Ankiom Technologies"
+        />
 
-        {/* ✅ Social Meta */}
+        {/* ✅ Social & Graph Meta */}
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content={siteName} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:image" content={imageUrl} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
         <meta property="og:locale" content="en_IN" />
 
         <meta name="twitter:card" content="summary_large_image" />
@@ -235,12 +277,13 @@ export default function Home() {
               breadcrumbSchema,
               serviceSchema,
               productSchema,
+              faqSchema,
             ]),
           }}
         />
       </Head>
 
-      {/* ✅ MAIN PAGE CONTENT */}
+      {/* ✅ Page Content */}
       <Navbar />
       <section id="home" className="pt-24">
         <Hero5 />
