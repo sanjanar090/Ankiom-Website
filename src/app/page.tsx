@@ -19,7 +19,7 @@ export default function Home() {
   const imageUrl = `${canonicalUrl}images/og-image.jpg`;
   const twitterHandle = "@ankiomsoftindia";
 
-  // ✅ Structured Data Objects
+  /* ✅ STRUCTURED DATA SCHEMAS */
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -29,17 +29,19 @@ export default function Home() {
     sameAs: [
       "https://twitter.com/ankiomsoftindia",
       "https://in.linkedin.com/company/ankiom-soft-india",
+      "https://www.youtube.com/@ankiom",
+      "https://github.com/ankiom",
     ],
     contactPoint: {
       "@type": "ContactPoint",
       telephone: "+91-7090703720",
-      contactType: "customer support",
+      contactType: "Customer Support",
       areaServed: "IN",
       availableLanguage: ["English", "Hindi"],
     },
   };
 
-  const webSiteSchema = {
+  const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: siteName,
@@ -51,7 +53,7 @@ export default function Home() {
     },
   };
 
-  const webPageSchema = {
+  const webpageSchema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: title,
@@ -73,11 +75,12 @@ export default function Home() {
     name: siteName,
     image: `${canonicalUrl}images/logo.png`,
     url: canonicalUrl,
-    telephone: "+91-70907 03720",
+    telephone: "+91-7090703720",
     address: {
       "@type": "PostalAddress",
-      streetAddress: " 3rd FLOOR, Tower-2, ARDENTE OFFICE ONE 2322, Bengaluru, Karnataka ",
-      addressLocality: "Bangolore",
+      streetAddress:
+        "3rd FLOOR, Tower-2, ARDENTE OFFICE ONE 2322, Bengaluru, Karnataka",
+      addressLocality: "Bengaluru",
       addressRegion: "Karnataka",
       postalCode: "560048",
       addressCountry: "IN",
@@ -89,30 +92,10 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: canonicalUrl,
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Services",
-        item: `${canonicalUrl}#services`,
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "About",
-        item: `${canonicalUrl}#about`,
-      },
-      {
-        "@type": "ListItem",
-        position: 4,
-        name: "Contact",
-        item: `${canonicalUrl}#contact`,
-      },
+      { "@type": "ListItem", position: 1, name: "Home", item: canonicalUrl },
+      { "@type": "ListItem", position: 2, name: "Services", item: `${canonicalUrl}#services` },
+      { "@type": "ListItem", position: 3, name: "About", item: `${canonicalUrl}#about` },
+      { "@type": "ListItem", position: 4, name: "Contact", item: `${canonicalUrl}#contact` },
     ],
   };
 
@@ -127,10 +110,7 @@ export default function Home() {
     },
     description:
       "We offer IoT, Next.js, and Flutter-based solutions for startups and enterprises, focusing on scalable web and mobile development.",
-    areaServed: {
-      "@type": "Country",
-      name: "India",
-    },
+    areaServed: { "@type": "Country", name: "India" },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Ankiom Services",
@@ -141,7 +121,7 @@ export default function Home() {
             "@type": "Service",
             name: "IoT Solutions",
             description:
-              "End-to-end Internet of Things development services including hardware integration and data analytics.",
+              "End-to-end Internet of Things development services including hardware integration, cloud, and analytics.",
           },
         },
         {
@@ -150,7 +130,7 @@ export default function Home() {
             "@type": "Service",
             name: "Next.js Web Development",
             description:
-              "High-performance, SEO-optimized web applications using Next.js and Tailwind CSS.",
+              "SEO-optimized and scalable web applications using Next.js and Tailwind CSS.",
           },
         },
         {
@@ -159,15 +139,36 @@ export default function Home() {
             "@type": "Service",
             name: "Flutter App Development",
             description:
-              "Cross-platform mobile apps built with Flutter for seamless performance on Android and iOS.",
+              "Cross-platform mobile apps built with Flutter for Android and iOS.",
           },
         },
       ],
     },
   };
 
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: "Ankiom Software Solutions",
+    image: `${canonicalUrl}images/logo.png`,
+    description:
+      "Custom IoT, Next.js, and Flutter software solutions by Ankiom Technologies.",
+    brand: {
+      "@type": "Organization",
+      name: siteName,
+    },
+    offers: {
+      "@type": "Offer",
+      url: canonicalUrl,
+      priceCurrency: "INR",
+      price: "Contact for Quote",
+      availability: "https://schema.org/InStock",
+    },
+  };
+
   return (
     <>
+      {/* ✅ SEO CONFIGURATION */}
       <NextSeo
         title={title}
         description={description}
@@ -193,60 +194,53 @@ export default function Home() {
           site: twitterHandle,
           cardType: "summary_large_image",
         }}
-        noindex={false}
-        nofollow={false}
       />
 
+      {/* ✅ Additional Head Metadata */}
       <Head>
-        {/* Standard Meta */}
         <link rel="canonical" href={canonicalUrl} />
-        <meta name="robots" content="index, follow" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
         <meta name="language" content="English" />
         <meta name="author" content={siteName} />
         <meta name="theme-color" content="#0b1223" />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=5"
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        <meta name="keywords" content="Ankiom, IoT Solutions, Next.js Web Development, Flutter App Development, Software Company India, Web Development Bengaluru, Ankiom Technologies" />
 
-        {/* Open Graph & Twitter Meta */}
-        <meta property="og:site_name" content={siteName} />
+        {/* ✅ Social Meta */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:site_name" content={siteName} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonicalUrl} />
         <meta property="og:image" content={imageUrl} />
-        <meta property="og:image:secure_url" content={imageUrl} />
-        <meta property="og:image:alt" content="Ankiom Website Preview" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:locale" content="en_IN" />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content={twitterHandle} />
-        <meta name="twitter:creator" content={twitterHandle} />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={imageUrl} />
-        <meta name="twitter:image:alt" content="Ankiom Website Preview" />
 
-        {/* ✅ Structured Data JSON-LD */}
+        {/* ✅ Structured Data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify([
               organizationSchema,
-              webSiteSchema,
-              webPageSchema,
+              websiteSchema,
+              webpageSchema,
               localBusinessSchema,
               breadcrumbSchema,
               serviceSchema,
+              productSchema,
             ]),
           }}
         />
       </Head>
 
-      {/* Page Content */}
+      {/* ✅ MAIN PAGE CONTENT */}
       <Navbar />
       <section id="home" className="pt-24">
         <Hero5 />
