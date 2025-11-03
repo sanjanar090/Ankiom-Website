@@ -378,6 +378,7 @@ export default function Hero() {
       stroke-dashoffset: 0;
     }
   }
+    
 
   @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
