@@ -202,7 +202,7 @@ export default function EmbeddedPage() {
           content={{
             title: "Embedded Systems Development",
             description:
-              "Empowering innovation with robust and efficient embedded solutions tailored to your specific needs..",
+              "Empowering innovation with robust and efficient embedded solutions tailored to your specific needs.",
           }}
         />
       </motion.section>

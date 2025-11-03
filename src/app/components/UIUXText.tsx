@@ -16,12 +16,12 @@ export default function IntroductionSection() {
       <NextSeo
         title="UI/UX Design Services | Ankiom Soft India LLP"
         description="Enhance your digital presence with Ankiom Soft India LLP’s UI/UX Design Services — creating visually appealing, intuitive, and conversion-driven user experiences for web and mobile platforms."
-        canonical="https://ankiomsoft.com/ui-ux-design"
+        canonical="https://ankiomsoft.com/UI-UX"
         openGraph={{
           title: "UI/UX Design Services | Ankiom Soft India LLP",
           description:
             "Ankiom Soft India LLP specializes in UI/UX Design Services — crafting elegant, user-focused interfaces that enhance engagement, retention, and brand identity.",
-          url: "https://ankiomsoft.com/ui-ux-design",
+          url: "https://ankiomsoft.com/UI-UX",
           site_name: "Ankiom Soft India LLP",
           images: [
             {

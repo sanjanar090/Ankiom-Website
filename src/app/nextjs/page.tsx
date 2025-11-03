@@ -207,7 +207,7 @@ export default function NextJsPage() {
             content={{
               title: "Next.js Application Services",
               description:
-                "Develop high-performance, SEO-optimized web applications with Next.js.",
+                "Build high-performance, scalable, and SEO-friendly web applications with our expert Next.js development team.",
             }}
           />
         </motion.section>

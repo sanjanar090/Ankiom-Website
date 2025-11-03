@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { NextSeo } from "next-seo";
+import Head from "next/head";
+
 import research from "../assets/users.png";
 import strategy from "../assets/strategy.png";
 import information from "../assets/information.png";
@@ -45,17 +47,19 @@ export default function UIUXServices() {
   ];
 
   return (
-    <section className="max-w-6xl mx-auto mt-[-40px] mb-10 p-10 bg-white rounded-3xl text-center">
-      {/* 🔍 SEO Meta */}
+    <>
+      {/* ✅ SEO Metadata */}
       <NextSeo
         title="UI/UX Design Services | Ankiom Soft India LLP"
-        description="Ankiom Soft India LLP provides end-to-end UI/UX design services — from user research and wireframing to usability testing and accessibility compliance."
+        description="Ankiom Soft India LLP provides end-to-end UI/UX design services — from user research, wireframing, and visual design to usability testing and accessibility compliance."
         canonical="https://ankiomsoft.com/ui-ux-design"
         openGraph={{
           title: "UI/UX Design Services | Ankiom Soft India LLP",
           description:
             "Explore Ankiom Soft India LLP’s expert UI/UX Design Services that create visually appealing, intuitive, and user-centered digital experiences.",
           url: "https://ankiomsoft.com/ui-ux-design",
+          type: "website",
+          locale: "en_IN",
           site_name: "Ankiom Soft India LLP",
           images: [
             {
@@ -75,7 +79,7 @@ export default function UIUXServices() {
           {
             name: "keywords",
             content:
-              "UI UX Design Services, User Research, Wireframing, Prototyping, Visual Design, Usability Testing, Accessibility, Ankiom Soft India LLP, Product Design",
+              "UI UX Design Services, User Research, Wireframing, Prototyping, Visual Design, Usability Testing, Accessibility, UX Strategy, Interaction Design, Ankiom Soft India LLP, Product Design, UX Consultancy, UX Prototyping, UX Audit",
           },
           {
             name: "author",
@@ -83,58 +87,105 @@ export default function UIUXServices() {
           },
           {
             name: "robots",
-            content: "index, follow",
+            content: "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
+          },
+          {
+            name: "viewport",
+            content: "width=device-width, initial-scale=1.0",
           },
         ]}
       />
 
-      {/* 🧩 Heading */}
-      <motion.h2
-        className="font-bold text-[22px] mb-8 text-[#111]"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        Our UI/UX Design Services
-      </motion.h2>
+      {/* ✅ Schema Markup for Google Rich Results */}
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ProfessionalService",
+              name: "Ankiom Soft India LLP - UI/UX Design Services",
+              url: "https://ankiomsoft.com/ui-ux-design",
+              logo: "https://ankiomsoft.com/logo.png",
+              image: "https://ankiomsoft.com/og-uiux.png",
+              description:
+                "Professional UI/UX design services — including user research, wireframing, prototyping, and usability testing for businesses across industries.",
+              sameAs: [
+                "https://www.linkedin.com/company/ankiomsoft/",
+                "https://twitter.com/ankiomsoft",
+              ],
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "Hyderabad",
+                addressLocality: "Hyderabad",
+                addressRegion: "Telangana",
+                postalCode: "500082",
+                addressCountry: "IN",
+              },
+              contactPoint: {
+                "@type": "ContactPoint",
+                telephone: "+91-XXXXXXXXXX",
+                contactType: "customer service",
+              },
+            }),
+          }}
+        />
+      </Head>
 
-      {/* 🖼️ Services Grid */}
-      <motion.div
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={{
-          hidden: {},
-          visible: { transition: { staggerChildren: 0.15 } },
-        }}
-      >
-        {services.map((service, index) => (
-          <motion.div
-            key={index}
-            className="bg-white rounded-xl p-4 shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 w-[230px]"
-            variants={{
-              hidden: { opacity: 0, y: 40 },
-              visible: { opacity: 1, y: 0 },
-            }}
-          >
-            <div className="relative w-[200px] h-[200px] mb-4 rounded-xl overflow-hidden mx-auto">
-              <Image
-                src={service.img}
-                alt={service.title}
-                fill
-                className="object-cover rounded-xl"
-              />
-            </div>
-            <h3 className="text-[15.5px] font-semibold text-[#222] mb-1 text-left">
-              {service.title}
-            </h3>
-            <p className="text-[13.5px] text-[#4D7399] text-left leading-relaxed">
-              {service.desc}
-            </p>
-          </motion.div>
-        ))}
-      </motion.div>
-    </section>
+      {/* ✅ UI/UX Section */}
+      <section className="max-w-6xl mx-auto mt-[-40px] mb-10 p-10 bg-white rounded-3xl text-center">
+        <motion.h2
+          className="font-bold text-[22px] mb-8 text-[#111]"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          Our UI/UX Design Services
+        </motion.h2>
+
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8 justify-items-center"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.15 } },
+          }}
+        >
+          {services.map((service, index) => (
+            <motion.div
+              key={index}
+              className="flex flex-col items-center bg-white p-4 rounded-xl w-full max-w-xs mx-auto h-[420px] transition-all duration-300"
+              variants={{
+                hidden: { opacity: 0, y: 40 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+            >
+              <motion.div
+                className="h-[200px] w-[300px] mb-3 flex justify-center items-center"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Image
+                  src={service.img}
+                  alt={`${service.title} - Ankiom UI/UX Service`}
+                  width={200}
+                  height={180}
+                  className="object-cover rounded-lg"
+                />
+              </motion.div>
+              <h3 className="text-[15px] font-semibold text-left mb-2 w-full">
+                {service.title}
+              </h3>
+              <p className="text-sm text-[#4D8C99] text-left leading-relaxed w-full">
+                {service.desc}
+              </p>
+            </motion.div>
+          ))}
+        </motion.div>
+      </section>
+    </>
   );
 }

@@ -215,7 +215,7 @@ export default function Services() {
           content={{
             title: "Qt QML Application Services",
             description:
-              "Craft high-performance, cross-platform UI experiences with Qt QML.",
+              "Crafting high-performance, cross-platform user interfaces with Qt QML for a seamless user experience.",
           }}
         />
       </motion.div>
