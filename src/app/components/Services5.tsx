@@ -67,13 +67,13 @@ export default function Services5() {
       ),
       title: "QT-QML Application Services",
       desc: "High-performance GUI apps with modern design using Qt and QML.",
-      link: "/qtqml",
+      link: "/services",
     },
     {
       icon: <FaPalette size={36} aria-label="UI/UX Design Services Icon" />,
       title: "UI/UX Design Services",
       desc: "Designing intuitive, engaging, and visually consistent user experiences that enhance brand identity and usability across all platforms.",
-      link: "/uiux",
+      link: "/UI-UX",
     },
   ];
 
