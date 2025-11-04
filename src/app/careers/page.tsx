@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { NextSeo } from "next-seo";
 import Head from "next/head";
-import NavbarReuse from "../components/NavbarReuse";
+import Navbar from "../components/Navbar";
 import Footer5 from "../components/Footer5";
 
 export default function CareersPage() {
@@ -143,7 +143,7 @@ export default function CareersPage() {
         />
       </Head>
 
-      <NavbarReuse />
+      <Navbar />
 
       <motion.section
         className="relative text-white py-48 md:py-56 px-6 text-center overflow-hidden"
@@ -186,18 +186,14 @@ export default function CareersPage() {
         </motion.p>
       </motion.section>
 
-      <section className="max-w-6xl mx-auto py-20 px-6 space-y-24">
+      <section className="max-w-6xl mx-auto py-10 -mt-25 px-8 space-y-35 pb-30">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl font-bold text-blue-900 mb-6 text-center">Life at Ankiom</h2>
-          <p className="max-w-3xl mx-auto text-gray-700 leading-relaxed text-center">
-            At Ankiom, we empower every engineer to explore, innovate, and lead. Our culture blends technical
-            excellence, ownership, and creativity — where your work drives real-world transformation in IoT and AI systems.
-          </p>
+    
         </motion.div>
 
         <motion.div
