@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { NextSeo } from "next-seo";
-import NavbarReuse from "@/app/components/NavbarReuse";
+import Navbar from "@/app/components/Navbar";
 import Footer5 from "@/app/components/Footer5";
 
 export default function AboutPage() {
@@ -117,7 +117,7 @@ export default function AboutPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdData) }}
       />
 
-      <NavbarReuse />
+      <Navbar />
 
       {/* HERO SECTION */}
       <motion.section

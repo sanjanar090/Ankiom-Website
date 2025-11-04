@@ -5,6 +5,8 @@ import { Menu, Transition } from "@headlessui/react";
 import { Fragment, memo, useState } from "react";
 import { Menu as MenuIcon, X as XIcon } from "lucide-react";
 import { motion } from "framer-motion";
+import { NextSeo } from "next-seo";
+import { useRouter } from "next/navigation";
 
 // Reusable submenu renderer
 const ServiceMenuItems = memo(
@@ -34,108 +36,205 @@ ServiceMenuItems.displayName = "ServiceMenuItems";
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const router = useRouter();
 
+  // Smooth scroll for homepage contact section
+  const scrollToSection = (id: string) => {
+    if (typeof window !== "undefined") {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+        setMobileOpen(false);
+      }
+    }
+  };
+
+  // Handles Contact Us & Get Quote clicks for all routes
+  const handleContactClick = () => {
+    if (typeof window !== "undefined") {
+      if (window.location.pathname === "/") {
+        scrollToSection("contact");
+      } else {
+        router.push("/#contact");
+      }
+    }
+  };
+
+  // Dropdown data
   const services = [
     { href: "/iot", label: "IoT Development" },
     { href: "/flutter", label: "Flutter Services" },
     { href: "/nextjs", label: "Next.js Services" },
     { href: "/services", label: "Qt-QML Services" },
     { href: "/embedded", label: "Embedded Systems" },
-    { href: "/UI-UX", label: "UI/UX Design" },
+    { href: "/UI-UX", label: "UI/UX Design Services" },
   ];
 
+  // Navbar link styling
   const navLinkClass =
     "relative text-lg font-semibold text-gray-800 hover:text-blue-500 transition-colors duration-150 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-blue-500 after:transition-all hover:after:w-full";
 
+  // SEO Schema
+  const orgSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Ankiom Soft India LLP",
+    url: "https://ankiomsoft.com",
+    logo: "https://ankiomsoft.com/logo.png",
+    sameAs: [
+      "https://www.linkedin.com/company/ankiom-soft-india-llp/",
+      "https://twitter.com/ankiomsoft",
+    ],
+  };
+
   return (
-    <nav className="w-full bg-white border-gray-100 py-4">
-      <div className="max-w-7xl mx-auto flex justify-between items-center px-6 md:px-10 py-[4px]">
-<Link href="/" className="flex items-center gap-2">
-  <motion.img
-    src="/images/logo.png"
-    alt="Ankiom Logo"
-    className="h-12 w-auto" // adjust this height if needed
-    whileHover={{ scale: 1.03 }}
-    transition={{ type: "spring", stiffness: 300 }}
-  />
-</Link>
+    <>
+      {/* ✅ SEO Integration */}
+      <NextSeo
+        title="Ankiom Soft India LLP | IoT, Flutter, Next.js, and Embedded Solutions"
+        description="Ankiom Soft India LLP delivers intelligent, scalable solutions in IoT, Flutter, Next.js, and Embedded Systems. Based in Hyderabad, India."
+        canonical="https://ankiomsoft.com/"
+        openGraph={{
+          type: "website",
+          locale: "en_IN",
+          url: "https://ankiomsoft.com/",
+          site_name: "Ankiom Soft India LLP",
+          title:
+            "Ankiom Soft India LLP | Engineering Intelligent, Connected Solutions",
+          description:
+            "We build connected, scalable, and intelligent solutions across IoT, Flutter, Next.js, and Embedded Systems.",
+          images: [
+            {
+              url: "https://ankiomsoft.com/og-image.png",
+              width: 1200,
+              height: 630,
+              alt: "Ankiom Soft India LLP",
+            },
+          ],
+        }}
+        twitter={{
+          handle: "@ankiomsoft",
+          site: "@ankiomsoft",
+          cardType: "summary_large_image",
+        }}
+        additionalMetaTags={[
+          {
+            name: "keywords",
+            content:
+              "Ankiom Soft India LLP, IoT, Flutter, Next.js, Embedded Systems, Hyderabad software company, AI solutions, scalable apps",
+          },
+          {
+            name: "author",
+            content: "Ankiom Soft India LLP",
+          },
+          {
+            name: "robots",
+            content: "index, follow",
+          },
+          {
+            name: "theme-color",
+            content: "#0ea5e9",
+          },
+        ]}
+        additionalJsonLd={[orgSchema]}
+      />
 
+      {/* ✅ Navbar */}
+      <nav className="w-full bg-white border-gray-100 py-4">
+        <div className="max-w-7xl mx-auto flex justify-between items-center px-6 md:px-10 py-[4px]">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2">
+            <motion.img
+              src="/images/logo.png"
+              alt="Ankiom Logo"
+              className="h-12 w-auto"
+              whileHover={{ scale: 1.03 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            />
+          </Link>
 
-
-        {/* Mobile Menu Toggle */}
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition focus:outline-none"
-          aria-label="Toggle menu"
-        >
-          {mobileOpen ? <XIcon className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
-        </button>
-
-        {/* Nav Links */}
-        <ul
-          className={`flex flex-col md:flex-row md:items-center gap-5 absolute md:static bg-white md:bg-transparent left-0 w-full md:w-auto px-6 md:px-0 py-3 md:py-0 transition-all duration-300 ease-in-out ${
-            mobileOpen
-              ? "top-[70px] opacity-100"
-              : "top-[-500px] opacity-0 md:opacity-100"
-          }`}
-        >
-          <li className={navLinkClass}>
-            <Link href="/">Home</Link>
-          </li>
-
-          <li className={navLinkClass}>
-            <Link href="/about">About Us</Link>
-          </li>
-
-          {/* Services Dropdown */}
-          <li
-            className="relative"
-            onMouseEnter={() => setServicesOpen(true)}
-            onMouseLeave={() => setServicesOpen(false)}
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition focus:outline-none"
+            aria-label="Toggle menu"
           >
-            <Menu as="div" className="relative">
-              <Menu.Button
-                className={`${navLinkClass} flex items-center gap-2 cursor-pointer`}
+            {mobileOpen ? (
+              <XIcon className="w-6 h-6" />
+            ) : (
+              <MenuIcon className="w-6 h-6" />
+            )}
+          </button>
+
+          {/* Links */}
+          <ul
+            className={`flex flex-col md:flex-row md:items-center gap-5 absolute md:static bg-white md:bg-transparent left-0 w-full md:w-auto px-6 md:px-0 py-3 md:py-0 transition-all duration-300 ease-in-out ${
+              mobileOpen
+                ? "top-[70px] opacity-100"
+                : "top-[-500px] opacity-0 md:opacity-100"
+            }`}
+          >
+            <li className={navLinkClass}>
+              <Link href="/">Home</Link>
+            </li>
+
+            <li className={navLinkClass}>
+              <Link href="/about">About Us</Link>
+            </li>
+
+            {/* Services Dropdown */}
+            <li
+              className="relative"
+              onMouseEnter={() => setServicesOpen(true)}
+              onMouseLeave={() => setServicesOpen(false)}
+            >
+              <Menu as="div" className="relative">
+                <Menu.Button
+                  className={`${navLinkClass} flex items-center gap-2 cursor-pointer`}
+                >
+                  Services ▾
+                </Menu.Button>
+
+                <Transition
+                  as={Fragment}
+                  show={servicesOpen}
+                  enter="transition ease-out duration-200"
+                  enterFrom="opacity-0 translate-y-1"
+                  enterTo="opacity-100 translate-y-0"
+                  leave="transition ease-in duration-150"
+                  leaveFrom="opacity-100 translate-y-0"
+                  leaveTo="opacity-0 translate-y-1"
+                >
+                  <Menu.Items
+  className="absolute left-1/2 -translate-x-1/2 mt-2 w-56 bg-white rounded-lg py-2 shadow-lg border border-gray-100 z-50"
+>
+
+                    <ServiceMenuItems services={services} />
+                  </Menu.Items>
+                </Transition>
+              </Menu>
+            </li>
+
+            <li>
+              <button
+                onClick={handleContactClick}
+                className={navLinkClass}
               >
-                Services ▾
-              </Menu.Button>
+                Contact Us
+              </button>
+            </li>
 
-              <Transition
-                as={Fragment}
-                show={servicesOpen}
-                enter="transition ease-out duration-200"
-                enterFrom="opacity-0 translate-y-1"
-                enterTo="opacity-100 translate-y-0"
-                leave="transition ease-in duration-150"
-                leaveFrom="opacity-100 translate-y-0"
-                leaveTo="opacity-0 translate-y-1"
+            <li>
+              <button
+                onClick={handleContactClick}
+                className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-1.5 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all hover:scale-105"
               >
-                <Menu.Items className="absolute left-0 mt-2 w-56 bg-white rounded-lg py-2 shadow-lg border border-gray-100 z-50">
-                  <ServiceMenuItems services={services} />
-                </Menu.Items>
-              </Transition>
-            </Menu>
-          </li>
-
-          <li className={navLinkClass}>
-            <Link href="#testimonials">Testimonials</Link>
-          </li>
-
-          <li className={navLinkClass}>
-            <Link href="#contact">Contact Us</Link>
-          </li>
-
-          <li>
-  <Link
-    href="#contact"
-    className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-1.5 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all hover:scale-105 inline-block"
-  >
-    Get Quote
-  </Link>
-</li>
-
-        </ul>
-      </div>
-    </nav>
+                Get Quote
+              </button>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </>
   );
 }

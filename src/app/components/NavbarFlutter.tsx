@@ -42,7 +42,7 @@ export default function NavbarFlutter() {
     { href: "/nextjs", label: "Next.js Services" },
     { href: "/services", label: "Qt-QML Services" },
     {href: "/embedded", label: "Embedded Systems"},
-    {href: "/UI-UX", label: "UI/UX Design"}
+    {href: "/UI-UX", label: "UI/UX Design Services"}
   ];
    const scrollToSection = (id: string) => {
   const element = document.getElementById(id);
@@ -124,7 +124,9 @@ const handleContactClick = () => {
                 leaveFrom="opacity-100 translate-y-0"
                 leaveTo="opacity-0 translate-y-1"
               >
-                <Menu.Items className="absolute right-0 mt-2 w-52 bg-white rounded-lg py-2 shadow-lg z-50">
+                <Menu.Items
+  className="absolute left-1/2 -translate-x-1/2 mt-2 w-56 bg-white rounded-lg py-2 shadow-lg border border-gray-100 z-50">
+
                   <ServiceMenuItems services={services} />
                 </Menu.Items>
               </Transition>

@@ -141,48 +141,51 @@ export default function Testimonials() {
             </p>
           </motion.div>
 
-          <div className="max-w-3xl mx-auto bg-white shadow-lg border border-gray-200 rounded-2xl p-8 md:p-10 relative">
-            <motion.div
-              key={activeIndex}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="absolute -top-6 left-8 bg-gradient-to-r from-indigo-500 to-cyan-500 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-md">
-                <FontAwesomeIcon icon={faQuoteLeft} className="text-lg" />
-              </div>
+        <div className="max-w-3xl mx-auto bg-white shadow-lg border border-gray-200 rounded-2xl p-8 md:p-10 relative">
+  {/* keep quote icon static */}
+  <div className="absolute -top-6 left-8 bg-gradient-to-r from-indigo-500 to-cyan-500 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-md">
+    <FontAwesomeIcon icon={faQuoteLeft} className="text-lg" />
+  </div>
 
-              <p className="text-lg text-gray-700 italic leading-relaxed mt-4 mb-8">
-                “{testimonials[activeIndex].text}”
-              </p>
+  {/* animate only text + author */}
+  <motion.div
+    key={activeIndex}
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -20 }}
+    transition={{ duration: 0.5 }}
+  >
+    <p className="text-lg text-gray-700 italic leading-relaxed mt-4 mb-8">
+      “{testimonials[activeIndex].text}”
+    </p>
 
-              <div className="flex items-center justify-between mt-8">
-                <div className="flex items-center gap-4">
-                  <div
-                    className="w-12 h-12 rounded-full bg-gradient-to-r from-teal-500 to-cyan-500 text-white flex items-center justify-center text-lg shadow-md"
-                    aria-label={`${testimonials[activeIndex].author} profile icon`}
-                  >
-                    <FontAwesomeIcon icon={faUser} />
-                  </div>
-                  <div className="text-left">
-                    <h4 className="font-semibold text-gray-800">
-                      {testimonials[activeIndex].author}
-                    </h4>
-                    <span className="text-sm text-gray-500 font-medium">
-                      {testimonials[activeIndex].role}
-                    </span>
-                  </div>
-                </div>
+    <div className="flex items-center justify-between mt-8">
+      <div className="flex items-center gap-4">
+        <div
+          className="w-12 h-12 rounded-full bg-gradient-to-r from-teal-500 to-cyan-500 text-white flex items-center justify-center text-lg shadow-md"
+          aria-label={`${testimonials[activeIndex].author} profile icon`}
+        >
+          <FontAwesomeIcon icon={faUser} />
+        </div>
+        <div className="text-left">
+          <h4 className="font-semibold text-gray-800">
+            {testimonials[activeIndex].author}
+          </h4>
+          <span className="text-sm text-gray-500 font-medium">
+            {testimonials[activeIndex].role}
+          </span>
+        </div>
+      </div>
 
-                <div className="flex text-yellow-400 text-lg" aria-label="5-star rating">
-                  {[...Array(5)].map((_, i) => (
-                    <FontAwesomeIcon key={i} icon={faStar} />
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          </div>
+      <div className="flex text-yellow-400 text-lg" aria-label="5-star rating">
+        {[...Array(5)].map((_, i) => (
+          <FontAwesomeIcon key={i} icon={faStar} />
+        ))}
+      </div>
+    </div>
+  </motion.div>
+</div>
+
 
           <div className="flex items-center justify-center gap-6 mt-12">
             <motion.button
@@ -190,9 +193,10 @@ export default function Testimonials() {
               whileTap={{ scale: 0.95 }}
               onClick={prev}
               aria-label="Previous testimonial"
-              className="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center 
-                        bg-indigo-500 hover:bg-indigo-600 text-white 
-                        transition-all duration-300 shadow-md hover:ring-2 hover:ring-indigo-300"
+              className="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center
+             border border-indigo-500 text-indigo-500 bg-white
+             hover:bg-indigo-500 hover:text-white
+             transition-all duration-300 shadow-sm"
             >
               <FontAwesomeIcon icon={faChevronLeft} />
             </motion.button>
@@ -216,9 +220,10 @@ export default function Testimonials() {
               whileTap={{ scale: 0.95 }}
               onClick={next}
               aria-label="Next testimonial"
-              className="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center 
-                        bg-indigo-500 hover:bg-indigo-600 text-white 
-                        transition-all duration-300 shadow-md hover:ring-2 hover:ring-indigo-300"
+              className="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center
+             border border-indigo-500 text-indigo-500 bg-white
+             hover:bg-indigo-500 hover:text-white
+             transition-all duration-300 shadow-sm"
             >
               <FontAwesomeIcon icon={faChevronRight} />
             </motion.button>
