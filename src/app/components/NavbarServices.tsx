@@ -42,7 +42,7 @@ export default function NavbarServices() {
     { href: "/iot", label: "IoT Services" },
     { href: "/nextjs", label: "Next.js Services" },
     { href: "/flutter", label: "Flutter Services" },
-    {href: "/embedded", label: "QT-QML Services"},
+   {href: "/embedded", label: "Embedded Systems"},
      {href: "/UI-UX", label:" UI/UX Design Services"}
   ];
    const scrollToSection = (id: string) => {
