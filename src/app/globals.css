@@ -77,3 +77,15 @@ footer {
   margin: 0 !important;
   padding: 0 !important;
 }
+
+[data-framer-motion] {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+}
+
+html {
+  scroll-behavior: smooth;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}

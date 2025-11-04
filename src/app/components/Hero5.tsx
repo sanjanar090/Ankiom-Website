@@ -10,9 +10,13 @@ import {
 import { NextSeo } from "next-seo";
 import Head from "next/head";
 import React from "react";
+import { useRouter } from "next/navigation";
+
 
 export default function Hero() {
   const canonicalUrl = "https://ankiom.com";
+  const router = useRouter();
+  
 
   const organizationJSONLD = {
     "@context": "https://schema.org",
@@ -76,7 +80,7 @@ export default function Hero() {
 
             <div className="flex gap-4 opacity-0 animate-[fadeIn_1s_ease_1s_forwards]">
               <button className="relative inline-block px-8 py-3 font-semibold text-white rounded-lg shadow-lg bg-gradient-to-r from-indigo-500 to-cyan-400 hover:-translate-y-0.5 hover:shadow-xl transition-all duration-300 overflow-hidden">
-                <span className="relative z-10">Get Quote</span>
+                <span onClick={() => router.push("/contact")} className="relative z-10">Get Quote</span>
                 <span className="absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-all duration-500 hover:left-[100%]" />
               </button>
             </div>

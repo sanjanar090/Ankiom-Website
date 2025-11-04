@@ -1,8 +1,16 @@
 "use client";
 
-import { useState, ChangeEvent, FormEvent } from "react";
+import { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faPhone, faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { motion } from "framer-motion";
+
+// ✅ Custom hook to avoid SSR hydration mismatch flicker
+function useHasMounted() {
+  const [hasMounted, setHasMounted] = useState(false);
+  useEffect(() => setHasMounted(true), []);
+  return hasMounted;
+}
 
 interface FormData {
   name: string;
@@ -17,12 +25,13 @@ interface EmailData {
 }
 
 export default function Contacts() {
+  const hasMounted = useHasMounted();
+
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     message: "",
   });
-
   const [status, setStatus] = useState("");
   const [lastEmail, setLastEmail] = useState<EmailData | null>(null);
 
@@ -32,7 +41,7 @@ export default function Contacts() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setStatus(" Sending...");
+    setStatus("Sending...");
 
     try {
       const res = await fetch("/api/contact", {
@@ -66,12 +75,33 @@ export default function Contacts() {
     }
   };
 
+  if (!hasMounted) return null;
+
+  // 🧩 JSON-LD structured data for SEO
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: "Contact Ankiom",
+    description: "Get in touch with Ankiom for AI, IoT, and Next.js solutions.",
+    url: "https://ankiom.ai/contact",
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+91 7090703720",
+      contactType: "Customer Support",
+      email: "info@ankiom.com",
+    },
+  };
+
   return (
     <section
       id="contact"
       className="relative bg-white py-20 px-4 border-none shadow-none"
+      suppressHydrationWarning
     >
-     
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
@@ -84,30 +114,60 @@ export default function Contacts() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div className="space-y-6">
+          {/* Left Info Cards */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ type: "spring", stiffness: 80 }}
+            className="space-y-6"
+          >
             {[
-              { icon: faEnvelope, title: "Email", text: "hello@Ankiom.ai" },
-              { icon: faPhone, title: "Phone", text: "+1 (555) 123-4567" },
-              { icon: faLocationDot, title: "Location", text: "San Francisco, CA" },
+              { icon: faEnvelope, title: "Email", text: "info@ankiom.com" },
+              { icon: faPhone, title: "Phone", text: "+917090703720, +94773551411" },
+              {
+                icon: faLocationDot,
+                title: "Location",
+                text: "ANKIOM SOFT INDIA LLP, #2322, 3rd FLOOR, BLOCK No.II, JANAPRIYA HANUMAREDDY COMPLEX (ARDENTE OFFICE ONE), Sy.No.5, HOODI VILLAGE, K.R.PURAM HOBLI, BANGALORE SOUTH TALUK and BANGALORE, PIN: 560048, KARNATAKA, INDIA.",
+              },
             ].map((item, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="flex items-center gap-4 bg-white p-5 rounded-xl shadow-md hover:shadow-lg hover:-translate-y-1 transition-all border border-gray-100"
+                whileHover={{
+                  scale: 1.03,
+                  transition: { type: "spring", stiffness: 200 },
+                }}
+                className="flex items-start gap-4 bg-white p-5 rounded-xl shadow-md hover:shadow-lg border border-gray-100"
               >
-                <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-500 flex items-center justify-center text-white text-xl">
-                  <FontAwesomeIcon icon={item.icon} />
+                <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-500 flex items-center justify-center text-white">
+                  <FontAwesomeIcon
+                    icon={item.icon}
+                    className={`${
+                      item.title === "Location"
+                        ? "text-[24px] translate-y-[1px]"
+                        : "text-[22px]"
+                    }`}
+                  />
                 </div>
-                <div>
-                  <h4 className="font-semibold text-gray-900">{item.title}</h4>
-                  <p className="text-gray-600">{item.text}</p>
-                </div>
-              </div>
-            ))}
-          </div>
 
-          <form
+                <div className="flex-1">
+                  <h4 className="font-semibold text-gray-900 mb-1">{item.title}</h4>
+                  <p className="text-gray-600 leading-relaxed text-[15px]">
+                    {item.text}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Right Form */}
+          <motion.form
             onSubmit={handleSubmit}
             className="bg-white p-8 rounded-2xl shadow-lg space-y-5 border border-gray-100"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ type: "spring", stiffness: 80 }}
           >
             <input
               type="text"
@@ -137,12 +197,16 @@ export default function Contacts() {
               className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:border-blue-500 text-gray-900"
             />
 
-            <button
+            <motion.button
               type="submit"
+              whileHover={{
+                scale: 1.05,
+                transition: { type: "spring", stiffness: 200 },
+              }}
               className="px-8 py-2.5 bg-gradient-to-r text-[13px] from-[#2563eb] via-[#3b82f6] to-[#06b6d4] text-white font-semibold rounded-lg shadow-md hover:shadow-lg hover:brightness-105 transition-all duration-300"
             >
               Send Message
-            </button>
+            </motion.button>
 
             {status && (
               <p
@@ -161,13 +225,19 @@ export default function Contacts() {
             {lastEmail && (
               <div className="mt-4 text-gray-800 bg-white border border-gray-200 p-4 rounded-lg">
                 <h4 className="font-semibold mb-2">Last Email</h4>
-                <p><strong>From:</strong> {lastEmail.from}</p>
-                <p><strong>Subject:</strong> {lastEmail.subject}</p>
                 <p>
-                  <strong>Date:</strong> {new Date(lastEmail.date).toLocaleString()}</p>
+                  <strong>From:</strong> {lastEmail.from}
+                </p>
+                <p>
+                  <strong>Subject:</strong> {lastEmail.subject}
+                </p>
+                <p>
+                  <strong>Date:</strong>{" "}
+                  {new Date(lastEmail.date).toLocaleString()}
+                </p>
               </div>
             )}
-          </form>
+          </motion.form>
         </div>
       </div>
     </section>

@@ -1,139 +1,249 @@
 "use client";
 
-import { useState } from "react";
-import Navbar from "../components/Navbar";
-import Footer5 from "../components/Footer5";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { useState, useEffect, ChangeEvent, FormEvent } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faPhone, faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { motion } from "framer-motion";
+
+import Navbar from "../components/Navbar";   // ✅ adjust import path if needed
+import Footer5 from "../components/Footer5"; // ✅ adjust import path if needed
+
+// ✅ Hydration-safe hook
+function useHasMounted() {
+  const [hasMounted, setHasMounted] = useState(false);
+  useEffect(() => setHasMounted(true), []);
+  return hasMounted;
+}
+
+interface FormData {
+  name: string;
+  email: string;
+  message: string;
+}
+
+interface EmailData {
+  from: string;
+  subject: string;
+  date: string;
+}
 
 export default function ContactPage() {
-  const [form, setForm] = useState({
+  const hasMounted = useHasMounted();
+
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
-    subject: "",
     message: "",
   });
+  const [status, setStatus] = useState("");
+  const [lastEmail, setLastEmail] = useState<EmailData | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", form);
-    // TODO: Integrate backend/email API here
+    setStatus("Sending...");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+      setStatus(data.message || "✅ Message sent successfully!");
+
+      if (data.success) {
+        setFormData({ name: "", email: "", message: "" });
+        setTimeout(() => setStatus(""), 3000);
+      }
+    } catch {
+      setStatus("⚠️ Something went wrong.");
+      setTimeout(() => setStatus(""), 3000);
+    }
+  };
+
+  // (Optional) Fetch last email (if used in admin logs or debug)
+  const fetchLastEmail = async () => {
+    try {
+      const res = await fetch("/api/lastEmail");
+      const data = await res.json();
+      if (data.success) setLastEmail(data.lastEmail);
+      else setLastEmail(null);
+    } catch (err) {
+      console.error("Error fetching last email:", err);
+      setLastEmail(null);
+    }
+  };
+
+  if (!hasMounted) return null; // ✅ Prevent flicker during hydration
+
+  // 🧩 Structured Data for SEO
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: "Contact Ankiom",
+    description: "Get in touch with Ankiom for AI, IoT, and Next.js solutions.",
+    url: "https://ankiom.ai/contact",
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+91 7090703720",
+      contactType: "Customer Support",
+      email: "info@ankiom.com",
+    },
   };
 
   return (
     <>
-      {/* Navbar */}
-      <Navbar />
+      <Navbar /> {/* ✅ Top navigation */}
 
-      <section className="min-h-screen bg-white text-gray-800">
-        <div className="max-w-6xl mx-auto px-6 py-10">
+      <section
+        id="contact"
+        className="relative bg-white py-20 px-4 border-none shadow-none"
+        suppressHydrationWarning
+      >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
 
-          <div className="grid md:grid-cols-2 gap-12 items-start">
-            {/* Left - Contact Form */}
-            <div>
-              <h2 className="text-2xl font-semibold mb-6 text-gray-800">Get in Touch</h2>
+        <div className="max-w-6xl mx-auto px-6 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
+              Get In Touch
+            </h2>
+            <p className="text-gray-600 text-lg">
+              Ready to transform your business with AI and IoT?
+            </p>
+          </div>
 
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Name *"
-                  value={form.name}
-                  onChange={handleChange}
-                  className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  required
-                />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email *"
-                  value={form.email}
-                  onChange={handleChange}
-                  className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  required
-                />
-                <input
-                  type="text"
-                  name="subject"
-                  placeholder="Subject"
-                  value={form.subject}
-                  onChange={handleChange}
-                  className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-                <textarea
-                  name="message"
-                  placeholder="Write your message here..."
-                  value={form.message}
-                  onChange={handleChange}
-                  rows={5}
-                  className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  required
-                ></textarea>
-
-                <button
-                  type="submit"
-                  className="bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-blue-700 transition"
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            {/* Left Info Cards */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ type: "spring", stiffness: 80 }}
+              className="space-y-6"
+            >
+              {[
+                { icon: faEnvelope, title: "Email", text: "info@ankiom.com" },
+                { icon: faPhone, title: "Phone", text: "+91 7090703720, +94 773551411" },
+                {
+                  icon: faLocationDot,
+                  title: "Location",
+                  text: "ANKIOM SOFT INDIA LLP, #2322, 3rd FLOOR, BLOCK No.II, JANAPRIYA HANUMAREDDY COMPLEX (ARDENTE OFFICE ONE), Sy.No.5, HOODI VILLAGE, K.R.PURAM HOBLI, BANGALORE SOUTH TALUK and BANGALORE, PIN: 560048, KARNATAKA, INDIA.",
+                },
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  whileHover={{
+                    scale: 1.03,
+                    transition: { type: "spring", stiffness: 200 },
+                  }}
+                  className="flex items-start gap-4 bg-white p-5 rounded-xl shadow-md hover:shadow-lg border border-gray-100"
                 >
-                  Send Message
-                </button>
-              </form>
-            </div>
-
-            {/* Right - Company Info */}
-            <div className="bg-white  rounded-2xl p-8 -mt-8 md:-mt-10">
-              <h2 className="text-2xl font-semibold mb-6 text-gray-800">Contact Info</h2>
-
-              <div className="space-y-5 text-gray-700">
-                <div className="flex items-start space-x-3">
-                  <Phone className="w-5 h-5 text-blue-600 mt-1" />
-                  <p>+91 70907 03720, +94 77355 1411</p>
-                </div>
-
-                <div className="flex items-start space-x-3">
-                  <MapPin className="w-5 h-5 text-blue-600 mt-1" />
-                  <div>
-                    <p className="font-semibold">India Office:</p>
-                    <p>
-                      ANKIOM SOFT INDIA LLP, #2322, 3rd FLOOR, BLOCK No.II, JANAPRIYA HANUMAREDDY COMPLEX (ARDENTE OFFICE ONE),
-                      Sy.No.5, HOODI VILLAGE, K.R.PURAM HOBLI, BANGALORE SOUTH TALUK and BANGALORE, PIN: 560048, KARNATAKA, INDIA.
-                    </p>
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-500 flex items-center justify-center text-white">
+                    <FontAwesomeIcon
+                      icon={item.icon}
+                      className={`${
+                        item.title === "Location"
+                          ? "text-[24px] translate-y-[1px]"
+                          : "text-[22px]"
+                      }`}
+                    />
                   </div>
-                </div>
 
-                <div className="flex items-start space-x-3">
-                  <MapPin className="w-5 h-5 text-blue-600 mt-1" />
-                  <div>
-                    <p className="font-semibold">Sri Lanka Office:</p>
-                    <p>#36, Barnes Place, Colombo 07, Sri Lanka</p>
+                  <div className="flex-1">
+                    <h4 className="font-semibold text-gray-900 mb-1">{item.title}</h4>
+                    <p className="text-gray-600 leading-relaxed text-[15px]">{item.text}</p>
                   </div>
-                </div>
+                </motion.div>
+              ))}
+            </motion.div>
 
-                <div className="flex items-start space-x-3">
-                  <Mail className="w-5 h-5 text-blue-600 mt-1" />
-                  <p>info@ankiom.com</p>
-                </div>
-              </div>
+            {/* Right Contact Form */}
+            <motion.form
+              onSubmit={handleSubmit}
+              className="bg-white p-8 rounded-2xl shadow-lg space-y-5 border border-gray-100"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ type: "spring", stiffness: 80 }}
+            >
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:border-blue-500 text-gray-900"
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:border-blue-500 text-gray-900"
+              />
+              <textarea
+                name="message"
+                placeholder="Your Message"
+                rows={5}
+                value={formData.message}
+                onChange={handleChange}
+                required
+                className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:border-blue-500 text-gray-900"
+              />
 
-              <div className="mt-8">
-                <iframe
-                  title="Ankiom Office Location"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3890.012894570222!2d77.716!3d12.998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae13e9e36f5b81%3A0xa8a3a79cbec21c3a!2sAnkiom%20Soft%20India%20LLP!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
-                  width="100%"
-                  height="250"
-                  loading="lazy"
-                  className="rounded-xl border border-gray-200"
-                ></iframe>
-              </div>
-            </div>
+              <motion.button
+                type="submit"
+                whileHover={{
+                  scale: 1.05,
+                  transition: { type: "spring", stiffness: 200 },
+                }}
+                className="px-8 py-2.5 bg-gradient-to-r text-[13px] from-[#2563eb] via-[#3b82f6] to-[#06b6d4] text-white font-semibold rounded-lg shadow-md hover:shadow-lg hover:brightness-105 transition-all duration-300"
+              >
+                Send Message
+              </motion.button>
+
+              {status && (
+                <p
+                  className={`text-center text-sm mt-2 transition-all duration-300 ${
+                    status.includes("✅")
+                      ? "text-green-600"
+                      : status.includes("⚠️")
+                      ? "text-red-600"
+                      : "text-blue-600"
+                  }`}
+                >
+                  {status}
+                </p>
+              )}
+
+              {lastEmail && (
+                <div className="mt-4 text-gray-800 bg-white border border-gray-200 p-4 rounded-lg">
+                  <h4 className="font-semibold mb-2">Last Email</h4>
+                  <p><strong>From:</strong> {lastEmail.from}</p>
+                  <p><strong>Subject:</strong> {lastEmail.subject}</p>
+                  <p>
+                    <strong>Date:</strong>{" "}
+                    {new Date(lastEmail.date).toLocaleString()}
+                  </p>
+                </div>
+              )}
+            </motion.form>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <Footer5 />
+      <Footer5 /> {/* ✅ Bottom footer */}
     </>
   );
 }

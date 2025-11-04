@@ -142,7 +142,7 @@ export default function Navbar() {
 
           <li>
             <button
-              onClick={handleContactClick}
+              onClick={() => router.push("/contact")}
               className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-1.5 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all hover:scale-105"
             >
               Get Quote

@@ -3,9 +3,26 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { NextSeo } from "next-seo";
-import { FaRobot, FaMicrochip, FaWifi, FaChartLine } from "react-icons/fa";
+import { useState, useEffect } from "react";
+import {
+  FaRobot,
+  FaMicrochip,
+  FaWifi,
+  FaChartLine,
+  FaPalette,
+} from "react-icons/fa";
+
+// ✅ Prevents animation before hydration to stop blinking
+function useHasMounted() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  return mounted;
+}
 
 export default function Services5() {
+  const hasMounted = useHasMounted();
+  if (!hasMounted) return null; // Avoids hydration mismatch flicker
+
   const services = [
     {
       icon: <FaRobot size={36} aria-label="Next.js Application Services Icon" />,
@@ -26,16 +43,26 @@ export default function Services5() {
       link: "/iot",
     },
     {
-      icon: <FaChartLine size={36} aria-label="Flutter Application Services Icon" />,
+      icon: (
+        <FaChartLine size={36} aria-label="Flutter Application Services Icon" />
+      ),
       title: "Flutter Application Services",
       desc: "Cross-platform mobile apps with native performance using Flutter.",
       link: "/flutter",
     },
     {
-      icon: <FaChartLine size={36} aria-label="QT-QML Application Services Icon" />,
+      icon: (
+        <FaChartLine size={36} aria-label="QT-QML Application Services Icon" />
+      ),
       title: "QT-QML Application Services",
       desc: "High-performance GUI apps with modern design using Qt and QML.",
       link: "/services",
+    },
+    {
+      icon: <FaPalette size={36} aria-label="UI/UX Design Services Icon" />,
+      title: "UI/UX Design Services",
+      desc: "Designing intuitive, engaging, and visually consistent user experiences that enhance brand identity and usability across all platforms.",
+      link: "/uiux",
     },
   ];
 
@@ -92,7 +119,11 @@ export default function Services5() {
           cardType: "summary_large_image",
         }}
         additionalMetaTags={[
-          { name: "keywords", content: "Next.js, Flutter, IoT, Embedded Systems, Web Development, Mobile Apps, Ankiom Technologies" },
+          {
+            name: "keywords",
+            content:
+              "Next.js, Flutter, IoT, Embedded Systems, Web Development, Mobile Apps, Ankiom Technologies",
+          },
           { name: "robots", content: "index, follow" },
         ]}
         additionalLinkTags={[
@@ -106,7 +137,11 @@ export default function Services5() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      <section id="services5" className="py-20 bg-[#f9fcff]">
+      <section
+        id="services5"
+        className="py-20 bg-white"
+        suppressHydrationWarning
+      >
         <div className="text-center mb-12">
           <h2
             className="text-4xl font-bold mb-4"
@@ -132,7 +167,7 @@ export default function Services5() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.2 }} // ✅ only triggers once for all browsers
             >
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#6366F1] to-[#00C9FF] opacity-0 scale-x-0 group-hover:opacity-100 group-hover:scale-x-100 transition-all duration-300 origin-left"></div>
 

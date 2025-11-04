@@ -4,6 +4,8 @@ import { NextSeo } from "next-seo";
 import Head from "next/head";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useRouter } from "next/navigation";
+
 import {
   faLinkedin,
   faTwitter,
@@ -19,6 +21,8 @@ export default function Footer() {
       section.scrollIntoView({ behavior: "smooth" });
     }
   };
+  const router = useRouter();
+  
 
   return (
     <>
@@ -164,6 +168,14 @@ export default function Footer() {
                     Embedded Systems
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    href="/UI-UX"
+                    className="text-gray-400 hover:text-white transition-colors duration-300"
+                  >
+                    UI/UX Design Services
+                  </Link>
+                </li>
               </ul>
             </div>
 
@@ -189,7 +201,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <button
-                    onClick={handleScrollToContact}
+                    onClick={() => router.push("/contact")}
                     className="text-gray-400 hover:text-white transition-colors duration-300"
                   >
                     Contact
@@ -218,11 +230,7 @@ export default function Footer() {
                     url: "https://github.com/ankiom",
                     label: "GitHub",
                   },
-                  {
-                    icon: faYoutube,
-                    url: "https://www.youtube.com/@ankiom",
-                    label: "YouTube",
-                  },
+                 
                 ].map((item, idx) => (
                   <a
                     key={idx}

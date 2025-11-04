@@ -9,6 +9,7 @@ import {
   faWifi,
   faMobileAlt,
   faCubes,
+  faPalette
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function AboutSection() {
@@ -48,6 +49,7 @@ export default function AboutSection() {
     { icon: faWifi, label: "IoT Development" },
     { icon: faMobileAlt, label: "Flutter Application Services" },
     { icon: faCubes, label: "QT-QML Application Services" },
+    {icon: faPalette, label: "UI/UX Design Services"}
   ];
 
   return (
@@ -156,45 +158,26 @@ export default function AboutSection() {
               </div>
             </div>
 
-            <div className="flex flex-col items-center space-y-8">
-              <div className="grid grid-cols-2 gap-8 w-full">
-                {services.slice(0, 4).map((item, idx) => (
-                  <div
-                    key={idx}
-                    className="group relative bg-gradient-to-r from-green-500 to-cyan-500 rounded-2xl p-8 
-                    flex flex-col items-center justify-center text-white text-3xl 
-                    cursor-pointer transform transition-all duration-300 
-                    hover:scale-105 hover:shadow-[0_10px_30px_rgba(0,0,0,0.15)] w-full h-full"
-                  >
-                    <FontAwesomeIcon icon={item.icon} />
-                    <span
-                      className="absolute bottom-3 text-sm font-medium opacity-0 group-hover:opacity-100 
-                      transition-opacity duration-300 text-center"
-                    >
-                      {item.label}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="grid grid-cols-2 gap-8 w-full">
-                <div className="col-span-2 flex justify-center">
-                  <div
-                    className="group relative bg-gradient-to-r from-green-500 to-cyan-500 rounded-2xl p-8 
-                    flex flex-col items-center justify-center text-white text-3xl 
-                    cursor-pointer transform transition-all duration-300 
-                    hover:scale-105 hover:shadow-[0_10px_30px_rgba(0,0,0,0.15)] w-[48%] h-full"
-                  >
-                    <FontAwesomeIcon icon={faCubes} />
-                    <span
-                      className="absolute bottom-3 text-sm font-medium opacity-0 group-hover:opacity-100 
-                      transition-opacity duration-300 text-center"
-                    >
-                      QT-QML Application Services
-                    </span>
-                  </div>
-                </div>
-              </div>
+            <div className="flex flex-col items-center space-y-8 mt-6">
+                <div className="grid grid-cols-2 gap-5 w-[455px]">
+          {services.map((item, idx) => (
+            <div
+              key={idx}
+              className="group relative bg-gradient-to-r from-green-500 to-cyan-500 
+        rounded-2xl p-5 flex flex-col items-center justify-center 
+        text-white text-xl cursor-pointer transform transition-all duration-300 
+        hover:scale-105 hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] h-[110px]"
+            >
+              <FontAwesomeIcon icon={item.icon} />
+              <span
+                className="absolute bottom-3 text-sm font-medium opacity-0 group-hover:opacity-100 
+          transition-opacity duration-300 text-center px-2"
+              >
+                {item.label}
+              </span>
+            </div>
+          ))}
+        </div>
             </div>
           </div>
         </div>
