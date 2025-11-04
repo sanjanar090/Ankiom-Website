@@ -2,10 +2,14 @@
 
 import { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faPhone, faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEnvelope,
+  faPhone,
+  faLocationDot,
+} from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 
-// ✅ Custom hook to avoid SSR hydration mismatch flicker
+// 🧩 Custom hook to prevent SSR hydration flicker on all browsers
 function useHasMounted() {
   const [hasMounted, setHasMounted] = useState(false);
   useEffect(() => setHasMounted(true), []);
@@ -26,7 +30,6 @@ interface EmailData {
 
 export default function Contacts() {
   const hasMounted = useHasMounted();
-
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -35,7 +38,9 @@ export default function Contacts() {
   const [status, setStatus] = useState("");
   const [lastEmail, setLastEmail] = useState<EmailData | null>(null);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -75,9 +80,9 @@ export default function Contacts() {
     }
   };
 
-  if (!hasMounted) return null;
+  if (!hasMounted) return null; // ✅ Avoids flicker before hydration
 
-  // 🧩 JSON-LD structured data for SEO
+  // 🧠 JSON-LD structured data for SEO
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
@@ -93,10 +98,13 @@ export default function Contacts() {
   };
 
   return (
-    <section
+    <motion.section
       id="contact"
       className="relative bg-white py-20 px-4 border-none shadow-none"
       suppressHydrationWarning
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
     >
       <script
         type="application/ld+json"
@@ -114,7 +122,7 @@ export default function Contacts() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* Left Info Cards */}
+          {/* 📧 Left Info Cards */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -124,7 +132,11 @@ export default function Contacts() {
           >
             {[
               { icon: faEnvelope, title: "Email", text: "info@ankiom.com" },
-              { icon: faPhone, title: "Phone", text: "+917090703720, +94773551411" },
+              {
+                icon: faPhone,
+                title: "Phone",
+                text: "+917090703720, +94773551411",
+              },
               {
                 icon: faLocationDot,
                 title: "Location",
@@ -151,7 +163,9 @@ export default function Contacts() {
                 </div>
 
                 <div className="flex-1">
-                  <h4 className="font-semibold text-gray-900 mb-1">{item.title}</h4>
+                  <h4 className="font-semibold text-gray-900 mb-1">
+                    {item.title}
+                  </h4>
                   <p className="text-gray-600 leading-relaxed text-[15px]">
                     {item.text}
                   </p>
@@ -160,7 +174,7 @@ export default function Contacts() {
             ))}
           </motion.div>
 
-          {/* Right Form */}
+          {/* ✉️ Right Form */}
           <motion.form
             onSubmit={handleSubmit}
             className="bg-white p-8 rounded-2xl shadow-lg space-y-5 border border-gray-100"
@@ -240,6 +254,6 @@ export default function Contacts() {
           </motion.form>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

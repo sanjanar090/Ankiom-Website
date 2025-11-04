@@ -12,16 +12,27 @@ import {
   FaPalette,
 } from "react-icons/fa";
 
-// ✅ Prevents animation before hydration to stop blinking
-function useHasMounted() {
+// ✅ Advanced no-flicker hydration hook
+function useMountedOnce() {
   const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    const t = requestAnimationFrame(() => setMounted(true)); // waits 1 frame after hydration
+    return () => cancelAnimationFrame(t);
+  }, []);
   return mounted;
 }
 
 export default function Services5() {
-  const hasMounted = useHasMounted();
-  if (!hasMounted) return null; // Avoids hydration mismatch flicker
+  const mounted = useMountedOnce();
+  const [ready, setReady] = useState(false);
+
+  // ✅ Delays render slightly for hydration-safe animation
+  useEffect(() => {
+    const timer = setTimeout(() => setReady(true), 120);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (!mounted || !ready) return null;
 
   const services = [
     {
@@ -56,7 +67,7 @@ export default function Services5() {
       ),
       title: "QT-QML Application Services",
       desc: "High-performance GUI apps with modern design using Qt and QML.",
-      link: "/services",
+      link: "/qtqml",
     },
     {
       icon: <FaPalette size={36} aria-label="UI/UX Design Services Icon" />,
@@ -137,10 +148,14 @@ export default function Services5() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      <section
+      {/* ✅ Whole section fade-in after hydration */}
+      <motion.section
         id="services5"
-        className="py-20 bg-white"
+        className="py-20 bg-white min-h-screen"
         suppressHydrationWarning
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
       >
         <div className="text-center mb-12">
           <h2
@@ -164,10 +179,9 @@ export default function Services5() {
             <motion.div
               key={index}
               className="group relative bg-white p-8 rounded-2xl shadow-md transition-all duration-500 hover:shadow-2xl overflow-hidden"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              viewport={{ once: true, amount: 0.2 }} // ✅ only triggers once for all browsers
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1, duration: 0.6, ease: "easeOut" }}
             >
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#6366F1] to-[#00C9FF] opacity-0 scale-x-0 group-hover:opacity-100 group-hover:scale-x-100 transition-all duration-300 origin-left"></div>
 
@@ -210,7 +224,7 @@ export default function Services5() {
             </motion.div>
           ))}
         </div>
-      </section>
+      </motion.section>
     </>
   );
 }
