@@ -137,7 +137,7 @@ const handleContactClick = () => {
 
        
           <li className={navLinkClass}>
-            <Link href="#contact">Contact Us</Link>
+            <Link href="/contact">Contact Us</Link>
           </li>
 
           <li>
