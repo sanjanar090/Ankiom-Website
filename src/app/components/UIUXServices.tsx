@@ -52,12 +52,12 @@ export default function UIUXServices() {
       <NextSeo
         title="UI/UX Design Services | Ankiom Soft India LLP"
         description="Ankiom Soft India LLP provides end-to-end UI/UX design services — from user research, wireframing, and visual design to usability testing and accessibility compliance."
-        canonical="https://ankiomsoft.com/ui-ux-design"
+        canonical="https://ankiom.com/UI-UX"
         openGraph={{
           title: "UI/UX Design Services | Ankiom Soft India LLP",
           description:
             "Explore Ankiom Soft India LLP’s expert UI/UX Design Services that create visually appealing, intuitive, and user-centered digital experiences.",
-          url: "https://ankiomsoft.com/ui-ux-design",
+          url: "https://ankiom.com/UI-UX",
           type: "website",
           locale: "en_IN",
           site_name: "Ankiom Soft India LLP",
@@ -105,26 +105,26 @@ export default function UIUXServices() {
               "@context": "https://schema.org",
               "@type": "ProfessionalService",
               name: "Ankiom Soft India LLP - UI/UX Design Services",
-              url: "https://ankiomsoft.com/ui-ux-design",
-              logo: "https://ankiomsoft.com/logo.png",
-              image: "https://ankiomsoft.com/og-uiux.png",
+              url: "https://ankiom.com/UI-UX",
+              logo: "https://ankiom.com/UI-UX.png",
+              image: "https://ankiom.com/UI-UX",
               description:
                 "Professional UI/UX design services — including user research, wireframing, prototyping, and usability testing for businesses across industries.",
               sameAs: [
-                "https://www.linkedin.com/company/ankiomsoft/",
-                "https://twitter.com/ankiomsoft",
+                "https://in.linkedin.com/company/ankiom-soft-india",
+                "https://twitter.com/ankiomsoftindia",
               ],
               address: {
-                "@type": "PostalAddress",
-                streetAddress: "Hyderabad",
-                addressLocality: "Hyderabad",
-                addressRegion: "Telangana",
-                postalCode: "500082",
+                "@type": "3rd FLOOR, Tower-2, ARDENTE OFFICE ONE 2322, Bengaluru, Karnataka 560048",
+                streetAddress: "Bangalore",
+                addressLocality: "Bangalore",
+                addressRegion: "Karnataka",
+                postalCode: "560048",
                 addressCountry: "IN",
               },
               contactPoint: {
                 "@type": "ContactPoint",
-                telephone: "+91-XXXXXXXXXX",
+                telephone: "+91-7090703720",
                 contactType: "customer service",
               },
             }),
@@ -142,49 +142,50 @@ export default function UIUXServices() {
         >
           Our UI/UX Design Services
         </motion.h2>
+<motion.div
+  className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-10 mt-8 justify-items-start"
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true }}
+  variants={{
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.15 } },
+  }}
+>
+  {services.map((service, index) => (
+    <motion.div
+      key={index}
+      className="flex flex-col bg-white p-4 rounded-xl w-[240px] transition-all duration-300"
+      variants={{
+        hidden: { opacity: 0, y: 40 },
+        visible: { opacity: 1, y: 0 },
+      }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+    >
+      <motion.div
+        className="relative w-[200px] h-[190px] mb-3 overflow-hidden rounded-lg"
+        whileHover={{ scale: 1.03 }}
+        transition={{ duration: 0.3 }}
+      >
+        <Image
+          src={service.img}
+          alt={`${service.title} - Ankiom UI/UX Service`}
+          fill
+          style={{ objectFit: 'cover' }}
+          className="rounded-lg"
+        />
+      </motion.div>
+      <h3 className="text-[15px] font-semibold text-left mb-2 text-gray-900">
+        {service.title}
+      </h3>
+      <p className="text-sm text-[#637587] text-left leading-relaxed">
+        {service.desc}
+      </p>
+    </motion.div>
+  ))}
+</motion.div>
 
-        <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8 justify-items-center"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={{
-            hidden: {},
-            visible: { transition: { staggerChildren: 0.15 } },
-          }}
-        >
-          {services.map((service, index) => (
-            <motion.div
-              key={index}
-              className="flex flex-col items-center bg-white p-4 rounded-xl w-full max-w-xs mx-auto h-[420px] transition-all duration-300"
-              variants={{
-                hidden: { opacity: 0, y: 40 },
-                visible: { opacity: 1, y: 0 },
-              }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-            >
-              <motion.div
-                className="h-[200px] w-[300px] mb-3 flex justify-center items-center"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
-              >
-                <Image
-                  src={service.img}
-                  alt={`${service.title} - Ankiom UI/UX Service`}
-                  width={200}
-                  height={180}
-                  className="object-cover rounded-lg"
-                />
-              </motion.div>
-              <h3 className="text-[15px] font-semibold text-left mb-2 w-full">
-                {service.title}
-              </h3>
-              <p className="text-sm text-[#4D8C99] text-left leading-relaxed w-full">
-                {service.desc}
-              </p>
-            </motion.div>
-          ))}
-        </motion.div>
+
       </section>
     </>
   );

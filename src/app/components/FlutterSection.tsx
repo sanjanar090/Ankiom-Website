@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { NextSeo } from "next-seo";
 import { motion } from "framer-motion";
+
 import image1 from "../assets/imageone.jpg";
 import image2 from "../assets/imagetwo.jpg";
 import image3 from "../assets/imagethree.jpg";
@@ -40,6 +41,7 @@ export default function FlutterSection() {
 
   return (
     <section id="services" className="max-w-6xl mx-auto my-3 p-10 bg-white rounded-3xl">
+      {/* ✅ SEO Meta Tags */}
       <NextSeo
         title="Introduction to Flutter | Ankiom"
         description="Learn about Flutter's capabilities — a UI toolkit to build beautiful, high-performance apps for any platform from a single codebase."
@@ -53,6 +55,7 @@ export default function FlutterSection() {
         ]}
       />
 
+      {/* ✅ Introduction Section */}
       <motion.div
         className="text-center mb-10"
         initial={{ opacity: 0, y: 50 }}
@@ -66,6 +69,7 @@ export default function FlutterSection() {
         </p>
       </motion.div>
 
+      {/* ✅ Landscape Section */}
       <motion.div
         className="text-center mb-10"
         initial={{ opacity: 0, y: 50 }}
@@ -77,47 +81,51 @@ export default function FlutterSection() {
         <p className="text-[16px] max-w-3xl mx-auto text-base">
           Flutter has gained widespread adoption across various industries due to its efficiency, performance, and versatility. Many leading companies leverage Flutter to build their applications, benefiting from its cross-platform capabilities and rich feature set.
         </p>
+<motion.div
+  className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-17 gap-y-25 mt-12 justify-items-start"
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true }}
+  variants={{
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.15 } },
+  }}
+>
+  {cards.map((card, index) => (
+    <motion.div
+      key={index}
+      className="flex flex-col text-left w-[230px] min-h-[420px]"
+      variants={{
+        hidden: { opacity: 0, y: 40 },
+        visible: { opacity: 1, y: 0 },
+      }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+    >
+      {/* ✅ Added more bottom margin under image */}
+      <div className="relative w-[215px] h-[200px] overflow-hidden rounded-xl mb-2  hover:scale-[1.04] transition-transform duration-300 ease-out">
+        <Image
+          src={card.img}
+          alt={card.title}
+          fill
+          className="object-cover"
+          sizes="(max-width: 1024px) 100vw, 230px"
+        />
+      </div>
 
-        <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-1 mt-8 justify-items-center"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={{
-            hidden: {},
-            visible: {
-              transition: { staggerChildren: 0.15 },
-            },
-          }}
-        >
-          {cards.map((card, index) => (
-            <motion.div
-              key={index}
-              className="flex flex-col items-center bg-white p-4 rounded-xl w-full max-w-xs mx-auto h-[420px]"
-              variants={{
-                hidden: { opacity: 0, y: 40 },
-                visible: { opacity: 1, y: 0 },
-              }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-            >
-              <motion.div
-                className="h-[200px] w-[300px] mb-1 flex justify-center items-center"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
-              >
-                <Image
-                  src={card.img}
-                  alt={`${card.title} - Flutter app feature`}
-                  width={200}
-                  height={180}
-                  className="object-cover rounded-lg"
-                />
-              </motion.div>
-              <h3 className="text-[15px] font-semibold text-left mb-2 mt-3">{card.title}</h3>
-              <p className="text-sm text-[#4D8C99] text-left mb-1">{card.desc}</p>
-            </motion.div>
-          ))}
-        </motion.div>
+      {/* ✅ Clearer separation between title and description */}
+      <h3 className="text-[15px] font-semibold text-gray-900 mb-3 leading-snug">
+        {card.title}
+      </h3>
+
+      {/* ✅ Comfortable paragraph line height & spacing */}
+      <p className="text-[14px] text-[#4D8C99] leading-[1.8] tracking-wide pr-2">
+        {card.desc}
+      </p>
+    </motion.div>
+  ))}
+</motion.div>
+
+
       </motion.div>
     </section>
   );
