@@ -3,8 +3,8 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { NextSeo } from "next-seo";
-import image1 from "../assets/custom-dev.png";
-import image2 from "../assets/headless-cms.png";
+import image1 from "../assets/custom-dev.jpg";
+import image2 from "../assets/headless-cms.jpg";
 import image3 from "../assets/ecomerce.png";
 import image4 from "../assets/performance.png";
 import image5 from "../assets/migration.png";
@@ -17,7 +17,7 @@ export default function OurServices4() {
     { img: image4, title: "Performance & SEO Optimization", desc: "Optimizing your Next.js application for speed, responsiveness, and search engine visibility." },
     { img: image5, title: "Migration & Modernization", desc: "Migrating existing applications to Next.js for improved performance and maintainability." },
   ];
-
+ 
   return (
     <>
       <NextSeo

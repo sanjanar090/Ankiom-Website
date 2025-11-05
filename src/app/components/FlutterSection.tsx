@@ -3,10 +3,10 @@
 import Image from "next/image";
 import { NextSeo } from "next-seo";
 import { motion } from "framer-motion";
-import image1 from "../assets/imageone.png";
-import image2 from "../assets/imagetwo.png";
-import image3 from "../assets/imagethree.png";
-import image4 from "../assets/imagefour.png";
+import image1 from "../assets/imageone.jpg";
+import image2 from "../assets/imagetwo.jpg";
+import image3 from "../assets/imagethree.jpg";
+import image4 from "../assets/imagefour.jpg";
 import image5 from "../assets/imagefive.png";
 
 export default function FlutterSection() {

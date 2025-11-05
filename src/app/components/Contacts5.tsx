@@ -9,11 +9,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 
-// 🧩 Custom hook to prevent SSR hydration flicker on all browsers
+// 🧩 Safe mount hook — ensures render only after hydration
 function useHasMounted() {
-  const [hasMounted, setHasMounted] = useState(false);
-  useEffect(() => setHasMounted(true), []);
-  return hasMounted;
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  return mounted;
 }
 
 interface FormData {
@@ -30,6 +30,7 @@ interface EmailData {
 
 export default function Contacts() {
   const hasMounted = useHasMounted();
+
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -80,9 +81,7 @@ export default function Contacts() {
     }
   };
 
-  if (!hasMounted) return null; // ✅ Avoids flicker before hydration
-
-  // 🧠 JSON-LD structured data for SEO
+  // 🧠 JSON-LD structured data
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
@@ -97,12 +96,22 @@ export default function Contacts() {
     },
   };
 
+  // ✅ Hydration-safe render
+  if (!hasMounted)
+    return (
+      <section
+        className="min-h-screen bg-white"
+        style={{ visibility: "hidden" }}
+        suppressHydrationWarning
+      />
+    );
+
   return (
     <motion.section
       id="contact"
       className="relative bg-white py-20 px-4 border-none shadow-none"
       suppressHydrationWarning
-      initial={{ opacity: 0 }}
+      initial={false} // 🚫 prevent 0→1 opacity flicker
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
     >

@@ -3,19 +3,17 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { NextSeo } from "next-seo";
-import image1 from "../assets/one.png";
-import image2 from "../assets/two.png";
-import image3 from "../assets/three.png";
-import Microcontroller from "../assets/microcontrollerfirmware.png";
-import image4 from "../assets/four.png";
-import image5 from "../assets/five.png";
+import image1 from "../assets/two.jpg";
+import image2 from "../assets/one.jpg";
+import image3 from "../assets/three.jpg";
+import image4 from "../assets/four.jpg";
+import image5 from "../assets/five.jpg";
 
 export default function QMLServiceOffering() {
   const cards = [
     { img: image1, title: "UI Design & Development", desc: "We create intuitive and visually stunning user interfaces tailored to your specific needs." },
     { img: image2, title: "Cross-Platform Apps", desc: "Develop applications that seamlessly adapt to different screen sizes and platforms." },
     { img: image3, title: "HMI & Embedded Solutions", desc: "Build robust and responsive human-machine interfaces for embedded devices." },
-    {img : Microcontroller, title:"Microcontroller & Firmware Development", desc: "Comprehensive firmware development for microcontrollers, optimizing for performance and power."},
     { img: image4, title: "Migration & Modernisation", desc: "Modernise existing applications by migrating to QML for improved performance and maintainability." },
     { img: image5, title: "Prototyping & Design Tools", desc: "Rapidly prototype and iterate on UI designs using QML's flexible and dynamic capabilities." },
   ];

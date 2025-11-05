@@ -4,35 +4,28 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { NextSeo } from "next-seo";
 import { useState, useEffect } from "react";
-import {
-  FaRobot,
-  FaMicrochip,
-  FaWifi,
-  FaChartLine,
-  FaPalette,
-} from "react-icons/fa";
+import { FaRobot, FaMicrochip, FaWifi, FaChartLine, FaPalette } from "react-icons/fa";
 
-// ✅ Advanced no-flicker hydration hook
-function useMountedOnce() {
+/**
+ * ✅ useHasMounted – only returns true after hydration completes
+ * Avoids pre-hydration flicker without causing null-to-DOM re-renders.
+ */
+function useHasMounted() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
-    const t = requestAnimationFrame(() => setMounted(true)); // waits 1 frame after hydration
-    return () => cancelAnimationFrame(t);
+    const frame = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(frame);
   }, []);
   return mounted;
 }
 
 export default function Services5() {
-  const mounted = useMountedOnce();
-  const [ready, setReady] = useState(false);
+  const mounted = useHasMounted();
 
-  // ✅ Delays render slightly for hydration-safe animation
-  useEffect(() => {
-    const timer = setTimeout(() => setReady(true), 120);
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (!mounted || !ready) return null;
+  // Instead of returning null (causes flicker), render hidden and fade in
+  const visibilityStyle = mounted
+    ? { opacity: 1, transition: "opacity 0.4s ease-out" }
+    : { opacity: 0 };
 
   const services = [
     {
@@ -148,14 +141,15 @@ export default function Services5() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      {/* ✅ Whole section fade-in after hydration */}
+      {/* ✅ Hydration-safe fade-in */}
       <motion.section
         id="services5"
         className="py-20 bg-white min-h-screen"
-        suppressHydrationWarning
+        style={visibilityStyle}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        suppressHydrationWarning
       >
         <div className="text-center mb-12">
           <h2
@@ -180,7 +174,8 @@ export default function Services5() {
               key={index}
               className="group relative bg-white p-8 rounded-2xl shadow-md transition-all duration-500 hover:shadow-2xl overflow-hidden"
               initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
               transition={{ delay: index * 0.1, duration: 0.6, ease: "easeOut" }}
             >
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#6366F1] to-[#00C9FF] opacity-0 scale-x-0 group-hover:opacity-100 group-hover:scale-x-100 transition-all duration-300 origin-left"></div>

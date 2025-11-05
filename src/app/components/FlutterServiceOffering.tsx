@@ -3,14 +3,14 @@
 import Image from "next/image";
 import { NextSeo } from "next-seo";
 import { motion } from "framer-motion";
-import image1 from "../assets/image1.png";
-import image2 from "../assets/image2.png";
-import image3 from "../assets/image3.png";
-import image4 from "../assets/image4.png";
-import image5 from "../assets/image5.png";
-import image6 from "../assets/image6.png";
-import image7 from "../assets/image7.png";
-import image8 from "../assets/image8.png";
+import image1 from "../assets/one.jpg";
+import image2 from "../assets/two.jpg";
+import image3 from "../assets/three.jpg";
+import image4 from "../assets/four.jpg";
+import image5 from "../assets/five.jpg";
+import image6 from "../assets/SIX.jpg";
+import image7 from "../assets/SEVEN.jpg";
+import image8 from "../assets/EIGHT.jpg";
 
 export default function FlutterServiceOffering() {
   const cards = [

@@ -89,3 +89,22 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 }
+/* --- 🧩 Global anti-flicker fix --- */
+
+/* Hide everything before hydration completes */
+body[data-hydrated="false"] * {
+  visibility: hidden !important;
+}
+
+/* Reveal smoothly after hydration */
+body[data-hydrated="true"] * {
+  visibility: visible !important;
+  transition: visibility 0s linear 0.15s;
+}
+
+/* Optional GPU compositing tweaks for gradients */
+html, body {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+

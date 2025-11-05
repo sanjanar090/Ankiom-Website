@@ -5,12 +5,12 @@ import { motion } from "framer-motion";
 import { NextSeo } from "next-seo";
 import Head from "next/head";
 
-import research from "../assets/users.png";
-import strategy from "../assets/strategy.png";
-import information from "../assets/information.png";
-import wireframing from "../assets/wireframing.png";
-import visual from "../assets/visual.png";
-import usability from "../assets/usability.png";
+import research from "../assets/users.jpg";
+import strategy from "../assets/strategy.jpg";
+import information from "../assets/information.jpg";
+import wireframing from "../assets/wireframing.jpg";
+import visual from "../assets/visual.jpg";
+import usability from "../assets/usability.jpg";
 
 export default function UIUXServices() {
   const services = [

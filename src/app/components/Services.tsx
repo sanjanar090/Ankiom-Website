@@ -43,7 +43,7 @@ export default function Services() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
           >
-            <h3 className="text-[15px] font-semibold text-[#617d8a] mb-1">{service.title}</h3>
+            <h3 className="text-[15px] font-semibold text-[#617D8A] mb-1">{service.title}</h3>
             <p className="text-[15px] text-[#121717] leading-relaxed">{service.desc}</p>
           </motion.div>
         ))}

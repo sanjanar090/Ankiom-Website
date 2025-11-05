@@ -6,7 +6,7 @@ import { NextSeo } from "next-seo";
 import image1 from "../assets/picture1.png";
 import image2 from "../assets/picture2.png";
 import image3 from "../assets/picture3.png";
-import image4 from "../assets/picture4.png";
+import image4 from "../assets/pciture4.jpg";
 
 export default function QMLSection() {
   const cards = [
@@ -24,6 +24,16 @@ export default function QMLSection() {
       img: image3,
       title: "JavaScript & C++ Integration",
       desc: "Integrate QML with JavaScript for scripting and C++ for performance-critical components.",
+      // Apply same width and height here as in other images
+      ImageComponent: (
+        <Image
+          src={image3}
+          alt="JavaScript & C++ Integration"
+          width={350} // Consistent with other images
+          height={180} // Consistent with other images
+          className="rounded-xl mb-4"
+        />
+      ),
     },
     {
       img: image4,
@@ -89,16 +99,22 @@ export default function QMLSection() {
                 visible: { opacity: 1, y: 0 },
               }}
             >
-             <Image
-  src={card.img}
-  alt={card.title}
-  width={350}
-  height={180}
-  className=" rounded-xl mb-4"
-/>
-             <div className="w-full text-left ">
-              <h3 className="text-sm font-semibold text-left mb-2">{card.title}</h3>
-              <p className="text-sm text-left text-[#4D8C99]">{card.desc}</p>
+              {/* Conditionally render Image or ImageComponent */}
+              {card.ImageComponent ? (
+                card.ImageComponent
+              ) : (
+                <Image
+                  src={card.img}
+                  alt={card.title}
+                  width={350}
+                  height={180}
+                  className="rounded-xl mb-4"
+                />
+              )}
+
+              <div className="w-full text-left">
+                <h3 className="text-sm font-semibold text-left mb-2">{card.title}</h3>
+                <p className="text-sm text-left text-[#4D8C99]">{card.desc}</p>
               </div>
             </motion.div>
           ))}

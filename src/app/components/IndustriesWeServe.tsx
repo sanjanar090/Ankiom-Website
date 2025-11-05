@@ -3,11 +3,11 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { NextSeo } from "next-seo";
-import industry1 from "../assets/industry1.png";
-import industry2 from "../assets/industry2.png";
-import industry3 from "../assets/industry3.png";
-import industry4 from "../assets/industry4.png";
-import industry5 from "../assets/industry5.png";
+import industry1 from "../assets/industry1.jpg";
+import industry2 from "../assets/industry2.jpg";
+import industry3 from "../assets/industry3.jpg";
+import industry4 from "../assets/industry4.jpg";
+import industry5 from "../assets/industry5.jpg";
 
 export default function IndustriesWeServe() {
   const industries = [
@@ -55,7 +55,7 @@ export default function IndustriesWeServe() {
                 visible: { opacity: 1, y: 0 },
               }}
             >
-              <div className="relative w-full h-[235px] mb-3 mx-auto overflow-hidden rounded-xl">
+              <div className="relative w-[230px] h-[220px] mb-3 mx-auto overflow-hidden rounded-xl">
                 <Image src={industry.img} alt={industry.title} fill className="object-cover" />
               </div>
               <h3 className="mt-2 text-sm text-left font-medium text-[#222]">{industry.title}</h3>
