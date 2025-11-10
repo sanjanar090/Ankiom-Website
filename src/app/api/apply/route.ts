@@ -1,96 +1,59 @@
 import nodemailer from "nodemailer";
-import formidable from "formidable";
-import { Readable } from "stream";
+import { NextResponse } from "next/server";
 
-export const config = {
-  api: { bodyParser: false },
-};
-export const runtime = "nodejs";
+export async function POST(req: Request) {
+  try {
+    const formData = await req.formData();
+    const name = formData.get("name");
+    const email = formData.get("email");
+    const phone = formData.get("phone");
+    const message = formData.get("message");
+    const role = formData.get("role");
+    const resumeFile = formData.get("resume") as File | null;
 
-// Convert Web Request → Node.js readable stream
-async function toNodeStream(req: Request): Promise<NodeJS.ReadableStream> {
-  const body = await req.arrayBuffer();
-  const readable = Readable.from(Buffer.from(body));
-  // @ts-ignore
-  readable.headers = Object.fromEntries(req.headers);
-  return readable;
-}
-
-export async function POST(req: Request): Promise<Response> {
-  const nodeReq = await toNodeStream(req);
-
-  return new Promise((resolve) => {
-    const form = formidable({
-      multiples: false,
-      uploadDir: "/tmp",
-      keepExtensions: true,
+    const transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com", // e.g. Gmail SMTP
+      port: 465,
+      secure: true,
+      auth: {
+        user: process.env.SMTP_USER, // your email
+        pass: process.env.SMTP_PASS, // your app password
+      },
     });
 
-    form.parse(nodeReq as any, async (err, fields, files) => {
-      if (err) {
-        console.error("❌ Form parse error:", err);
-        return resolve(
-          new Response(JSON.stringify({ error: "Form parsing failed" }), {
-            status: 400,
-            headers: { "Content-Type": "application/json" },
-          })
-        );
-      }
+    let mailOptions: any = {
+      from: `"Ankiom Careers" <${process.env.SMTP_USER}>`,
+      to: "info@ankiom.com",
+      subject: `New Job Application for ${role}`,
+      text: `
+New Application for ${role}:
 
-      try {
-        const name = Array.isArray(fields.name) ? fields.name[0] : fields.name;
-        const email = Array.isArray(fields.email) ? fields.email[0] : fields.email;
-        const role = Array.isArray(fields.role) ? fields.role[0] : fields.role;
-        const file: any = Array.isArray(files.resume) ? files.resume[0] : files.resume;
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
 
-        if (!file || !name || !email) {
-          console.log("⚠️ Missing fields:", { name, email, file });
-          return resolve(
-            new Response(JSON.stringify({ error: "Missing required fields" }), {
-              status: 400,
-              headers: { "Content-Type": "application/json" },
-            })
-          );
-        }
+Message:
+${message}
+      `,
+    };
 
-        const transporter = nodemailer.createTransport({
-          service: "Gmail",
-          auth: {
-            user: process.env.EMAIL_USER,
-            pass: process.env.EMAIL_PASS,
-          },
-        });
+    // ✅ Add attachment if available
+    if (resumeFile) {
+      const arrayBuffer = await resumeFile.arrayBuffer();
+      const buffer = Buffer.from(arrayBuffer);
+      mailOptions.attachments = [
+        {
+          filename: resumeFile.name,
+          content: buffer,
+        },
+      ];
+    }
 
-        await transporter.sendMail({
-          from: `"Ankiom Careers" <${process.env.EMAIL_USER}>`,
-          to: "careers@ankiom.com",
-          subject: `New Application: ${role || "General"} - ${name}`,
-          text: `New candidate applied:\n\nName: ${name}\nEmail: ${email}\nRole: ${role}`,
-          attachments: [
-            {
-              filename: file.originalFilename || "resume.pdf",
-              path: file.filepath,
-            },
-          ],
-        });
+    await transporter.sendMail(mailOptions);
 
-        console.log("✅ Email sent successfully");
-
-        return resolve(
-          new Response(JSON.stringify({ success: true }), {
-            status: 200,
-            headers: { "Content-Type": "application/json" },
-          })
-        );
-      } catch (error) {
-        console.error("❌ Error sending email:", error);
-        return resolve(
-          new Response(JSON.stringify({ error: "Email sending failed" }), {
-            status: 500,
-            headers: { "Content-Type": "application/json" },
-          })
-        );
-      }
-    });
-  });
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error("Error sending email:", error);
+    return NextResponse.json({ success: false }, { status: 500 });
+  }
 }

@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 import NavbarIot from "../components/NavbarIot";
 import HeroSection from "@/app/components/HeroSection";
 import IotServicesText from "@/app/components/IotServicesText";
-import Industries from "@/app/components/Industries";
-import Services from "@/app/components/Services";
+import IoTServices from "@/app/components/IoTServices";
 import Benefits from "@/app/components/Benefits";
+import IndustriesIot from "../components/IndustriesIot";
 import WhyChoose from "@/app/components/WhyChoose";
 import CloudPartners from "@/app/components/CloudPartners";
 import ContactSection from "@/app/components/ContactSection";
@@ -263,9 +263,9 @@ export default function IoTPage() {
         <IotServicesText />
       </motion.section>
 
-      <Industries />
-      <Services />
+      <IoTServices />
       <Benefits />
+      <IndustriesIot/>
       <WhyChoose />
       <CloudPartners />
       <ContactSection heading="Ready to Transform Your Business with IoT?" />
